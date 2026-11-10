@@ -2,127 +2,149 @@
 ## Tactyqal Labs Modern Platform Redesign
 
 ### 1. Design Concept & Philosophy
-The redesign transforms Tactyqal Labs from a dated PHP/WordPress layout into a world-class, premium EdTech & Startup Incubator platform. The aesthetic bridges the authority of an elite educational incubator (like Y Combinator / Stanford d.school) with the playful, modern energy of teen builders (inspired by Linear, Vercel, and Stripe).
+The redesign transforms Tactyqal Labs from a dated PHP CodeIgniter and WordPress layout into a world-class, premium EdTech and Startup Incubator platform. The aesthetic bridges the authority of an elite educational accelerator (such as Y Combinator or Stanford d.school) with the sleek, high-velocity energy of modern developer tools (inspired by Linear, Stripe, and Vercel).
 
-#### Core Principles:
-1. **Credibility & Trust First:** Prominent social proof, verified student revenue figures, top university badges, and clear refund guarantees build immediate confidence for skeptical parents.
-2. **Clarity & High-Contrast Visuals:** Dark slate backdrop with luminous indigo/violet gradients, crisp typography, and high-contrast card borders deliver modern elegance.
-3. **Interactive & Tangible:** Don't just tell—show. Interactive curriculum breakdown, live startup diagnostic tools, dynamic pricing calculator, and instant search on the blog make the site feel alive.
-4. **Frictionless Conversion:** Sticky consultation CTAs, accessible modal bookings, and clear communication channels (WhatsApp, direct phone, email).
+#### Core Design Principles:
+1. **Credibility & Trust First:** Prominent social proof, verified student revenue figures (e.g. ₹100k/mo MRR), top university badges, and clear refund guarantees build immediate confidence for ambitious parents.
+2. **Deep Midnight Canvas with Radiant Glows:** A deep slate backdrop (`#020617`) paired with luminous indigo/violet gradients, crisp white typography, and high-contrast card borders creates high visual hierarchy and eliminates eye strain.
+3. **Interactive & Tangible:** Visitors do not just read—they interact. The platform features an interactive curriculum roadmap, 3D card tilt effects, in-browser startup assessment tools, dynamic pricing calculation, and instant search across articles.
+4. **Frictionless Conversion:** Sticky glassmorphic navigation, accessible Redux-powered consultation booking modals, and direct phone/WhatsApp contact links provide zero-friction entry points.
 
 ---
 
-### 2. Color Palette & Tokens
+### 2. Comprehensive Color Palette & Tokens
 
+#### 2.1 Color Tokens & Hex Codes
+| Semantic Token | Hex Code | Tailwind Utility | Visual Role / Usage |
+|---|---|---|---|
+| **Canvas Background** | `#020617` | `bg-slate-950` | Primary application backdrop |
+| **Card Surface (Deep)** | `#0f172a` | `bg-slate-900` | Section cards, modal containers, table surfaces |
+| **Card Surface (Elevated)**| `#1e293b` | `bg-slate-800` | Input fields, active badges, dropdown surfaces |
+| **Surface Hover / Active** | `#334155` | `bg-slate-700` | Button hover states, divider lines |
+| **Border Subtle** | `rgba(255,255,255,0.08)` | `border-slate-800` | Card borders, table dividers |
+| **Border Active / Glow** | `rgba(99,102,241,0.4)` | `border-indigo-500/40`| Focused cards, highlighted pricing border |
+| **Primary Brand Indigo** | `#6366f1` | `text-indigo-500`, `bg-indigo-500` | Main buttons, brand highlights, active tabs |
+| **Primary Deep Indigo** | `#4f46e5` | `bg-indigo-600` | Button gradient start, solid CTAs |
+| **Accent Violet** | `#8b5cf6` | `text-violet-500`, `bg-violet-500`| Gradient transitions, secondary icons |
+| **Cyan Highlight** | `#06b6d4` | `text-cyan-400`, `bg-cyan-500/10` | Free Tools, interactive quizzes, tech pills |
+| **Emerald Highlight** | `#10b981` | `text-emerald-400`, `bg-emerald-500/10` | Student revenue stats, success badges, verified checkmarks |
+| **Amber Scarcity / Rating**| `#f59e0b` | `text-amber-400`, `bg-amber-500/10` | Star ratings, limited spots pills, draft status |
+| **Rose / Coral Accent** | `#f43f5e` | `text-rose-400`, `bg-rose-500/10` | Social impact tags, delete actions, errors |
+| **Text Primary** | `#f8fafc` | `text-white` / `text-slate-50` | Primary headlines, titles, active labels |
+| **Text Secondary** | `#cbd5e1` | `text-slate-300` | Body copy, descriptions, testimonials |
+| **Text Muted** | `#94a3b8` | `text-slate-400` | Captions, metadata, reading time |
+| **Text Subtle** | `#64748b` | `text-slate-500` | Dates, placeholders, breadcrumb arrows |
+
+#### 2.2 Gradients & Radiant Auras
 ```css
-:root {
-  /* Backgrounds */
-  --bg-primary: #090d16;        /* Deep midnight navy/slate */
-  --bg-secondary: #0f172a;      /* Slate 900 card surface */
-  --bg-tertiary: #1e293b;       /* Slate 800 hover/active surface */
-  --bg-glass: rgba(15, 23, 42, 0.75);
+/* Ambient Top Hero Glow */
+background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.15) 50%, transparent 100%);
 
-  /* Borders & Dividers */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(99, 102, 241, 0.3);
+/* Primary Brand Button Gradient */
+background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
 
-  /* Primary Brand Accents */
-  --primary-500: #6366f1;       /* Indigo 500 */
-  --primary-600: #4f46e5;       /* Indigo 600 */
-  --accent-violet: #8b5cf6;     /* Purple / Violet accent */
-  --accent-cyan: #06b6d4;       /* Cyan highlight */
-  --accent-emerald: #10b981;    /* Emerald for verified badges & revenue */
-  --accent-amber: #f59e0b;      /* Amber for limited time deals & ratings */
-
-  /* Text Colors */
-  --text-primary: #f8fafc;      /* Slate 50 */
-  --text-secondary: #94a3b8;    /* Slate 400 */
-  --text-muted: #64748b;        /* Slate 500 */
-  --text-inverse: #0f172a;      /* Slate 900 */
-}
+/* Emerald Metric Card Gradient */
+background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(20, 184, 166, 0.05) 100%);
 ```
 
 ---
 
-### 3. Typography Scale & Hierarchy
+### 3. Typography Hierarchy & Scales
 
-- **Font Family:** `Inter`, `Plus Jakarta Sans`, system-ui fallback.
-- **Font Scale:**
-  - **Hero Display:** `text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]`
-  - **Section Headings:** `text-3xl md:text-4xl font-bold tracking-tight text-white`
-  - **Subheadings / Card Titles:** `text-xl md:text-2xl font-semibold text-slate-100`
-  - **Body Text:** `text-base text-slate-300 leading-relaxed`
-  - **Meta / Badges / Captions:** `text-xs uppercase tracking-wider font-medium text-indigo-400`
+- **Font Family:** `Inter`, `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, sans-serif.
+- **Monospace Family (Slugs, Code, Metrics):** `ui-monospace`, `SFMono-Regular`, `Menlo`, monospace.
+
+| Element | Size & Weight | Tailwind Class String | Leading & Tracking |
+|---|---|---|---|
+| **Display Hero H1** | 48px – 72px / Black | `text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold` | `leading-[1.1] tracking-tight` |
+| **Section Headings (H2)** | 32px – 48px / Extrabold | `text-3xl sm:text-4xl md:text-5xl font-extrabold text-white` | `leading-tight tracking-tight` |
+| **Card Titles (H3)** | 20px – 24px / Bold | `text-xl sm:text-2xl font-bold text-white` | `leading-snug` |
+| **Subheadings & Lead Copy** | 16px – 20px / Medium | `text-base sm:text-lg text-slate-300` | `leading-relaxed` |
+| **Standard Body Text** | 14px – 16px / Regular | `text-sm sm:text-base text-slate-300` | `leading-relaxed` |
+| **Caption & Meta Bar** | 12px – 13px / Medium | `text-xs sm:text-sm text-slate-400` | `leading-normal` |
+| **Badges & Overlines** | 10px – 11px / Bold | `text-[10px] sm:text-xs font-bold uppercase tracking-wider` | `tracking-wider` |
 
 ---
 
-### 4. Key Component Specifications
+### 4. UI/UX Component Specifications
 
-#### 4.1 Navigation Bar
-- **Style:** Sticky glassmorphism (`backdrop-blur-md bg-slate-950/80 border-b border-white/10`).
-- **Elements:**
-  - Brand logo with gradient icon mark & "Tactyqal Labs" wordmark.
-  - Links: Stories, Program, Why Us, Tools, Blog, Pricing, FAQ.
-  - Right CTAs: Phone link (+91-98047-72106), "Book Free Call" high-contrast button.
-  - Mobile: Slide-over drawer with smooth transition.
+#### 4.1 Glassmorphic Sticky Header (`Navbar`)
+- **Behavior:** `position: fixed; top: 0; width: 100%;` transitions background from `bg-slate-950/30` to `bg-slate-950/85 backdrop-blur-xl border-b border-slate-800/80` on scroll (>20px).
+- **Navigation:** Pill container with active link indicator (`bg-indigo-600/30 text-indigo-300`).
+- **Interactive Action:** "Book Free Call" button triggers Redux consultation modal with glowing shadow.
+- **Mobile Drawer:** Full-screen slide-down drawer with smooth enter/exit animations.
 
-#### 4.2 Hero Section
-- **Visuals:** Ambient radiant background glow (radial gradient violet/indigo at top-center).
-- **Offer Pill:** Subtle animated pill with glowing border (`Limited Time Offer • Results Guaranteed`).
-- **Headline:** High impact: *"Empower Your Kid To Build The Next App That Impacts Millions, in 8 Weeks"*.
-- **Metrics Strip:** Glass cards showing `100+ Students Mentored`, `Top University Admits`, `₹ Millions Impact`, `1:1 Dedicated Mentorship`.
-- **Primary Actions:**
-  - Solid gradient button: `Book Free Consultation` (triggers modal).
-  - Secondary ghost button: `View Success Stories ↓`.
+#### 4.2 Hero Section with GSAP Orchestration
+- **Visuals:** Ambient top radiant aura with radial gradient and subtle grid overlay.
+- **Scarcity Pill:** `bg-indigo-500/10 border-indigo-500/30 text-indigo-300` with animated pulsing sparkle.
+- **Metrics Strip:** 4 glassmorphic cards with animated number counters (`100+`, `Top Tier`, `₹ Millions`, `1:1 Live`).
+- **GSAP Sequence:** Staggered sequence animating the badge, headline, subtitle, offer pill, CTA buttons, and metric cards with `power3.out` easing.
 
-#### 4.3 Student App Showcase (Success Stories)
-- **Grid:** 3-column responsive card grid (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`).
+#### 4.3 Student Success Stories Gallery
+- **Category Filter Tabs:** `All`, `AI & ML`, `E-Commerce`, `Social Impact`, `EdTech`.
 - **Card Anatomy:**
-  - Top: Category pill (AI / E-commerce / Social Impact / EdTech) + Founder Age badge (e.g., "Built by 13-year-old").
-  - Title: App name (e.g. *One Last Chapter*, *KrishiDrishti*).
-  - Description: Impact statement.
-  - Highlight metric chip: Emerald pill (e.g. `₹100,000/mo Revenue`, `Impacting local farmers`).
+  - Icon badge with custom gradient background.
+  - Founder age pill (e.g. `Built by a 13-year-old`).
+  - Student app title & category.
+  - 3-line impact description.
+  - Emerald highlight metric chip (`INR 100,000/mo Recurring Revenue`, `INR 9,000 in Week 1`).
+- **Interaction:** Clicking any card opens a full Case Study Detail Modal with complete founder journey and an action button to "Build An App Like This".
 
-#### 4.4 8-Week Interactive Curriculum Timeline
-- **Layout:** Alternating / stepped timeline representing 4 distinct two-week sprints.
-- **Milestones:**
-  1. *Week 1-2:* Ideation & Market Research
-  2. *Week 3-4:* Design & Prototyping
-  3. *Week 5-6:* Full-Stack No-Code & AI Development
-  4. *Week 7-8:* Product Hunt Launch & Marketing
-- **Naval Ravikant Quote Card:** Centered elegant card with subtle quotation marks and typography.
+#### 4.4 8-Week Curriculum Roadmap & Naval Quote
+- **Sprint Stepper:** 4 sequential milestone cards representing Weeks 1–2, Weeks 3–4, Weeks 5–6, and Weeks 7–8.
+- **Deliverables Checklist:** Emerald checkmark bullets for concrete tangible deliverables.
+- **Naval Ravikant Quote Card:** Ambient indigo border with quotation marks and high-contrast typography.
 
 #### 4.5 Free Startup Diagnostic Tools
-- **Display:** 8 interactive tool cards with preview modal.
-- **Tools Included:** Idea Generator, Fundability Assessment, Team Evaluator, Pitch Deck Analyzer, Co-founder Test, Problem-Solution Fit.
-- **Interactivity:** Clicking "Try Tool" launches an interactive in-browser diagnostic quiz generating an instant score.
+- **8 Tool Cards:** Idea Generator, Fundability Assessment, Team Evaluator, Pitch Deck Analyzer, Top 10 Traits, Co-founder Test, Problem-Solution Fit, Landing Page Audit.
+- **Live In-Browser Simulation:** Clicking "Startup Idea Generator" or "Fundability Assessment" opens an interactive modal calculating personalized ideas and grant readiness scores live in the browser.
 
-#### 4.6 Pricing Card
-- **Layout:** High-focus single tier card with radiant border effect.
-- **Elements:**
-  - "Limited Offer: Only 15 Spots Available This Month" badge.
-  - Strikethrough original price: `₹25,000` -> **`₹16,000`** (36% OFF).
-  - Checklist with 7 core value deliverables.
-  - Money-back Guarantee seal: *"Results guaranteed or 100% money back"*.
+#### 4.6 Transparent Pricing Card
+- **Layout:** High-contrast card with dual-border gradient highlight.
+- **Price Anchor:** Strikethrough `₹25,000` with large `₹16,000` (Save 36%).
+- **Scarcity Hook:** "Limited Time: Only 15 Spots This Month" top pill.
+- **Guarantee Badge:** Shield icon with 100% money-back result guarantee.
 
-#### 4.7 Blog System UI
-- **Catalog View (`/blog`):**
-  - Search input with instant filtering.
-  - Horizontal category chips (All, Startup Ideas, Strategy, No-Code, Team Building).
-  - Featured article card with wide banner + 3-column standard article grid.
-- **Article Reader View (`/blog/[slug]`):**
-  - Breadcrumb navigation (`Home > Blog > Post Title`).
-  - Author info header with estimated read time and publish date.
-  - Clean markdown typography with syntax highlighting and blockquotes.
-  - Related articles grid at the bottom.
-- **Admin CMS Dashboard (`/admin/blog`):**
-  - Metric counters: Total Posts, Published, Drafts, Total Reads.
-  - Post management table with search, category filtering, and Action menu (Edit, Delete, Preview).
-  - Clean Modal/Page editor supporting title, slug auto-generation, excerpt, markdown body, cover image, and category/tag selection.
+#### 4.7 Blog Platform & Admin CMS
+- **Public Catalog (`/blog`):** Instant debounced search bar, category chips, featured masterclass banner, and standard 3-column card grid.
+- **Reader View (`/blog/[slug]`):** Breadcrumbs, estimated reading time, author card, rich typography prose, tag chips, social sharing, and related articles.
+- **Admin Dashboard (`/admin/blog`):** Live metric cards, data table with status pills (Published/Draft), view counter, and quick Edit/Delete/Preview actions.
+- **Admin Post Editor (`/admin/blog/editor`):** Title, auto-slug generator, excerpt, cover image URL, category dropdown, tag pills, published toggle, and live side-by-side Markdown preview.
 
 ---
 
-### 5. Responsive Breakpoints
-- **Mobile (< 640px):** Single column, collapsible navigation drawer, horizontal scroll chips, sticky mobile CTA bar.
-- **Tablet (640px - 1024px):** 2-column grids for cards and blog posts, compact timeline.
-- **Desktop (1024px+):** Full 3-column card layouts, expanded navigation, side-by-side hero and metrics.
+### 5. GSAP Animation Specifications
+
+```typescript
+// Timeline Easing & Stagger Rules
+const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+// 1. Hero Badge Reveal
+tl.from(".hero-badge", { opacity: 0, y: -20, duration: 0.6 });
+
+// 2. Main Title Entrance
+tl.from(".hero-title", { opacity: 0, y: 30, duration: 0.8 }, "-=0.3");
+
+// 3. Subtitle Entrance
+tl.from(".hero-subtitle", { opacity: 0, y: 20, duration: 0.7 }, "-=0.4");
+
+// 4. Offer Pill Scale-Up
+tl.from(".hero-offer-pill", { opacity: 0, scale: 0.9, duration: 0.5 }, "-=0.3");
+
+// 5. Dual Action Buttons
+tl.from(".hero-ctas", { opacity: 0, y: 20, duration: 0.6 }, "-=0.2");
+
+// 6. Metrics Grid Stagger
+tl.from(".hero-metric-card", { opacity: 0, y: 30, stagger: 0.12, duration: 0.7 }, "-=0.3");
+```
+
+---
+
+### 6. Responsive Breakpoint Rules
+
+| Viewport | Width Range | Layout Adaptation |
+|---|---|---|
+| **Mobile** | `< 640px` | Single-column cards, hamburger drawer, full-width buttons, horizontal scroll filter chips, 14px body text |
+| **Tablet** | `640px – 1024px` | 2-column card grids, compact 2x2 metrics strip, adapted modal sizes |
+| **Desktop** | `1024px – 1280px`| 3-column card grids, expanded glassmorphism navbar, side-by-side contact layout |
+| **Large Desktop**| `> 1280px` | Max container width `1280px` (`max-w-7xl`), 4-column metrics & features grid, comfortable 24px padding |

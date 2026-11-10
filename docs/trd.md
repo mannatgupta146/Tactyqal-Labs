@@ -1,73 +1,85 @@
 # Technical Requirements Document (TRD)
 ## Tactyqal Labs Modern Platform & Blog Architecture
 
-### 1. Technology Stack Architecture
-Based on the project requirements and modern full-stack standards, the application leverages:
-
-- **Frontend:**
-  - **Framework:** Next.js 14+ (App Router, React 18, React Server Components + Client Components)
-  - **Language:** TypeScript 5.x
-  - **Styling:** Tailwind CSS with custom dark/radiant theme tokens and `@tailwindcss/typography`
-  - **Animations & Micro-interactions:** **GSAP** (`gsap`, `@gsap/react`) for smooth reveals, glowing cursor effects, timeline transitions, and scroll animations
-  - **State Management:** **Redux Toolkit (`@reduxjs/toolkit`, `react-redux`)** for global state (blog filters, consultation modal, active quiz assessment, toast notifications)
-  - **Icons & UI Primitives:** Lucide React icons, Radix-style UI components
-- **Backend & API:**
-  - **Runtime & Server:** **Node.js + Express.js** REST API server (with modular controllers, routers, error handling, CORS, and logging)
-  - **Next.js API Integration:** Direct API route handlers & proxying to ensure seamless deployment and server-side rendering
-  - **Database:** **MongoDB** with **Mongoose ODM**
-  - **Resilience / Zero-Friction Demo Mode:** Intelligent fallback & in-memory database support so evaluators can run the project immediately with or without a local MongoDB daemon running
-  - **Validation:** Zod validation schemas on both frontend and backend contracts
-- **Tooling & Orchestration:**
-  - `concurrently` for running Next.js frontend and Express backend concurrently with `npm run dev`
-  - `tsx` for high-speed TypeScript execution of server and seed scripts
+### 1. Technology Stack Specification
+The platform replaces the legacy dual-stack setup (PHP CodeIgniter + WordPress) with an end-to-end modern TypeScript architecture:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                       Frontend: Next.js 14 + React 18                       │
-│  ┌─────────────────────────┐  ┌─────────────────────┐  ┌─────────────────┐  │
-│  │ Modern Homepage (GSAP)  │  │ Blog Reader & Admin │  │ Redux Toolkit   │  │
-│  │ 12 Interactive Sections │  │ CMS Dashboard       │  │ (Filters/Modal) │  │
-│  └────────────┬────────────┘  └──────────┬──────────┘  └────────┬────────┘  │
-└───────────────┼──────────────────────────┼──────────────────────┼───────────┘
-                │                          │                      │
-                │ HTTP API Calls (Axios / Fetch)                  │
-                ▼                          ▼                      ▼
+│                              FRONTEND LAYER                                 │
+│  • Framework: Next.js 14.2 (App Router, React 18, Server Components)        │
+│  • Language: TypeScript 5.6 (strict mode)                                  │
+│  • Styling: Tailwind CSS 3.4 + @tailwindcss/typography                     │
+│  • Animations: GSAP 3.12 + @gsap/react (Timelines & Staggered Reveals)     │
+│  • State Management: Redux Toolkit 2.3 + React-Redux 9.1                   │
+│  • Iconography: Lucide React 0.454                                         │
+│  • HTTP Client: Axios 1.7                                                  │
+└──────────────────────────────────────┬──────────────────────────────────────┘
+                                       │ HTTP / REST Calls
+                                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                    Backend API: Node.js + Express.js                        │
-│  ┌───────────────────────────────────────────────────────────────────────┐  │
-│  │ Express Router: /api/blog/posts, /api/blog/categories, /api/leads     │  │
-│  │ Middleware: CORS, JSON parser, Zod Validation, Error Handler          │  │
-│  └───────────────────────────────────┬───────────────────────────────────┘  │
-└──────────────────────────────────────┼──────────────────────────────────────┘
+│                               BACKEND LAYER                                 │
+│  • Runtime: Node.js 20+                                                     │
+│  • Web Framework: Express.js 4.21                                          │
+│  • Middleware: CORS, express.json (10MB payload limit), custom logger       │
+│  • Validation: Zod 3.23 (schema validation on mutations)                   │
+│  • Execution & Dev: TSX 4.19 (high-speed TypeScript execution & watch)      │
+│  • Orchestration: Concurrently 9.1 (runs frontend & backend together)      │
+└──────────────────────────────────────┬──────────────────────────────────────┘
                                        │ Mongoose ODM
                                        ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                          MongoDB Database Cluster                           │
-│  - Collections: posts, categories, tags, consultationLeads, analytics       │
-│  - Seeded with original Tactyqal Labs articles & case studies               │
+│                              DATABASE LAYER                                 │
+│  • Primary Database: MongoDB 8.8 (NoSQL Document Store)                     │
+│  • Object Data Modeling: Mongoose 8.8                                       │
+│  • Collections: posts, categories, tags, consultationLeads, analytics       │
+│  • Resilient In-Memory Fallback: Integrated fallback data layer ensuring    │
+│    the application runs seamlessly even if local MongoDB is offline         │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
+
+#### Detailed Package Inventory
+| Package Name | Version | Role in Project |
+|---|---|---|
+| `next` | `14.2.16` | React production framework with App Router, SSR, and dynamic route optimization |
+| `react` / `react-dom` | `18.3.1` | Core UI rendering library |
+| `typescript` | `5.6.3` | Static typing across all client components, API routes, and database models |
+| `tailwindcss` | `3.4.15` | Utility-first CSS framework with custom dark theme tokens |
+| `@tailwindcss/typography` | `0.5.15` | Prose typography styles for Markdown blog article rendering |
+| `gsap` | `3.12.5` | High-performance animation engine for hero entrance and scroll effects |
+| `@gsap/react` | `2.1.1` | Official GSAP hook wrapper (`useGSAP`) for safe React lifecycle animations |
+| `@reduxjs/toolkit` | `2.3.0` | Global state management for blog search, category filters, and modals |
+| `react-redux` | `9.1.2` | React bindings for Redux Toolkit store |
+| `express` | `4.21.1` | REST API web server for blog CRUD, categories, and consultation leads |
+| `mongoose` | `8.8.0` | Elegant MongoDB object modeling for Node.js |
+| `cors` | `2.8.5` | Cross-Origin Resource Sharing middleware |
+| `dotenv` | `16.4.5` | Environment variable loader (`.env`) |
+| `lucide-react` | `0.454.0` | Comprehensive icon library |
+| `axios` | `1.7.7` | Promise-based HTTP client for data fetching |
+| `clsx` / `tailwind-merge` | `2.1.1` / `2.5.4` | Conditional and conflict-free Tailwind class composition |
+| `concurrently` | `9.1.0` | Runs both client (port 3000) and server (port 5001) concurrently |
+| `tsx` | `4.19.2` | TypeScript executor for Express server, seeder, and automated test suite |
 
 ---
 
 ### 2. Database Schema Design (MongoDB & Mongoose)
 
-#### 2.1 Post Schema (`models/Post.ts`)
+#### 2.1 Post Schema (`backend/models/Post.ts`)
 ```typescript
 {
   title: { type: String, required: true, trim: true },
   slug: { type: String, required: true, unique: true, index: true },
   excerpt: { type: String, required: true },
-  content: { type: String, required: true }, // Rich markdown or HTML content
-  coverImage: { type: String, default: "" },
+  content: { type: String, required: true }, // Rich Markdown or HTML formatted content
+  coverImage: { type: String, default: "https://images.unsplash.com/..." },
   published: { type: Boolean, default: true, index: true },
   featured: { type: Boolean, default: false },
   readTimeMin: { type: Number, default: 3 },
   views: { type: Number, default: 0 },
   author: {
     name: { type: String, default: "Tactyqal Team" },
-    avatar: { type: String, default: "/avatars/tactyqal.png" },
-    role: { type: String, default: "Mentor & Builder" }
+    avatar: { type: String, default: "https://images.unsplash.com/..." },
+    role: { type: String, default: "Mentor & Founder" }
   },
   category: {
     name: { type: String, required: true },
@@ -80,27 +92,27 @@ Based on the project requirements and modern full-stack standards, the applicati
 }
 ```
 
-#### 2.2 Category Schema (`models/Category.ts`)
+#### 2.2 Category Schema (`backend/models/Category.ts`)
 ```typescript
 {
   name: { type: String, required: true, unique: true },
-  slug: { type: String, required: true, unique: true },
-  description: { type: String },
+  slug: { type: String, required: true, unique: true, index: true },
+  description: { type: String, default: "" },
   postCount: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now }
 }
 ```
 
-#### 2.3 Consultation Lead Schema (`models/ConsultationLead.ts`)
+#### 2.3 Consultation Lead Schema (`backend/models/ConsultationLead.ts`)
 ```typescript
 {
-  parentName: { type: String, required: true },
-  studentName: { type: String },
-  email: { type: String, required: true },
-  phone: { type: String, required: true },
+  parentName: { type: String, required: true, trim: true },
+  studentName: { type: String, default: "" },
+  email: { type: String, required: true, trim: true, lowercase: true },
+  phone: { type: String, required: true, trim: true },
   studentAge: { type: Number },
-  goalInterest: { type: String },
-  notes: { type: String },
+  goalInterest: { type: String, default: "1:1 App Building & Mentoring" },
+  notes: { type: String, default: "" },
   status: { type: String, enum: ["NEW", "CONTACTED", "SCHEDULED", "CLOSED"], default: "NEW" },
   createdAt: { type: Date, default: Date.now }
 }
@@ -108,101 +120,49 @@ Based on the project requirements and modern full-stack standards, the applicati
 
 ---
 
-### 3. State Management Architecture (Redux Toolkit)
-The application utilizes Redux Toolkit for clean, reactive global state:
-1. **`blogSlice`**:
-   - `searchQuery`: Debounced search string for instant post filtering.
-   - `selectedCategory`: Active category filter.
-   - `selectedTag`: Active tag filter.
-   - `currentPage`, `totalPages`, `posts`: Cached blog listing.
-   - `activePost`: Currently viewed or edited post.
-2. **`uiSlice`**:
-   - `isConsultationModalOpen`: Visibility toggle for the "Book Free Consultation" modal.
-   - `selectedAssessmentTool`: Currently active interactive startup tool quiz.
-   - `toastMessage`: Notification snackbars (success/error alerts).
-   - `mobileMenuOpen`: Responsive drawer state.
+### 3. Redux Toolkit State Architecture
+The global client state is organized into two primary slices:
+
+1. **`blogSlice` (`src/store/blogSlice.ts`):**
+   - `searchQuery`: Debounced string bound to the live search bar on `/blog`.
+   - `selectedCategory`: Active category slug for instant client-side filtering.
+   - `selectedTag`: Tag filter selection.
+   - `posts` & `categories`: Cache of retrieved blog entities.
+   - `isLoading` & `error`: Status flags for asynchronous operations.
+
+2. **`uiSlice` (`src/store/uiSlice.ts`):**
+   - `isConsultationModalOpen`: Boolean controlling the global consultation appointment popup.
+   - `consultationInitialInterest`: Contextual pre-fill string passed from the calling CTA button.
+   - `selectedAssessmentTool`: Name of the active interactive startup diagnostic tool (Idea Generator vs Fundability Quiz).
+   - `toast`: Notification payload (`message`, `type: success | error | info`) with automatic 5-second timer dismissal.
+   - `mobileNavOpen`: Responsive navigation drawer toggle state.
 
 ---
 
-### 4. Animation Architecture (GSAP & ScrollTrigger)
-GSAP powers rich, smooth animations across the homepage and blog:
-- **Hero Reveal:** Staggered headline, subtitle, metrics strip, and floating background glow orbs.
-- **Curriculum Roadmap Timeline:** Progressive milestone line draw and card reveals as the user scrolls.
-- **Interactive Hover & Card Tilts:** Subtle 3D tilt effects on student success stories and free startup tool cards.
-- **Counters & Stats:** Animated number counting for `100+ Students Mentored`, `₹100,000/mo Revenue`, etc.
+### 4. GSAP Animation Architecture
+GSAP is implemented cleanly using the modern `@gsap/react` hook with scoped references:
+- **Hero Entrance Timeline:** Staggered sequence animating the scarcity badge, headline, subtitle, offer pill, CTA buttons, and metric cards with `power3.out` easing.
+- **Micro-Interactions:** 3D card tilt transitions, floating ambient radiant glows, and interactive hover states.
 
 ---
 
-### 5. Backend Express REST API Structure
+### 5. Backend REST API Structure & Endpoints
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/blog/posts` | Paginated posts with search query, category, tag, status |
-| `GET` | `/api/blog/posts/:slugOrId` | Fetch post by slug/ID, increments view count |
-| `POST` | `/api/blog/posts` | Create new blog post with Zod validation |
-| `PUT` | `/api/blog/posts/:id` | Update existing blog post |
-| `DELETE` | `/api/blog/posts/:id` | Delete blog post |
-| `GET` | `/api/blog/categories` | List all categories with post counts |
-| `GET` | `/api/blog/tags` | List all unique tags |
-| `GET` | `/api/blog/stats` | Admin metrics (total posts, total views, drafts) |
-| `POST` | `/api/consultation` | Lead capture & consultation booking |
+| Method | Endpoint | Query / Body Parameters | Response |
+|---|---|---|---|
+| `GET` | `/api/health` | None | `{ status: "ok", timestamp: "..." }` |
+| `GET` | `/api/blog/posts` | `?page=1&limit=10&search=&category=&tag=&status=published` | Paginated posts array + pagination metadata |
+| `GET` | `/api/blog/posts/:slugOrId`| Post slug or UUID in path | Full post object + related posts (auto-increments views) |
+| `POST` | `/api/blog/posts` | `{ title, excerpt, content, categoryName, tags, published, coverImage }` | 201 Created with new post object |
+| `PUT` | `/api/blog/posts/:id` | Partial or complete post fields | 200 OK with updated post object |
+| `DELETE` | `/api/blog/posts/:id` | Post ID in path | 200 OK with success confirmation |
+| `GET` | `/api/blog/categories` | None | Array of all categories with post counts |
+| `GET` | `/api/blog/tags` | None | Array of all unique tag strings |
+| `GET` | `/api/blog/stats` | None | `{ totalPosts, publishedPosts, draftPosts, totalViews, categoriesCount }` |
+| `POST` | `/api/consultation` | `{ parentName, email, phone, studentAge, studentName, notes }` | 201 Created with booked lead confirmation |
 
 ---
 
-### 6. Directory Structure
-```
-Tactyqal Labs/
-├── backend/                    # Node.js + Express + Mongoose Backend
-│   ├── config/
-│   │   └── db.ts               # MongoDB Mongoose connection & in-memory fallback
-│   ├── controllers/
-│   │   ├── blogController.ts   # CRUD logic for blog posts
-│   │   ├── categoryController.ts
-│   │   └── leadController.ts   # Consultation leads
-│   ├── models/
-│   │   ├── Post.ts             # Mongoose schema
-│   │   ├── Category.ts
-│   │   └── ConsultationLead.ts
-│   ├── routes/
-│   │   ├── blogRoutes.ts
-│   │   └── leadRoutes.ts
-│   ├── seeds/
-│   │   └── seedData.ts         # Original Tactyqal blog posts & alumni
-│   └── server.ts               # Express application entrypoint
-├── src/                        # Next.js 14 Frontend
-│   ├── app/
-│   │   ├── layout.tsx          # Providers (Redux), fonts, layout
-│   │   ├── page.tsx            # Modern Homepage (All 12 sections with GSAP)
-│   │   ├── blog/
-│   │   │   ├── page.tsx        # Public Blog Catalog
-│   │   │   └── [slug]/page.tsx # Blog Post Reader
-│   │   └── admin/
-│   │       └── blog/
-│   │           ├── page.tsx    # Blog CMS Dashboard
-│   │           └── editor/page.tsx # Create & Edit Post Editor
-│   ├── components/
-│   │   ├── navbar.tsx          # Glassmorphism header & Redux modal trigger
-│   │   ├── footer.tsx
-│   │   ├── hero.tsx            # Hero with GSAP staggered entrance
-│   │   ├── success-stories.tsx # Interactive alumni cards
-│   │   ├── curriculum.tsx      # 8-week timeline
-│   │   ├── why-us.tsx          # Value props grid
-│   │   ├── assessment-tools.tsx# Interactive diagnostic tools
-│   │   ├── testimonials.tsx    # Parent & student reviews
-│   │   ├── pricing.tsx         # Limited offer & guarantee
-│   │   ├── faq.tsx             # Accordion
-│   │   ├── consultation-modal.tsx
-│   │   └── blog/               # Blog UI components
-│   ├── store/                  # Redux Toolkit
-│   │   ├── index.ts            # Store configuration
-│   │   ├── blogSlice.ts        # Blog state & filters
-│   │   └── uiSlice.ts          # Modal & UI state
-│   ├── lib/
-│   │   ├── api.ts              # Axios API client
-│   │   └── gsap.ts             # GSAP animation helpers
-│   └── styles/
-│       └── globals.css
-├── docs/                       # Comprehensive documentation suite
-├── package.json                # Unified monorepo / fullstack scripts
-└── tsconfig.json
-```
+### 6. Automated Verification & Testing
+- **Client Build Test:** Verified via `npm run client:build` compiling all 7 routes without errors.
+- **End-to-End API Test:** Automated test suite in `backend/test-e2e.ts` (`npm run test:api`) verifying all 8 endpoints (health, list, get single, create, update, delete, stats, lead capture).

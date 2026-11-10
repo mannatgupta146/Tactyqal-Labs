@@ -1,131 +1,203 @@
-# Implementation Plan & Task Breakdown
+# Comprehensive Implementation Tasks & Master Checklist
 ## Tactyqal Labs Modern Platform & Blog Architecture
 
 ### Tech Stack Overview
-- **Frontend:** Next.js 14+ (App Router), TypeScript, Tailwind CSS, GSAP (`gsap`, `@gsap/react`), Redux Toolkit (`@reduxjs/toolkit`, `react-redux`), Lucide React
-- **Backend:** Node.js, Express.js REST API, MongoDB + Mongoose, Zod Validation, CORS, Dotenv
-- **Tooling:** Concurrently, TSX, Axios
+- **Frontend Framework:** Next.js 14+ (App Router, React 18, Server & Client Components)
+- **Language:** TypeScript 5.6 (strict mode, fully typed interfaces)
+- **Styling & Design System:** Tailwind CSS 3.4 (`@tailwindcss/typography`, custom dark/radiant tokens)
+- **Animations:** GSAP 3.12 (`@gsap/react`, timeline sequences, staggered reveals)
+- **Global State Management:** Redux Toolkit 2.3 (`react-redux`, slices for blog filters & UI modals)
+- **Backend Runtime & Framework:** Node.js + Express.js 4.21 REST API
+- **Database & ODM:** MongoDB + Mongoose 8.8 (with resilient in-memory fallback store)
+- **Iconography:** Lucide React
+- **Validation & HTTP Client:** Zod 3.23 + Axios 1.7
+- **Process Orchestration:** Concurrently 9.1 + TSX 4.19
 
 ---
 
-### Phase 1: Planning, Documentation & Architecture
-- [x] Update PRD (`docs/prd.md`) with Next.js, Tailwind, TypeScript, MongoDB, Express, Node, Redux, GSAP.
-- [x] Update TRD (`docs/trd.md`) with Mongoose schemas, Express routes, Redux store slices, GSAP animation hooks.
-- [x] Update Design System Guidelines (`docs/design.md`) with GSAP animation rules and component specs.
-- [x] Update Implementation Tasks (`docs/tasks.md`).
-- [x] Update API Specification (`docs/api-spec.md`).
-- [x] Update Project Memory (`docs/memory.md`).
-- [x] Update Ongoing Status (`docs/ongoing.md`).
+### Phase 1: Planning, Documentation & Specifications
+- [x] Create Product Requirements Document (`docs/prd.md`) covering problem statement, personas, and 12 sections.
+- [x] Create Technical Requirements Document (`docs/trd.md`) detailing architecture, Mongoose schemas, and endpoints.
+- [x] Create Design System Guidelines (`docs/design.md`) detailing colors, tokens, typography, and GSAP animations.
+- [x] Create Master Task List (`docs/tasks.md`) with comprehensive phased checklist.
+- [x] Create REST API Specification (`docs/api-spec.md`) documenting request/response payloads.
+- [x] Create Ongoing Status Tracker (`docs/ongoing.md`).
+- [x] Create Project Memory & Context (`docs/memory.md`) archiving completed deliverables and original content.
+- [x] Create Setup & Execution Guide (`docs/setup-guide.md`).
+- [x] Create 1–2 Minute Video Walkthrough Script (`docs/walkthrough-script.md`) for Requirement 1.
 
 ---
 
-### Phase 2: Monorepo & Dependencies Setup
-- [x] Configure `package.json` with all required dependencies:
-  - Frontend: `next`, `react`, `react-dom`, `tailwindcss`, `lucide-react`, `gsap`, `@gsap/react`, `@reduxjs/toolkit`, `react-redux`, `clsx`, `tailwind-merge`
-  - Backend: `express`, `mongoose`, `cors`, `dotenv`, `zod`, `axios`
-  - Dev/Build: `typescript`, `@types/node`, `@types/react`, `@types/express`, `@types/cors`, `concurrently`, `tsx`, `nodemon`
-- [x] Run `npm install` and verify zero vulnerabilities/conflicts.
-- [x] Setup `tsconfig.json`, `tailwind.config.ts`, `postcss.config.js`, `next.config.js`.
-- [x] Configure `.env` with `PORT=5001`, `MONGODB_URI`, `NEXT_PUBLIC_API_URL=http://localhost:5001/api`.
+### Phase 2: Monorepo & Environment Setup
+- [x] Configure `package.json` with Next.js, Express, Mongoose, Redux Toolkit, GSAP, Tailwind, Lucide.
+- [x] Configure npm scripts (`dev`, `client:dev`, `client:build`, `server:dev`, `server:start`, `seed`, `test:api`).
+- [x] Install dependencies with `npm install` (zero conflicting peer dependencies).
+- [x] Configure `tsconfig.json` with strict type checking and `@/*` path aliases.
+- [x] Configure `tailwind.config.ts` with custom brand colors (`tactyqal` indigo, violet, cyan, emerald, amber).
+- [x] Configure `postcss.config.js` with Tailwind and Autoprefixer.
+- [x] Configure `next.config.js` with remote image domains for Unsplash and Tactyqal.
+- [x] Create `.env` and `.env.example` with `PORT=5001`, `MONGODB_URI`, `NEXT_PUBLIC_API_URL`.
+- [x] Create `.gitignore` ignoring `node_modules`, `.next`, `build`, and logs.
 
 ---
 
-### Phase 3: Express Backend & MongoDB Architecture (Task 2 Core)
-- [x] Create MongoDB / Mongoose connection module with automatic in-memory fallback (`backend/config/db.ts`).
-- [x] Define Mongoose Models:
-  - `backend/models/Post.ts` (title, slug, excerpt, content, coverImage, category, tags, published, views, readTimeMin, author, timestamps).
-  - `backend/models/Category.ts` (name, slug, description, postCount).
-  - `backend/models/ConsultationLead.ts` (parentName, studentName, email, phone, studentAge, notes, status).
-- [x] Implement Express Controllers:
-  - `blogController.ts`: `getPosts`, `getPostBySlugOrId`, `createPost`, `updatePost`, `deletePost`, `getStats`.
-  - `categoryController.ts`: `getCategories`, `getTags`.
-  - `leadController.ts`: `createLead`, `getLeads`.
-- [x] Implement Express Routes (`backend/routes/blogRoutes.ts`, `backend/routes/leadRoutes.ts`).
-- [x] Implement Express Server (`backend/server.ts`) with CORS, JSON body parser, error middleware.
-- [x] Implement Seeder (`backend/seeds/seedData.ts` & `backend/seeds/runSeed.ts`) with all 6 original Tactyqal blog posts.
-- [x] Verify backend running and test endpoints.
+### Phase 3: Express Backend & Database Engine (Task 2 Core)
+- [x] Build resilient MongoDB connection with Mongoose and automatic In-Memory Fallback (`backend/config/db.ts`).
+- [x] Build Mongoose Models:
+  - [x] `Post` Model (`backend/models/Post.ts`): title, unique slug, excerpt, content, category, tags, views, read time, author, dates.
+  - [x] `Category` Model (`backend/models/Category.ts`): name, slug, description, postCount.
+  - [x] `ConsultationLead` Model (`backend/models/ConsultationLead.ts`): parentName, studentName, email, phone, age, goal, notes, status.
+- [x] Build Express Controllers:
+  - [x] `getPosts` (`backend/controllers/blogController.ts`): pagination, debounced search, category filter, tag filter, status filter.
+  - [x] `getPostBySlugOrId` (`backend/controllers/blogController.ts`): view counter auto-increment, related posts recommendation.
+  - [x] `createPost` (`backend/controllers/blogController.ts`): input validation, automatic slug uniqueness, reading time calculation.
+  - [x] `updatePost` (`backend/controllers/blogController.ts`): update title, content, excerpt, category, tags, status.
+  - [x] `deletePost` (`backend/controllers/blogController.ts`): permanent post deletion and taxonomy synchronization.
+  - [x] `getBlogStats` (`backend/controllers/blogController.ts`): total posts, published, drafts, total views.
+  - [x] `getCategories` & `getTags` (`backend/controllers/categoryController.ts`).
+  - [x] `createLead` & `getLeads` (`backend/controllers/leadController.ts`).
+- [x] Build Express Routes (`backend/routes/blogRoutes.ts`, `backend/routes/leadRoutes.ts`).
+- [x] Build Express Server Entrypoint (`backend/server.ts`): CORS, JSON parser, health check endpoint.
+- [x] Build Database Seeder (`backend/seeds/seedData.ts` & `backend/seeds/runSeed.ts`) with all 6 original Tactyqal blog posts:
+  - [x] "The elevator pitch for business entrepreneurs"
+  - [x] "How to build a tech startup team?"
+  - [x] "11 reasons why startups fail at the idea stage"
+  - [x] "50 No-code startup app ideas"
+  - [x] "30 Startup ideas to solve food waste problems"
+  - [x] "50 Startup ideas for Gen-Z Entrepreneurs"
+- [x] Build Automated End-to-End API Test Suite (`backend/test-e2e.ts`) verifying all 8 endpoints.
 
 ---
 
-### Phase 4: Redux Toolkit Store Setup
-- [x] Create Redux store (`src/store/index.ts`).
-- [x] Create `blogSlice.ts` for blog search query, active category, active tag, pagination, and post list caching.
-- [x] Create `uiSlice.ts` for consultation booking modal state, active startup tool quiz, and toast notifications.
-- [x] Wrap Next.js App in `StoreProvider` (`src/app/providers.tsx`).
+### Phase 4: Redux Toolkit Global State Management
+- [x] Configure Redux Store (`src/store/index.ts`).
+- [x] Implement Typed Redux Hooks (`src/store/hooks.ts` with `useAppDispatch` and `useAppSelector`).
+- [x] Implement `blogSlice.ts`:
+  - [x] `searchQuery` (real-time debounced query state).
+  - [x] `selectedCategory` (active category filter tab).
+  - [x] `selectedTag` (tag filtering).
+  - [x] `posts`, `categories`, `isLoading`, `error` state.
+- [x] Implement `uiSlice.ts`:
+  - [x] `isConsultationModalOpen` and `consultationInitialInterest`.
+  - [x] `selectedAssessmentTool` (active interactive startup tool popup).
+  - [x] `toast` notifications state (message, type: success/error/info).
+  - [x] `mobileNavOpen` drawer toggle.
+- [x] Create Global `Providers` wrapper (`src/app/providers.tsx`) mounting store and global modals.
 
 ---
 
-### Phase 5: Modern Homepage Redesign with GSAP (Task 1)
-- [x] Build global layout with modern font styling, responsive metadata, and smooth scrolling.
-- [x] **Navbar Component:** Glassmorphism, logo mark, navigation links, mobile menu drawer, quick consultation CTA triggering Redux modal.
-- [x] **Hero Section (GSAP Staggered Entrance):**
-  - Radiant animated background glow.
-  - Headline & subheadline reveals.
-  - Animated number counters for metrics (100+ students, top universities, ₹ millions value, 1:1 format).
-  - Dual CTAs (Consultation Modal trigger, Scroll to Success Stories).
-  - Discounted pricing badge snippet (₹16,000 limited offer).
-- [x] **Success Stories Section:**
-  - Interactive filter tabs (All, AI & ML, E-Commerce, Social Impact, EdTech).
-  - Cards with 3D tilt effects for KrishiDrishti, Elenor Vegan Handbags, One Last Chapter, Paws of Promise, AudioNova, Converza.
-  - Case study deep-dive modal.
-- [x] **8-Week Curriculum Section:**
-  - GSAP progressive scroll line draw.
-  - 4 milestone sprints: Week 1-2, Week 3-4, Week 5-6, Week 7-8.
-  - Naval Ravikant quote card with styled typography.
-- [x] **Why Us Section:**
-  - 8 distinct feature cards with sleek hover animations.
-- [x] **Free Startup Assessment Tools Section:**
-  - 8 diagnostic tools grid.
-  - Interactive quiz popups for "Startup Idea Generator" and "Fundability Assessment" with instant live score calculation.
-- [x] **Testimonials Section:**
-  - Student & parent quote cards (Aarav, Isha, Rohan, Simran, Devansh, Priya) with avatars and verified badges.
-- [x] **Featured Blog Section:**
-  - Live grid fetching latest posts directly from Express + MongoDB backend.
-- [x] **Pricing Section:**
-  - Limited offer highlight (15 spots left).
-  - Discounted pricing card (₹25,000 -> ₹16,000).
-  - 8-point deliverable checklist & money-back results guarantee seal.
-- [x] **FAQ Section:**
-  - Expandable accordion items for 8 top parent questions.
-- [x] **Contact & Free Consultation Booking Section:**
-  - Direct contact cards (Email, Phone, Operating Hours).
-  - Interactive booking form connected to backend lead capture.
-- [x] **Footer:** Links, legal, copyright, and Devuty submission badge.
+### Phase 5: Modern Homepage Redesign (Task 1)
+- [x] Global layout and styling (`src/app/layout.tsx` & `src/app/globals.css`).
+- [x] **Section 1 — Glassmorphic Navbar (`src/components/navbar.tsx`):**
+  - [x] Gradient logo mark with rocket icon and "Tactyqal Labs" wordmark.
+  - [x] Responsive navigation links (Home, Stories, Program, Why Us, Tools, Blog, Pricing, FAQ, Contact).
+  - [x] Admin CMS direct link.
+  - [x] Direct phone link (`+91-98047-72106`).
+  - [x] "Book Free Call" high-contrast CTA button triggering Redux modal.
+  - [x] Mobile drawer slide-down menu.
+- [x] **Section 2 — Hero Section with GSAP Animations (`src/components/hero.tsx`):**
+  - [x] Ambient radial radiant glow backdrop.
+  - [x] Scarcity pill (*Limited Time Offer • Results Guaranteed • 15 Spots*).
+  - [x] High-impact headline: *"Empower Your Kid To Build The Next App That Impacts Millions, in 8 Weeks"*.
+  - [x] Subtitle with 1:1 format, no coding, top admissions, and grants.
+  - [x] Dynamic pricing discount banner: *₹25,000 → ₹16,000 (Save 36%)*.
+  - [x] Dual CTAs: "Book Free Consultation" & "Explore Success Stories".
+  - [x] Metrics social proof cards (`100+ Students Mentored`, `Top Tier Admits`, `₹ Millions Impact`, `1:1 Dedicated`).
+  - [x] GSAP staggered entrance animation with `power3.out` easing.
+- [x] **Section 3 — Real Students & Apps Gallery (`src/components/success-stories.tsx`):**
+  - [x] Category filter tabs (All, AI & ML, E-Commerce, Social Impact, EdTech).
+  - [x] 6 Real Student App cards with 3D hover effects, age badges, and highlight metrics:
+    - [x] KrishiDrishti (AI soil analysis, 500+ farmers).
+    - [x] Elenor Vegan Handbags (16yo, INR 9,000 week 1).
+    - [x] One Last Chapter (13yo, INR 100,000/mo MRR).
+    - [x] Paws of Promise (Virtual pet adoption, 50+ pets).
+    - [x] AudioNova (AI music & video, 12,000+ tracks).
+    - [x] Converza (AI language bot Luna, Product Hunt top 5).
+  - [x] Interactive Case Study Modal for reading full founder stories.
+- [x] **Section 4 — 8-Week Curriculum Roadmap (`src/components/curriculum.tsx`):**
+  - [x] 4 sequential milestone cards (Week 1–2, Week 3–4, Week 5–6, Week 7–8).
+  - [x] Checklists for key deliverables per milestone.
+  - [x] Naval Ravikant quote card: *"Learn to sell. Learn to build. If you can do both, you will be unstoppable."*
+  - [x] Personal 1:1 Live sessions, 1 hour each, expert founder guidance.
+- [x] **Section 5 — Why Parents Choose Tactyqal Labs (`src/components/why-us.tsx`):**
+  - [x] 8 feature cards with gradient icons (1:1 Mentoring, No-Code Apps, Track Record, College Edge, Revenue, Lifelong Support, Pitch Mastery, Startup Ideas 101).
+- [x] **Section 6 — Free Startup Assessment Tools (`src/components/assessment-tools.tsx`):**
+  - [x] 8 diagnostic tools grid (Idea Generator, Fundability, Team Evaluation, Pitch Deck Analyzer, Top 10 Traits, Co-founder Test, Problem-Solution Fit, Landing Page Audit).
+  - [x] Interactive popup modal (`src/components/assessment-tool-modal.tsx`) with in-browser live generators:
+    - [x] Startup Idea Generator (domain + audience picker -> generates 3 custom concepts).
+    - [x] Fundability Assessment Quiz (diagnostic questions -> live 0–100% score calculation).
+- [x] **Section 7 — Student & Parent Testimonials (`src/components/testimonials.tsx`):**
+  - [x] Verified quote cards from Aarav Sharma, Isha Patel, Rohan Verma, Simran Kaur, Devansh Mehta, Priya Nair.
+  - [x] 5-star ratings, student avatars, verified badges, and roles.
+- [x] **Section 8 — Featured Blog Knowledge Base (`src/components/featured-blog.tsx`):**
+  - [x] Dynamic API fetch pulling the latest 3 articles from `/api/blog/posts`.
+  - [x] Cover images, reading time, publish dates, and category pills.
+  - [x] "Read All Articles" link to `/blog`.
+- [x] **Section 9 — Transparent Pricing Section (`src/components/pricing.tsx`):**
+  - [x] Price anchor: ₹16,000 (strikethrough ₹25,000, 36% discount).
+  - [x] Top scarcity pill: *Only 15 Spots Available for the Month*.
+  - [x] 8-item comprehensive deliverable checklist.
+  - [x] Money-back results guarantee seal.
+  - [x] "Enroll Now / Schedule Consultation" CTA button.
+- [x] **Section 10 — Frequently Asked Questions (`src/components/faq.tsx`):**
+  - [x] Interactive accordion with 8 comprehensive answers addressing parents' top questions (no coding, admissions guarantee, app types, time commitment, revenue, alumni universities, ongoing support).
+- [x] **Section 11 — Contact & Appointment Booking (`src/components/contact-section.tsx`):**
+  - [x] Direct contact cards (tactyqal.labs@gmail.com, +91-98047-72106, Mon-Sat 9am-7pm).
+  - [x] Embedded Consultation Booking Form with instant API submission and toast feedback.
+- [x] **Section 12 — Footer (`src/components/footer.tsx`):**
+  - [x] Brand description, directory navigation links, legal, Devuty hire-a-thon badge.
 
 ---
 
-### Phase 6: Modern Blog System & Admin CMS (Task 2 Frontend)
-- [x] **Public Blog Catalog (`/blog`):**
-  - Search bar with instant real-time filtering connected to Redux.
-  - Category selector chips.
-  - Grid of blog posts with reading time, category tag, and date.
-  - Link to Admin CMS.
-- [x] **Blog Post Reader (`/blog/[slug]`):**
-  - Full article view with prose formatting.
-  - Author bio card and share buttons.
-  - Related articles recommendation grid.
-- [x] **Admin CMS Dashboard (`/admin/blog`):**
-  - Live metrics cards (Total Posts, Total Views, Categories, Published).
-  - Post management table with status pills (Published / Draft).
-  - Actions: Edit, Delete, View.
-  - "New Post" button.
-- [x] **Admin Post Editor (`/admin/blog/editor`):**
-  - Form fields: Title, Auto-generating Slug, Excerpt, Content (Markdown), Cover Image URL, Category, Tags, Published toggle.
-  - Live Markdown preview side-by-side.
-  - Full CRUD operations connected to Express backend.
+### Phase 6: Modern Blog Platform & Admin CMS (Task 2 Frontend)
+- [x] **Public Blog Catalog (`src/app/blog/page.tsx`):**
+  - [x] Debounced search bar with real-time input.
+  - [x] Category selector chips (All Topics, Startup Strategy, Team & Culture, etc.).
+  - [x] Featured masterclass highlight banner card.
+  - [x] 3-column article cards with reading time, category pill, view count, and author.
+  - [x] Direct shortcut button to Admin CMS.
+- [x] **Blog Post Reader (`src/app/blog/[slug]/page.tsx`):**
+  - [x] Breadcrumb navigation (`Home > Blog > Title`).
+  - [x] Full prose article styling with markdown headings, blockquotes, lists.
+  - [x] View counter incrementation on visit.
+  - [x] Author avatar & bio card, publish date, reading time.
+  - [x] Copy link and social share button.
+  - [x] Related articles recommendation grid.
+  - [x] Bottom CTA card to book 1:1 consultation.
+- [x] **Admin CMS Dashboard (`src/app/admin/blog/page.tsx`):**
+  - [x] Metric summary cards (Total Articles, Published, Drafts, Total Views).
+  - [x] Search filter box and refresh button.
+  - [x] Posts data table with title, excerpt, category, status pill, views, and date.
+  - [x] Action buttons: Preview live article, Edit article, Delete article with confirmation.
+  - [x] "Create New Post" primary action.
+- [x] **Admin Post Editor (`src/app/admin/blog/editor/page.tsx`):**
+  - [x] Suspense-wrapped for Next.js 14 client-side query parameters.
+  - [x] Form inputs: Title, auto-generating URL Slug, Excerpt, Category dropdown, Tags, Cover Image URL.
+  - [x] Markdown content textarea.
+  - [x] Published toggle (Published vs Draft) & Featured toggle.
+  - [x] Live Markdown Preview tab for real-time formatting verification.
+  - [x] Handles both Create new and Update existing post flows.
 
 ---
 
 ### Phase 7: Interactive Modals & Lead Capture
-- [x] Build global Consultation Booking Modal triggered from any "Book Free Call" button.
-- [x] Connect booking modal to Express backend `/api/consultation` with instant validation and Redux toast feedback.
-- [x] Build interactive Startup Idea Generator & Fundability diagnostic widget modal.
+- [x] **Global Consultation Modal (`src/components/consultation-modal.tsx`):**
+  - [x] Triggered from any "Book Free Call" button across the platform.
+  - [x] Form inputs: Parent Name, Student Name, Email, Phone, Age dropdown, Goal dropdown, Notes.
+  - [x] Connects to `/api/consultation` with Redux toast notification.
+- [x] **Interactive Assessment Tool Modal (`src/components/assessment-tool-modal.tsx`):**
+  - [x] Interactive idea generator: Industry + Target Audience -> 3 custom startup concepts.
+  - [x] Interactive fundability quiz: 3 diagnostic questions -> 0-100% score calculation.
+- [x] **Toast Notifications Component (`src/components/toast.tsx`):**
+  - [x] Displays floating alerts for API successes and errors with auto-dismiss timer.
 
 ---
 
-### Phase 8: Polish, Testing, Git & Submission
-- [x] Run full build (`npm run client:build`) and test concurrent execution (`npm run dev`).
-- [x] Test all Blog CRUD operations and lead submissions via automated test suite (`npm run test:api`).
-- [x] Verify responsiveness on Mobile, Tablet, and Desktop.
-- [x] Initialize Git repository with clear commit history.
-- [x] Comprehensive `README.md` and Video Walkthrough script.
+### Phase 8: Quality Assurance, Verification & Submission
+- [x] Next.js Client Production Build (`npm run client:build`): 7/7 routes compiled with zero errors.
+- [x] Automated End-to-End API Test Suite (`npm run test:api`): All 8 CRUD, stats, and lead endpoints verified 100%.
+- [x] Database seeding verified with clean reset script (`npm run seed`).
+- [x] Concurrently dev runner tested (`npm run dev`).
+- [x] Comprehensive documentation created: `prd.md`, `trd.md`, `design.md`, `tasks.md`, `ongoing.md`, `memory.md`, `api-spec.md`, `setup-guide.md`, `walkthrough-script.md`.
+- [x] Comprehensive `README.md` written with architecture diagram, feature summary, and setup guide.
+- [x] Initialized Git repository, verified clean working tree, and committed all code.
