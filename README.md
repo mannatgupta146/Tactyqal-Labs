@@ -120,9 +120,9 @@ cp .env.example .env
 ```
 Default `.env` configuration:
 ```env
-PORT=5001
+PORT=5000
 MONGODB_URI=mongodb://localhost:27017/tactyqal
-NEXT_PUBLIC_API_URL=http://localhost:5001/api
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
 NODE_ENV=development
 ```
 
@@ -137,7 +137,7 @@ npm run seed
 npm run dev
 ```
 - **Frontend Platform:** [http://localhost:3000](http://localhost:3000)
-- **Backend API Server:** [http://localhost:5001/api](http://localhost:5001/api)
+- **Backend API Server:** [http://localhost:5000/api](http://localhost:5000/api)
 - **Blog Catalog:** [http://localhost:3000/blog](http://localhost:3000/blog)
 - **Blog Admin CMS:** [http://localhost:3000/admin/blog](http://localhost:3000/admin/blog)
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5001/api";
+const API = "http://localhost:5000/api";
 
 async function runTests() {
   console.log("--- Starting End-to-End API Verification ---");

@@ -36,7 +36,7 @@
 - [x] Configure `tailwind.config.ts` with custom brand colors (`tactyqal` indigo, violet, cyan, emerald, amber).
 - [x] Configure `postcss.config.js` with Tailwind and Autoprefixer.
 - [x] Configure `next.config.js` with remote image domains for Unsplash and Tactyqal.
-- [x] Create `.env` and `.env.example` with `PORT=5001`, `MONGODB_URI`, `NEXT_PUBLIC_API_URL`.
+- [x] Create `.env` and `.env.example` with `PORT=5000`, `MONGODB_URI`, `NEXT_PUBLIC_API_URL`.
 - [x] Create `.gitignore` ignoring `node_modules`, `.next`, `build`, and logs.
 
 ---

@@ -24,8 +24,9 @@
 3. **Configure Environment Variables:**
    A `.env` file will be provided with defaults:
    ```env
-   DATABASE_URL="file:./dev.db"
-   NEXT_PUBLIC_APP_URL="http://localhost:3000"
+   DATABASE_URL="mongodb://localhost:27017/tactyqal"
+   PORT=5000
+   NEXT_PUBLIC_API_URL="http://localhost:5000/api"
    ```
 
 4. **Initialize Database & Seed Data:**
@@ -60,7 +61,7 @@
 - **`http://localhost:3000/blog/[slug]`**: High-typography Blog Article Reader with related posts.
 - **`http://localhost:3000/admin/blog`**: Blog CMS Management Dashboard for creating, editing, publishing, and deleting posts.
 - **`http://localhost:3000/admin/blog/new`**: Create Post interface with live preview.
-- **`http://localhost:3000/api/blog/posts`**: RESTful API endpoints for blog management.
+- **`http://localhost:5000/api/blog/posts`**: RESTful API endpoints for blog management.
 
 ---
 

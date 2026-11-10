@@ -57,7 +57,7 @@ The platform replaces the legacy dual-stack setup (PHP CodeIgniter + WordPress) 
 | `lucide-react` | `0.454.0` | Comprehensive icon library |
 | `axios` | `1.7.7` | Promise-based HTTP client for data fetching |
 | `clsx` / `tailwind-merge` | `2.1.1` / `2.5.4` | Conditional and conflict-free Tailwind class composition |
-| `concurrently` | `9.1.0` | Runs both client (port 3000) and server (port 5001) concurrently |
+| `concurrently` | `9.1.0` | Runs both client (port 3000) and server (port 5000) concurrently |
 | `tsx` | `4.19.2` | TypeScript executor for Express server, seeder, and automated test suite |
 
 ---
