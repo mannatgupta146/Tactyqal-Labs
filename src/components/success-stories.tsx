@@ -42,7 +42,7 @@ export default function SuccessStories() {
                 onClick={() => setActiveFilter(cat)}
                 className={`px-4 py-1.5 rounded-full text-xs font-semibold transition ${
                   activeFilter === cat
-                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+                    ? "bg-[#00df82] text-slate-950 font-bold shadow-md shadow-emerald-500/20"
                     : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700"
                 }`}
               >
@@ -60,7 +60,7 @@ export default function SuccessStories() {
               <div
                 key={story.id}
                 onClick={() => setActiveStoryModal(story)}
-                className="group relative cursor-pointer rounded-3xl bg-slate-900/70 border border-slate-800 p-6 sm:p-7 hover:border-indigo-500/50 hover:bg-slate-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col justify-between"
+                className="group relative cursor-pointer rounded-3xl bg-slate-900/70 border border-slate-800 p-6 sm:p-7 hover:border-[#00df82]/50 hover:bg-slate-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -74,10 +74,10 @@ export default function SuccessStories() {
                     </span>
                   </div>
 
-                  <div className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1">
+                  <div className="text-xs font-semibold text-[#00df82] uppercase tracking-wider mb-1">
                     {story.category}
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#00df82] transition-colors">
                     {story.name}
                   </h3>
 
@@ -88,7 +88,7 @@ export default function SuccessStories() {
 
                 <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
                   <div>
-                    <div className="text-base sm:text-lg font-extrabold text-emerald-400">
+                    <div className="text-base sm:text-lg font-extrabold text-[#00df82]">
                       {story.metric}
                     </div>
                     <div className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">
@@ -96,7 +96,7 @@ export default function SuccessStories() {
                     </div>
                   </div>
 
-                  <span className="text-xs font-semibold text-indigo-400 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  <span className="text-xs font-semibold text-[#00df82] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                     Read Story →
                   </span>
                 </div>
@@ -106,7 +106,7 @@ export default function SuccessStories() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-indigo-950/60 via-slate-900 to-slate-950 border border-indigo-900/40 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-900/30 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div>
             <h3 className="text-xl font-bold text-white">Your teen could be our next spotlight story.</h3>
             <p className="text-sm text-slate-300 mt-1">
@@ -115,7 +115,7 @@ export default function SuccessStories() {
           </div>
           <button
             onClick={() => dispatch(openConsultationModal("Success Stories Banner"))}
-            className="shrink-0 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-600/30 transition hover:scale-105"
+            className="shrink-0 px-7 py-3 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition hover:scale-105"
           >
             Schedule Free Strategy Call
           </button>

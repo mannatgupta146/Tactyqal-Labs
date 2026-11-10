@@ -27,7 +27,7 @@ export default function IdeaGeneratorView() {
           <select
             value={selectedIndustry}
             onChange={(e) => setSelectedIndustry(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-[#00df82]"
           >
             <option value="AI & Automation">AI & Automation</option>
             <option value="EdTech & Learning">EdTech & Learning</option>
@@ -44,7 +44,7 @@ export default function IdeaGeneratorView() {
           <select
             value={targetUser}
             onChange={(e) => setTargetUser(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-[#00df82]"
           >
             <option value="Gen-Z & High Schoolers">Gen-Z & High Schoolers</option>
             <option value="Local Farmers & Agriculture">Local Farmers & Agriculture</option>
@@ -57,14 +57,14 @@ export default function IdeaGeneratorView() {
 
       <button
         onClick={handleGenerateIdeas}
-        className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-bold text-sm shadow-md transition"
+        className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-md transition"
       >
         <Lightbulb className="w-4 h-4" /> Generate Validated Startup Ideas
       </button>
 
       {generatedIdeas.length > 0 && (
         <div className="space-y-3 pt-2">
-          <h4 className="text-xs uppercase font-bold tracking-wider text-indigo-400">
+          <h4 className="text-xs uppercase font-bold tracking-wider text-[#00df82]">
             Tailored Concepts for 8-Week Build:
           </h4>
           {generatedIdeas.map((idea, index) => (
@@ -72,7 +72,7 @@ export default function IdeaGeneratorView() {
               key={index}
               className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-start gap-3"
             >
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs shrink-0 mt-0.5">
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-[#00df82] font-bold text-xs shrink-0 mt-0.5">
                 {index + 1}
               </span>
               <p className="text-sm text-slate-200 leading-relaxed">{idea}</p>

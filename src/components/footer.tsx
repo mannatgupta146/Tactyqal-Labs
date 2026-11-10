@@ -12,11 +12,11 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 text-white shadow-md shadow-indigo-500/20">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-slate-900 border border-emerald-500/40 text-[#00df82] shadow-md shadow-emerald-500/10">
                 <Rocket className="w-4 h-4" />
               </div>
               <span className="text-xl font-extrabold text-white">
-                Tactyqal<span className="text-indigo-400">Labs</span>
+                Tactyqal <span className="text-[#00df82]">Labs</span>
               </span>
             </Link>
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
@@ -24,11 +24,11 @@ export default function Footer() {
             </p>
             <div className="space-y-1.5 pt-2 text-xs">
               <div className="flex items-center gap-2 text-slate-300">
-                <Mail className="w-4 h-4 text-indigo-400" />
+                <Mail className="w-4 h-4 text-[#00df82]" />
                 <span>tactyqal.labs@gmail.com</span>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
-                <Phone className="w-4 h-4 text-emerald-400" />
+                <Phone className="w-4 h-4 text-[#00df82]" />
                 <span>+91-98047-72106</span>
               </div>
             </div>
@@ -39,27 +39,27 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Program</h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a href="/#program" className="hover:text-indigo-400 transition">
+                <a href="/#program" className="hover:text-[#00df82] transition">
                   8-Week Curriculum
                 </a>
               </li>
               <li>
-                <a href="/#success" className="hover:text-indigo-400 transition">
+                <a href="/#success" className="hover:text-[#00df82] transition">
                   Student Success Stories
                 </a>
               </li>
               <li>
-                <a href="/#why" className="hover:text-indigo-400 transition">
+                <a href="/#why" className="hover:text-[#00df82] transition">
                   Why Parents Choose Us
                 </a>
               </li>
               <li>
-                <a href="/#pricing" className="hover:text-indigo-400 transition">
+                <a href="/#pricing" className="hover:text-[#00df82] transition">
                   Pricing & Guarantee
                 </a>
               </li>
               <li>
-                <a href="/#faq" className="hover:text-indigo-400 transition">
+                <a href="/#faq" className="hover:text-[#00df82] transition">
                   Frequently Asked Questions
                 </a>
               </li>
@@ -71,29 +71,29 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Resources</h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/blog" className="hover:text-indigo-400 transition">
+                <Link href="/blog" className="hover:text-[#00df82] transition">
                   Founder Knowledge Hub
                 </Link>
               </li>
               <li>
-                <a href="/#tools" className="hover:text-indigo-400 transition">
+                <a href="/#tools" className="hover:text-[#00df82] transition">
                   Startup Idea Generator
                 </a>
               </li>
               <li>
-                <a href="/#tools" className="hover:text-indigo-400 transition">
+                <a href="/#tools" className="hover:text-[#00df82] transition">
                   Fundability Assessment
                 </a>
               </li>
               <li>
-                <a href="/#tools" className="hover:text-indigo-400 transition">
+                <a href="/#tools" className="hover:text-[#00df82] transition">
                   Pitch Deck Analyzer
                 </a>
               </li>
               <li>
-                <Link href="/admin/blog" className="hover:text-indigo-400 transition flex items-center gap-1">
+                <Link href="/admin/blog" className="hover:text-[#00df82] transition flex items-center gap-1">
                   <span>Blog Admin CMS</span>
-                  <Sparkles className="w-3 h-3 text-indigo-400" />
+                  <Sparkles className="w-3 h-3 text-[#00df82]" />
                 </Link>
               </li>
             </ul>

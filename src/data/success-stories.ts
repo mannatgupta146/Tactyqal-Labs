@@ -40,8 +40,8 @@ export const successStories: AppStory[] = [
     metric: "INR 9,000",
     metricLabel: "Generated In Week 1",
     icon: ShoppingBag,
-    iconColor: "text-pink-400",
-    bgColor: "from-pink-500/10 to-rose-500/5",
+    iconColor: "text-emerald-400",
+    bgColor: "from-emerald-500/10 to-teal-500/5",
     tags: ["E-Commerce", "B2B Gifting", "Cruelty-Free"],
     fullStory:
       "Passionate about ethical fashion, this 16-year-old founder built an e-commerce platform targeted at corporate gifting. In their very first week after launch, they closed orders worth INR 9,000 and established partnerships with three corporate gifting managers.",
@@ -70,8 +70,8 @@ export const successStories: AppStory[] = [
     metric: "50+ Pets",
     metricLabel: "Shelter Animals Adopted",
     icon: Heart,
-    iconColor: "text-rose-400",
-    bgColor: "from-rose-500/10 to-red-500/5",
+    iconColor: "text-emerald-400",
+    bgColor: "from-emerald-500/10 to-teal-500/5",
     tags: ["Pet Adoption", "Shelters", "Community"],
     fullStory:
       "Paws of Promise gamifies pet adoption and donation transparency. Local animal shelters upload profiles of rescues, while users can virtually sponsor and track a pet before completing full in-person adoption.",
@@ -85,8 +85,8 @@ export const successStories: AppStory[] = [
     metric: "12,000+ Tracks",
     metricLabel: "Generated & Streamed",
     icon: Music,
-    iconColor: "text-indigo-400",
-    bgColor: "from-indigo-500/10 to-violet-500/5",
+    iconColor: "text-emerald-400",
+    bgColor: "from-emerald-500/10 to-teal-500/5",
     tags: ["Generative AI", "Audio Engineering", "SaaS"],
     fullStory:
       "A high school senior passionate about sound design built AudioNova to synthesize custom mood music for indie game devs and YouTubers. The platform went viral on TikTok and attracted commercial licensing requests.",

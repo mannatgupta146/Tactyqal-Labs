@@ -24,7 +24,7 @@ export default function Toast() {
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl shadow-2xl border backdrop-blur-md transition-all animate-in fade-in slide-in-from-bottom-5 bg-slate-900/95 border-slate-700 text-white max-w-md">
       {toast.type === "success" && <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />}
       {toast.type === "error" && <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />}
-      {toast.type === "info" && <Info className="w-5 h-5 text-indigo-400 shrink-0" />}
+      {toast.type === "info" && <Info className="w-5 h-5 text-[#00df82] shrink-0" />}
 
       <p className="text-sm font-medium leading-relaxed">{toast.message}</p>
 

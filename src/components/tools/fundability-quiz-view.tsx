@@ -29,7 +29,7 @@ export default function FundabilityQuizView() {
             onClick={() => setHasWorkingPrototype("yes")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               hasWorkingPrototype === "yes"
-                ? "bg-indigo-600/30 border-indigo-500 text-white"
+                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
                 : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
             }`}
           >
@@ -40,7 +40,7 @@ export default function FundabilityQuizView() {
             onClick={() => setHasWorkingPrototype("no")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               hasWorkingPrototype === "no"
-                ? "bg-indigo-600/30 border-indigo-500 text-white"
+                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
                 : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
             }`}
           >
@@ -61,7 +61,7 @@ export default function FundabilityQuizView() {
               onClick={() => setCustomerInterviews(tier)}
               className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
                 customerInterviews === tier
-                  ? "bg-indigo-600/30 border-indigo-500 text-white"
+                  ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
                   : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
               }`}
             >
@@ -81,7 +81,7 @@ export default function FundabilityQuizView() {
             onClick={() => setMonetizationReady("yes")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               monetizationReady === "yes"
-                ? "bg-indigo-600/30 border-indigo-500 text-white"
+                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
                 : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
             }`}
           >
@@ -92,7 +92,7 @@ export default function FundabilityQuizView() {
             onClick={() => setMonetizationReady("no")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               monetizationReady === "no"
-                ? "bg-indigo-600/30 border-indigo-500 text-white"
+                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
                 : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
             }`}
           >

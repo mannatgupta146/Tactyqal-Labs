@@ -10,9 +10,7 @@ import {
   Menu,
   X,
   Phone,
-  Sparkles,
   ArrowRight,
-  BookOpen,
   LayoutDashboard,
 } from "lucide-react";
 
@@ -33,42 +31,35 @@ export default function Navbar() {
   const navLinks = [
     { label: "Home", href: "/#home" },
     { label: "Success Stories", href: "/#success" },
-    { label: "8-Week Program", href: "/#program" },
+    { label: "Program", href: "/#program" },
     { label: "Why Us", href: "/#why" },
-    { label: "Free Tools", href: "/#tools" },
+    { label: "Tools", href: "/#tools" },
     { label: "Blog", href: "/blog" },
     { label: "Pricing", href: "/#pricing" },
     { label: "FAQ", href: "/#faq" },
-    { label: "Contact", href: "/#contact" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-slate-950/85 backdrop-blur-xl border-b border-slate-800/80 py-3 shadow-xl shadow-black/40"
-          : "bg-slate-950/30 backdrop-blur-sm py-5 border-b border-transparent"
+          ? "bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 py-3 shadow-xl shadow-black/40"
+          : "bg-slate-950/40 backdrop-blur-md py-4 border-b border-slate-900/60"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 text-white shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition duration-200">
-            <Rocket className="w-5 h-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            <div className="absolute -inset-1 rounded-2xl bg-indigo-500/20 blur-sm -z-10 group-hover:opacity-100 opacity-60 transition" />
+        {/* Brand Logo - As in Tactyqal.com */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-slate-900 border border-emerald-500/40 text-emerald-400 shadow-md shadow-emerald-500/10 group-hover:scale-105 transition duration-200">
+            <Rocket className="w-5 h-5" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-extrabold tracking-tight text-white flex items-center gap-1.5">
-              Tactyqal<span className="text-indigo-400">Labs</span>
-            </span>
-            <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400">
-              Teen Builders Incubator
-            </span>
-          </div>
+          <span className="text-xl sm:text-2xl font-black tracking-tight text-white">
+            Tactyqal <span className="text-[#00df82]">Labs</span>
+          </span>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/70 backdrop-blur-md">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
           {navLinks.map((link) => {
             const isActive =
               pathname === link.href || (link.href === "/blog" && pathname.startsWith("/blog"));
@@ -76,10 +67,10 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`px-3.5 py-1.5 text-xs font-medium rounded-full transition-all ${
+                className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                   isActive
-                    ? "bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 font-semibold"
-                    : "text-slate-300 hover:text-white hover:bg-slate-800/60"
+                    ? "text-[#00df82] font-bold"
+                    : "text-slate-300 hover:text-white hover:bg-slate-900/60"
                 }`}
               >
                 {link.label}
@@ -93,28 +84,27 @@ export default function Navbar() {
           {/* Admin CMS Shortcut */}
           <Link
             href="/admin/blog"
-            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-xl text-slate-300 bg-slate-900/80 border border-slate-800 hover:text-white hover:border-slate-700 transition"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-300 bg-slate-900 border border-slate-800 hover:text-[#00df82] hover:border-slate-700 transition"
           >
-            <LayoutDashboard className="w-3.5 h-3.5 text-indigo-400" />
+            <LayoutDashboard className="w-3.5 h-3.5 text-[#00df82]" />
             <span>Admin CMS</span>
           </Link>
 
-          {/* Quick Phone */}
+          {/* Phone Link */}
           <a
             href="tel:+919804772106"
-            className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-indigo-300 transition px-2 py-1"
+            className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-[#00df82] transition px-2 py-1"
           >
-            <Phone className="w-3.5 h-3.5 text-indigo-400" />
+            <Phone className="w-3.5 h-3.5 text-[#00df82]" />
             <span className="font-medium">+91-98047-72106</span>
           </a>
 
-          {/* Consultation CTA */}
+          {/* Contact Pill - Exact Mint Green as in tactyqal.com screenshot */}
           <button
-            onClick={() => dispatch(openConsultationModal("Navbar CTA"))}
-            className="relative group inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600 hover:from-indigo-600 hover:to-violet-700 shadow-md shadow-indigo-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            onClick={() => dispatch(openConsultationModal("Navbar Contact"))}
+            className="px-5 py-2 rounded-full text-xs font-bold text-slate-950 bg-[#00df82] hover:bg-[#00c975] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-emerald-500/20"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Book Free Call</span>
+            Contact
           </button>
         </div>
 
@@ -122,9 +112,9 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={() => dispatch(openConsultationModal("Mobile Header"))}
-            className="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold"
+            className="px-3.5 py-1.5 rounded-full bg-[#00df82] text-slate-950 text-xs font-bold"
           >
-            Book Call
+            Contact
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -137,47 +127,40 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-800 bg-slate-950/95 backdrop-blur-2xl px-6 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
+        <div className="md:hidden border-b border-slate-800 bg-slate-950/98 backdrop-blur-2xl px-6 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
           <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-900 transition"
+                className="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-900 transition"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          <div className="pt-4 border-t border-slate-800/80 space-y-3">
+          <div className="pt-4 border-t border-slate-800 space-y-3">
             <Link
               href="/admin/blog"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-200"
             >
               <span className="flex items-center gap-2">
-                <LayoutDashboard className="w-4 h-4 text-indigo-400" /> Blog Admin CMS
+                <LayoutDashboard className="w-4 h-4 text-emerald-400" /> Blog Admin CMS
               </span>
               <ArrowRight className="w-4 h-4 text-slate-500" />
             </Link>
-
-            <a
-              href="tel:+919804772106"
-              className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300"
-            >
-              <Phone className="w-4 h-4 text-indigo-400" /> +91-98047-72106
-            </a>
 
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 dispatch(openConsultationModal("Mobile Drawer"));
               }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-bold text-sm shadow-lg flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20"
             >
-              <Sparkles className="w-4 h-4" /> Book Free 30-Min Consultation
+              Book Free Consultation
             </button>
           </div>
         </div>

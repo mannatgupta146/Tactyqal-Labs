@@ -26,7 +26,7 @@ export default function AssessmentToolModal() {
 
         {/* Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00df82] text-xs font-semibold uppercase tracking-wider mb-2">
             <Sparkles className="w-3.5 h-3.5" /> Interactive Founder Diagnostic
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
@@ -56,7 +56,7 @@ export default function AssessmentToolModal() {
               dispatch(closeAssessmentTool());
               dispatch(openConsultationModal("Startup Assessment & Idea Review"));
             }}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-2.5 px-6 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-md transition"
           >
             Review With A Mentor 1:1 <ArrowRight className="w-4 h-4" />
           </button>

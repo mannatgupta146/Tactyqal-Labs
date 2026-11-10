@@ -5,7 +5,7 @@ import Link from "next/link";
 import { api } from "../lib/api";
 import { BlogPost } from "../lib/types";
 import { formatDate } from "../lib/utils";
-import { Sparkles, ArrowRight, Clock, Calendar, BookOpen } from "lucide-react";
+import { ArrowRight, Clock, Calendar } from "lucide-react";
 
 export default function FeaturedBlog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -31,8 +31,8 @@ export default function FeaturedBlog() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5" /> Founder Knowledge Base
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+              Founder Knowledge Base
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               Learn from Industry Experts
@@ -44,7 +44,7 @@ export default function FeaturedBlog() {
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-bold text-indigo-400 hover:text-indigo-300 transition"
+            className="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 hover:text-emerald-300 transition"
           >
             <span>Read All Articles</span>
             <ArrowRight className="w-4 h-4" />
@@ -57,7 +57,7 @@ export default function FeaturedBlog() {
             <Link
               key={post._id || post.slug}
               href={`/blog/${post.slug}`}
-              className="group rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
+              className="group rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
             >
               <div>
                 {/* Cover Image */}
@@ -67,17 +67,16 @@ export default function FeaturedBlog() {
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-slate-950/80 backdrop-blur-md text-indigo-300 border border-white/10">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-slate-950/80 backdrop-blur-md text-emerald-400 border border-white/10">
                     {post.category?.name || "Startup Guide"}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  {/* Meta */}
                   <div className="flex items-center gap-3 text-xs text-slate-400 mb-2">
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-indigo-400" /> {post.readTimeMin} min read
+                      <Clock className="w-3.5 h-3.5 text-emerald-400" /> {post.readTimeMin} min read
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
@@ -85,7 +84,7 @@ export default function FeaturedBlog() {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors line-clamp-2 leading-snug">
+                  <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors line-clamp-2 leading-snug">
                     {post.title}
                   </h3>
 
@@ -96,8 +95,8 @@ export default function FeaturedBlog() {
               </div>
 
               {/* Bottom Card Footer */}
-              <div className="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between text-xs font-semibold text-indigo-400">
-                <span>By {post.author?.name || "Tactyqal Team"}</span>
+              <div className="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between text-xs font-semibold text-emerald-400">
+                <span className="text-slate-400">By {post.author?.name || "Tactyqal Team"}</span>
                 <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                   Read More →
                 </span>

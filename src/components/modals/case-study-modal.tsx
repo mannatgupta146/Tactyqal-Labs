@@ -27,7 +27,7 @@ export default function CaseStudyModal({ story, onClose }: CaseStudyModalProps) 
         </button>
 
         <div className="flex items-center gap-3 mb-4">
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-[#00df82] border border-emerald-500/30">
             {story.age}
           </span>
           <span className="text-xs text-slate-400 font-medium">{story.category}</span>
@@ -38,13 +38,13 @@ export default function CaseStudyModal({ story, onClose }: CaseStudyModalProps) 
         <div className="mt-4 p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-between">
           <div>
             <div className="text-xs uppercase text-slate-400 font-semibold">Key Achievement</div>
-            <div className="text-xl font-extrabold text-emerald-400">{story.metric}</div>
+            <div className="text-xl font-extrabold text-[#00df82]">{story.metric}</div>
           </div>
           <div className="text-xs text-slate-300 font-medium">{story.metricLabel}</div>
         </div>
 
         <div className="mt-6">
-          <h4 className="text-xs uppercase tracking-wider font-bold text-indigo-400 mb-2">The Founder Journey</h4>
+          <h4 className="text-xs uppercase tracking-wider font-bold text-[#00df82] mb-2">The Founder Journey</h4>
           <p className="text-sm text-slate-200 leading-relaxed">{story.fullStory}</p>
         </div>
 
@@ -69,7 +69,7 @@ export default function CaseStudyModal({ story, onClose }: CaseStudyModalProps) 
               onClose();
               dispatch(openConsultationModal(`Interested in building an app like ${name}`));
             }}
-            className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-md"
+            className="px-6 py-2.5 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-md"
           >
             Build An App Like This
           </button>

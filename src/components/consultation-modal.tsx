@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { closeConsultationModal, showToast } from "../store/uiSlice";
 import { api } from "../lib/api";
-import { X, Calendar, Sparkles, CheckCircle2, Phone, Mail, User } from "lucide-react";
+import { X, Calendar, CheckCircle2, Phone, Mail, User } from "lucide-react";
 
 export default function ConsultationModal() {
   const dispatch = useAppDispatch();
@@ -48,7 +48,6 @@ export default function ConsultationModal() {
         })
       );
       dispatch(closeConsultationModal());
-      // Reset
       setParentName("");
       setStudentName("");
       setEmail("");
@@ -67,7 +66,7 @@ export default function ConsultationModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
       <div className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-3xl bg-slate-900 border border-slate-700/80 shadow-2xl p-6 sm:p-8 text-slate-100">
         {/* Close Button */}
         <button
@@ -79,8 +78,8 @@ export default function ConsultationModal() {
 
         {/* Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> Free 30-Minute Consultation
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            Free 30-Minute Consultation
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Start Your Kid&apos;s Success Story
@@ -105,7 +104,7 @@ export default function ConsultationModal() {
                   placeholder="e.g. Sunita Sharma"
                   value={parentName}
                   onChange={(e) => setParentName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
                 />
               </div>
             </div>
@@ -119,7 +118,7 @@ export default function ConsultationModal() {
                 placeholder="e.g. Aarav Sharma"
                 value={studentName}
                 onChange={(e) => setStudentName(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
               />
             </div>
           </div>
@@ -137,7 +136,7 @@ export default function ConsultationModal() {
                   placeholder="parent@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
                 />
               </div>
             </div>
@@ -154,7 +153,7 @@ export default function ConsultationModal() {
                   placeholder="+91 98047 72106"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
                 />
               </div>
             </div>
@@ -168,7 +167,7 @@ export default function ConsultationModal() {
               <select
                 value={studentAge}
                 onChange={(e) => setStudentAge(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition"
               >
                 <option value="12">12 years old (Grade 7)</option>
                 <option value="13">13 years old (Grade 8)</option>
@@ -187,10 +186,10 @@ export default function ConsultationModal() {
               <select
                 value={goalInterest}
                 onChange={(e) => setGoalInterest(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition"
               >
                 <option value="1:1 App Building & Mentoring">1:1 App Building & Mentoring</option>
-                <option value="Ivy League / Top College Edge">Top University Admissions Edge</option>
+                <option value="Top University Admissions Edge">Top University Admissions Edge</option>
                 <option value="Revenue & Monetization">Generating Real Revenue</option>
                 <option value="Product Hunt & Startup Launch">Product Hunt Launch</option>
                 <option value="Ideation & Validation">Validating an Early Idea</option>
@@ -207,7 +206,7 @@ export default function ConsultationModal() {
               placeholder="Does your teen have an interest in gaming, sustainability, AI, or an app idea they want to bring to life?"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition resize-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition resize-none"
             />
           </div>
 
@@ -215,7 +214,7 @@ export default function ConsultationModal() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-bold text-base shadow-lg shadow-indigo-500/25 transition disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-base shadow-lg shadow-emerald-500/20 transition disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span>Scheduling Consultation...</span>
