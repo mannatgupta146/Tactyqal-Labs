@@ -25,18 +25,29 @@
   }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Custom Scrollbar for Main Page */
+body::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: #FDFCF7;
 }
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background: #d6d3d1;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover {
   background: #a8a29e;
 }
 
