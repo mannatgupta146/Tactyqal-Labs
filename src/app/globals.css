@@ -39,3 +39,24 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a29e;
 }
+
+/* Infinite Marquee Carousel */
+@keyframes infiniteMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-infinite-carousel {
+  display: flex;
+  width: max-content;
+  animation: infiniteMarquee 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-infinite-carousel:hover {
+  animation-play-state: paused;
+}
