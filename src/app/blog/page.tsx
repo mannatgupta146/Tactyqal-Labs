@@ -9,7 +9,7 @@ import { BlogPost, BlogCategory } from "../../lib/types";
 import BlogSearchFilter from "../../components/blog/blog-search-filter";
 import BlogCard from "../../components/blog/blog-card";
 import FeaturedBlogCard from "../../components/blog/featured-blog-card";
-import { Sparkles, LayoutDashboard } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 
 export default function BlogCatalogPage() {
   const dispatch = useAppDispatch();
@@ -67,7 +67,7 @@ export default function BlogCatalogPage() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-stone-200">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5" /> Tactyqal Insights
+              Tactyqal Insights
             </div>
             <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
               Founder & Builder Knowledge Hub

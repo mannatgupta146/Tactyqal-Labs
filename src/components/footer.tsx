@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Rocket, Mail, Phone, Heart, Sparkles, ExternalLink } from "lucide-react";
+import { Mail, Phone, Heart, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -11,11 +11,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-white border border-emerald-500/30 text-[#059669] shadow-xs">
-                <Rocket className="w-4 h-4" />
-              </div>
-              <span className="text-xl font-black text-slate-900">
+            <Link href="/" className="inline-block group">
+              <span className="text-xl sm:text-2xl font-black text-slate-900 group-hover:opacity-90 transition">
                 Tactyqal <span className="text-[#059669]">Labs</span>
               </span>
             </Link>
@@ -71,7 +68,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">Resources</h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/blog" className="hover:text-[#059669] transition">
+                <Link href="/#blog" className="hover:text-[#059669] transition">
                   Founder Knowledge Hub
                 </Link>
               </li>
@@ -91,9 +88,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/admin/blog" className="hover:text-[#059669] transition flex items-center gap-1">
-                  <span>Blog Admin CMS</span>
-                  <Sparkles className="w-3 h-3 text-[#059669]" />
+                <Link href="/admin/blog" className="hover:text-[#059669] transition">
+                  Blog Admin CMS
                 </Link>
               </li>
             </ul>

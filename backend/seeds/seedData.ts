@@ -199,7 +199,7 @@ You no longer need a 4-year computer science degree to build software that impac
     views: 890,
     published: true,
     featured: true,
-    publishedAt: "2025-07-09T10:00:00Z",
+    publishedAt: "2024-03-25T10:00:00Z",
     author: {
       name: "Tactyqal Mentors",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",

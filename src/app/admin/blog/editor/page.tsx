@@ -9,7 +9,7 @@ import { useAppDispatch } from "../../../../store/hooks";
 import { showToast } from "../../../../store/uiSlice";
 import EditorFormInputs from "../../../../components/admin/editor-form-inputs";
 import EditorPreviewTab from "../../../../components/admin/editor-preview-tab";
-import { ArrowLeft, Save, Eye } from "lucide-react";
+import EditorTopBar from "../../../../components/admin/editor-top-bar";
 
 function EditorContent() {
   const router = useRouter();
@@ -119,48 +119,15 @@ function EditorContent() {
   return (
     <div className="pt-32 pb-24 min-h-screen bg-[#FDFCF7] text-slate-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Bar */}
-        <div className="flex items-center justify-between pb-8 border-b border-stone-200">
-          <div className="flex items-center gap-3">
-            <Link
-              href="/admin/blog"
-              className="p-2 rounded-xl bg-white border border-stone-200 text-slate-600 hover:text-slate-900 shadow-xs"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
-            <div>
-              <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
-                {editId ? "Edit Article" : "Create New Article"}
-              </h1>
-              <p className="text-xs text-slate-500">
-                {editId ? `Editing: ${slug}` : "Drafting a new knowledge base guide"}
-              </p>
-            </div>
-          </div>
+        <EditorTopBar
+          editId={editId}
+          slug={slug}
+          previewTab={previewTab}
+          saving={saving}
+          onTogglePreview={() => setPreviewTab(!previewTab)}
+          onSave={handleSave}
+        />
 
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => setPreviewTab(!previewTab)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-xs font-semibold text-slate-700 hover:text-slate-900 transition shadow-xs"
-            >
-              <Eye className="w-4 h-4 text-[#059669]" />
-              <span>{previewTab ? "Edit Mode" : "Live Preview"}</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleSave}
-              disabled={saving}
-              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 text-xs font-bold shadow-md shadow-emerald-500/20 transition disabled:opacity-50"
-            >
-              <Save className="w-4 h-4" />
-              <span>{saving ? "Saving..." : editId ? "Update Article" : "Publish Article"}</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Editor Form */}
         <form onSubmit={handleSave} className="mt-8 space-y-6">
           {!previewTab ? (
             <EditorFormInputs
@@ -189,7 +156,6 @@ function EditorContent() {
             <EditorPreviewTab title={title} excerpt={excerpt} content={content} />
           )}
 
-          {/* Bottom Save Action */}
           <div className="pt-4 flex items-center justify-end gap-3">
             <Link
               href="/admin/blog"

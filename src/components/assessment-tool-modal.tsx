@@ -6,7 +6,7 @@ import { closeAssessmentTool, openConsultationModal } from "../store/uiSlice";
 import IdeaGeneratorView from "./tools/idea-generator-view";
 import FundabilityQuizView from "./tools/fundability-quiz-view";
 import DiagnosticChecklistView from "./tools/diagnostic-checklist-view";
-import { X, Sparkles, ArrowRight } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
 
 export default function AssessmentToolModal() {
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ export default function AssessmentToolModal() {
         {/* Header */}
         <div className="mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5" /> Interactive Founder Diagnostic
+            Interactive Founder Diagnostic
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             {selectedTool}

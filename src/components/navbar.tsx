@@ -6,10 +6,8 @@ import { usePathname } from "next/navigation";
 import { useAppDispatch } from "../store/hooks";
 import { openConsultationModal } from "../store/uiSlice";
 import {
-  Rocket,
   Menu,
   X,
-  Phone,
   ArrowRight,
   LayoutDashboard,
 } from "lucide-react";
@@ -34,7 +32,7 @@ export default function Navbar() {
     { label: "Program", href: "/#program" },
     { label: "Why Us", href: "/#why" },
     { label: "Tools", href: "/#tools" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blog", href: "/#blog" },
     { label: "Pricing", href: "/#pricing" },
     { label: "FAQ", href: "/#faq" },
   ];
@@ -49,11 +47,8 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-white border border-emerald-500/30 text-[#059669] shadow-sm group-hover:scale-105 transition duration-200">
-            <Rocket className="w-5 h-5" />
-          </div>
-          <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900">
+        <Link href="/" className="flex items-center group">
+          <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 group-hover:opacity-90 transition">
             Tactyqal <span className="text-[#059669]">Labs</span>
           </span>
         </Link>
@@ -61,8 +56,7 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
           {navLinks.map((link) => {
-            const isActive =
-              pathname === link.href || (link.href === "/blog" && pathname.startsWith("/blog"));
+            const isActive = pathname === link.href;
             return (
               <Link
                 key={link.label}
@@ -90,32 +84,23 @@ export default function Navbar() {
             <span>Admin CMS</span>
           </Link>
 
-          {/* Phone Link */}
-          <a
-            href="tel:+919804772106"
-            className="flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#059669] transition px-2 py-1"
-          >
-            <Phone className="w-3.5 h-3.5 text-[#059669]" />
-            <span className="font-semibold">+91-98047-72106</span>
-          </a>
-
           {/* Contact Pill */}
-          <button
-            onClick={() => dispatch(openConsultationModal("Navbar Contact"))}
+          <Link
+            href="/#contact"
             className="px-5 py-2 rounded-full text-xs font-bold text-slate-950 bg-[#00df82] hover:bg-[#00c975] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-emerald-500/20"
           >
             Contact
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Hamburger */}
         <div className="flex md:hidden items-center gap-2">
-          <button
-            onClick={() => dispatch(openConsultationModal("Mobile Header"))}
+          <Link
+            href="/#contact"
             className="px-3.5 py-1.5 rounded-full bg-[#00df82] text-slate-950 text-xs font-bold"
           >
             Contact
-          </button>
+          </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-xl bg-white border border-stone-200 text-slate-700 hover:text-slate-900"
@@ -153,15 +138,13 @@ export default function Navbar() {
               <ArrowRight className="w-4 h-4 text-slate-400" />
             </Link>
 
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                dispatch(openConsultationModal("Mobile Drawer"));
-              }}
-              className="w-full py-3 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20"
+            <Link
+              href="/#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full block py-3 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 text-center"
             >
-              Book Free Consultation
-            </button>
+              Contact
+            </Link>
           </div>
         </div>
       )}

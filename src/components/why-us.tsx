@@ -4,7 +4,7 @@ import React from "react";
 import { useAppDispatch } from "../store/hooks";
 import { openConsultationModal } from "../store/uiSlice";
 import { whyUsReasons } from "../data/why-us-data";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function WhyUs() {
   const dispatch = useAppDispatch();
@@ -14,9 +14,6 @@ export default function WhyUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> Why Tactyqal Labs
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             Why Parents Choose Tactyqal Labs
           </h2>
@@ -63,7 +60,6 @@ export default function WhyUs() {
             onClick={() => dispatch(openConsultationModal("Why Us Bottom CTA"))}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition-all hover:scale-105"
           >
-            <Sparkles className="w-4 h-4" />
             <span>Book A Free Consultation With Our Founder</span>
           </button>
         </div>

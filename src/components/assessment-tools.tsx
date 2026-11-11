@@ -4,7 +4,7 @@ import React from "react";
 import { useAppDispatch } from "../store/hooks";
 import { openAssessmentTool } from "../store/uiSlice";
 import { assessmentToolsList } from "../data/assessment-tools-data";
-import { Sparkles, ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 export default function AssessmentTools() {
   const dispatch = useAppDispatch();
@@ -14,9 +14,6 @@ export default function AssessmentTools() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> Free Interactive Resources
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             Free Tools to Get Started
           </h2>
@@ -77,7 +74,6 @@ export default function AssessmentTools() {
             onClick={() => dispatch(openAssessmentTool("Startup Idea Generator"))}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-stone-100 text-slate-800 font-bold text-sm border border-stone-300 transition shadow-xs"
           >
-            <Sparkles className="w-4 h-4 text-[#059669]" />
             <span>Access All Tools Free In Browser</span>
           </button>
         </div>
