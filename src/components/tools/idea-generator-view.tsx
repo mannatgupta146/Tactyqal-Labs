@@ -21,13 +21,13 @@ export default function IdeaGeneratorView() {
     <div className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             Select Industry Domain
           </label>
           <select
             value={selectedIndustry}
             onChange={(e) => setSelectedIndustry(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-[#00df82]"
+            className="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 text-sm focus:outline-none focus:border-[#00df82]"
           >
             <option value="AI & Automation">AI & Automation</option>
             <option value="EdTech & Learning">EdTech & Learning</option>
@@ -38,13 +38,13 @@ export default function IdeaGeneratorView() {
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             Target Audience
           </label>
           <select
             value={targetUser}
             onChange={(e) => setTargetUser(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-[#00df82]"
+            className="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 text-sm focus:outline-none focus:border-[#00df82]"
           >
             <option value="Gen-Z & High Schoolers">Gen-Z & High Schoolers</option>
             <option value="Local Farmers & Agriculture">Local Farmers & Agriculture</option>
@@ -64,18 +64,18 @@ export default function IdeaGeneratorView() {
 
       {generatedIdeas.length > 0 && (
         <div className="space-y-3 pt-2">
-          <h4 className="text-xs uppercase font-bold tracking-wider text-[#00df82]">
+          <h4 className="text-xs uppercase font-bold tracking-wider text-[#059669]">
             Tailored Concepts for 8-Week Build:
           </h4>
           {generatedIdeas.map((idea, index) => (
             <div
               key={index}
-              className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-start gap-3"
+              className="p-4 rounded-xl bg-[#FAF8F5] border border-stone-200 flex items-start gap-3 shadow-xs"
             >
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-[#00df82] font-bold text-xs shrink-0 mt-0.5">
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-50 text-[#059669] border border-emerald-200 font-bold text-xs shrink-0 mt-0.5">
                 {index + 1}
               </span>
-              <p className="text-sm text-slate-200 leading-relaxed">{idea}</p>
+              <p className="text-sm text-slate-700 leading-relaxed">{idea}</p>
             </div>
           ))}
         </div>

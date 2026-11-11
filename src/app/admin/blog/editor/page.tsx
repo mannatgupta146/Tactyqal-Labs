@@ -110,29 +110,29 @@ function EditorContent() {
 
   if (loading) {
     return (
-      <div className="pt-40 pb-32 min-h-screen bg-slate-950 text-center text-slate-400">
+      <div className="pt-40 pb-32 min-h-screen bg-[#FDFCF7] text-center text-slate-500">
         <p className="text-sm">Loading post details...</p>
       </div>
     );
   }
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-slate-950 text-slate-100">
+    <div className="pt-32 pb-24 min-h-screen bg-[#FDFCF7] text-slate-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Bar */}
-        <div className="flex items-center justify-between pb-8 border-b border-slate-900">
+        <div className="flex items-center justify-between pb-8 border-b border-stone-200">
           <div className="flex items-center gap-3">
             <Link
               href="/admin/blog"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
+              className="p-2 rounded-xl bg-white border border-stone-200 text-slate-600 hover:text-slate-900 shadow-xs"
             >
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+              <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
                 {editId ? "Edit Article" : "Create New Article"}
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500">
                 {editId ? `Editing: ${slug}` : "Drafting a new knowledge base guide"}
               </p>
             </div>
@@ -142,9 +142,9 @@ function EditorContent() {
             <button
               type="button"
               onClick={() => setPreviewTab(!previewTab)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:text-white transition"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-stone-200 text-xs font-semibold text-slate-700 hover:text-slate-900 transition shadow-xs"
             >
-              <Eye className="w-4 h-4 text-emerald-400" />
+              <Eye className="w-4 h-4 text-[#059669]" />
               <span>{previewTab ? "Edit Mode" : "Live Preview"}</span>
             </button>
 
@@ -152,7 +152,7 @@ function EditorContent() {
               type="button"
               onClick={handleSave}
               disabled={saving}
-              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-500/20 transition disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 text-xs font-bold shadow-md shadow-emerald-500/20 transition disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               <span>{saving ? "Saving..." : editId ? "Update Article" : "Publish Article"}</span>
@@ -193,14 +193,14 @@ function EditorContent() {
           <div className="pt-4 flex items-center justify-end gap-3">
             <Link
               href="/admin/blog"
-              className="px-5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white"
+              className="px-5 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900"
             >
               Cancel
             </Link>
             <button
               type="submit"
               disabled={saving}
-              className="px-6 py-2.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-500/20 transition disabled:opacity-50"
+              className="px-6 py-2.5 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 text-xs font-bold shadow-md shadow-emerald-500/20 transition disabled:opacity-50"
             >
               {saving ? "Saving..." : editId ? "Update Article" : "Publish Article"}
             </button>
@@ -215,8 +215,8 @@ export default function AdminBlogEditorPage() {
   return (
     <Suspense
       fallback={
-        <div className="pt-40 pb-32 min-h-screen bg-slate-950 text-center text-slate-400">
-          <div className="w-6 h-6 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+        <div className="pt-40 pb-32 min-h-screen bg-[#FDFCF7] text-center text-slate-500">
+          <div className="w-6 h-6 border-2 border-[#059669] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
           <p className="text-sm">Loading editor...</p>
         </div>
       }

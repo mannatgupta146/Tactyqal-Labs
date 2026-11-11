@@ -67,18 +67,18 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-950 relative border-t border-slate-900">
+    <section id="contact" className="py-24 bg-[#FAF8F5] relative border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column: Contact Info */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-3">
               Get in Touch
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
               Ready to Start Your Teen&apos;s Success Story?
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
               Reach out to our dedicated mentoring team for any inquiries, curriculum questions, or admissions roadmap planning.
             </p>
 
@@ -86,16 +86,16 @@ export default function ContactSection() {
             <div className="mt-8 space-y-4">
               <a
                 href="mailto:tactyqal.labs@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition group"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-stone-200/90 hover:border-emerald-500/50 transition group shadow-xs"
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-slate-800 text-emerald-400 group-hover:scale-110 transition-transform">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 text-[#059669] group-hover:scale-110 transition-transform">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
                     Direct Email
                   </div>
-                  <div className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                  <div className="text-base font-bold text-slate-900 group-hover:text-[#059669] transition-colors">
                     tactyqal.labs@gmail.com
                   </div>
                 </div>
@@ -103,30 +103,30 @@ export default function ContactSection() {
 
               <a
                 href="tel:+919804772106"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition group"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-stone-200/90 hover:border-emerald-500/50 transition group shadow-xs"
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-slate-800 text-emerald-400 group-hover:scale-110 transition-transform">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 text-[#059669] group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
                     Phone & WhatsApp
                   </div>
-                  <div className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                  <div className="text-base font-bold text-slate-900 group-hover:text-[#059669] transition-colors">
                     +91-98047-72106
                   </div>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800/80">
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-slate-800 text-teal-400">
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/70 border border-stone-200/80 shadow-xs">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-stone-100 text-[#059669]">
                   <Clock className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
                     Office Hours & Response Time
                   </div>
-                  <div className="text-sm font-semibold text-white">
+                  <div className="text-sm font-semibold text-slate-800">
                     Mon–Sat, 9:00 AM – 7:00 PM IST (Response within 24h)
                   </div>
                 </div>
@@ -135,15 +135,15 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column: Embedded Booking Form */}
-          <div className="rounded-3xl bg-slate-900 border border-slate-800 p-8 sm:p-10 shadow-2xl">
-            <h3 className="text-2xl font-bold text-white mb-2">Book a Free Appointment</h3>
-            <p className="text-sm text-slate-400 mb-6">
+          <div className="rounded-3xl bg-white border border-stone-200 p-8 sm:p-10 shadow-lg">
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">Book a Free Appointment</h3>
+            <p className="text-sm text-slate-600 mb-6">
               Fill in your details below and we will confirm a convenient call time with our founder.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                   Parent&apos;s Full Name *
                 </label>
                 <input
@@ -152,13 +152,13 @@ export default function ContactSection() {
                   placeholder="e.g. Ramesh Verma"
                   value={parentName}
                   onChange={(e) => setParentName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
+                  className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                     Email Address *
                   </label>
                   <input
@@ -167,12 +167,12 @@ export default function ContactSection() {
                     placeholder="parent@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
+                    className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                     WhatsApp Phone *
                   </label>
                   <input
@@ -181,19 +181,19 @@ export default function ContactSection() {
                     placeholder="+91-98047-72106"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
+                    className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                   Student Age
                 </label>
                 <select
                   value={studentAge}
                   onChange={(e) => setStudentAge(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition"
+                  className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
                 >
                   <option value="12">12 years old</option>
                   <option value="13">13 years old</option>
@@ -206,7 +206,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                   App Idea or Questions
                 </label>
                 <textarea
@@ -214,14 +214,14 @@ export default function ContactSection() {
                   placeholder="Share any initial thoughts, curiosity, or admission goals..."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/20 transition disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-md shadow-emerald-500/20 transition disabled:opacity-50 hover:scale-[1.01]"
               >
                 {isSubmitting ? (
                   <span>Submitting...</span>

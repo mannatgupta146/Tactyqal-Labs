@@ -12,6 +12,14 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        cream: {
+          50: "#FDFCF7",
+          100: "#FAF8F2",
+          200: "#F5F2E9",
+          300: "#EBE5D6",
+          400: "#DDD4BF",
+          500: "#C8BCA0",
+        },
         mint: {
           300: "#5eead4",
           400: "#2dd4bf",

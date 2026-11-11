@@ -66,25 +66,25 @@ export default function ConsultationModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-3xl bg-slate-900 border border-slate-700/80 shadow-2xl p-6 sm:p-8 text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-3xl bg-white border border-stone-200 shadow-2xl p-6 sm:p-8 text-slate-900">
         {/* Close Button */}
         <button
           onClick={() => dispatch(closeConsultationModal())}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-stone-100 transition"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-3">
             Free 30-Minute Consultation
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Start Your Kid&apos;s Success Story
           </h2>
-          <p className="text-slate-400 text-sm mt-1.5">
+          <p className="text-slate-600 text-sm mt-1.5">
             Speak 1:1 with our founder to evaluate your teen&apos;s app idea, admission goals, and personalized 8-week roadmap.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function ConsultationModal() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                 Parent&apos;s Full Name *
               </label>
               <div className="relative">
@@ -104,13 +104,13 @@ export default function ConsultationModal() {
                   placeholder="e.g. Sunita Sharma"
                   value={parentName}
                   onChange={(e) => setParentName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                 Student&apos;s Name
               </label>
               <input
@@ -118,14 +118,14 @@ export default function ConsultationModal() {
                 placeholder="e.g. Aarav Sharma"
                 value={studentName}
                 onChange={(e) => setStudentName(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
+                className="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                 Email Address *
               </label>
               <div className="relative">
@@ -136,13 +136,13 @@ export default function ConsultationModal() {
                   placeholder="parent@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                 WhatsApp / Phone *
               </label>
               <div className="relative">
@@ -153,7 +153,7 @@ export default function ConsultationModal() {
                   placeholder="+91 98047 72106"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
                 />
               </div>
             </div>
@@ -161,13 +161,13 @@ export default function ConsultationModal() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                 Student Age
               </label>
               <select
                 value={studentAge}
                 onChange={(e) => setStudentAge(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition"
+                className="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
               >
                 <option value="12">12 years old (Grade 7)</option>
                 <option value="13">13 years old (Grade 8)</option>
@@ -180,13 +180,13 @@ export default function ConsultationModal() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                 Primary Goal
               </label>
               <select
                 value={goalInterest}
                 onChange={(e) => setGoalInterest(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition"
+                className="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition"
               >
                 <option value="1:1 App Building & Mentoring">1:1 App Building & Mentoring</option>
                 <option value="Top University Admissions Edge">Top University Admissions Edge</option>
@@ -198,7 +198,7 @@ export default function ConsultationModal() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
               Tell us about their idea or curiosity (optional)
             </label>
             <textarea
@@ -206,7 +206,7 @@ export default function ConsultationModal() {
               placeholder="Does your teen have an interest in gaming, sustainability, AI, or an app idea they want to bring to life?"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition resize-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] focus:bg-white transition resize-none"
             />
           </div>
 
@@ -214,7 +214,7 @@ export default function ConsultationModal() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-base shadow-lg shadow-emerald-500/20 transition disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-base shadow-md shadow-emerald-500/20 transition disabled:opacity-50 hover:scale-[1.01]"
             >
               {isSubmitting ? (
                 <span>Scheduling Consultation...</span>
@@ -227,12 +227,12 @@ export default function ConsultationModal() {
             </button>
           </div>
 
-          <div className="flex items-center justify-center gap-4 text-xs text-slate-400 pt-2">
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> 100% Free & No Obligation
+          <div className="flex items-center justify-center gap-4 text-xs text-slate-600 pt-2">
+            <span className="flex items-center gap-1.5 font-medium">
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> 100% Free & No Obligation
             </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Results Guaranteed
+            <span className="flex items-center gap-1.5 font-medium">
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Results Guaranteed
             </span>
           </div>
         </form>

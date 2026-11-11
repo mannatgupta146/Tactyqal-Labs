@@ -27,7 +27,7 @@ export default function BlogSearchFilter({
           placeholder="Search guides, ideas, elevator pitches..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition shadow-inner"
+          className="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] transition shadow-xs"
         />
       </div>
 
@@ -37,8 +37,8 @@ export default function BlogSearchFilter({
           onClick={() => onCategorySelect("all")}
           className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${
             selectedCategory === "all"
-              ? "bg-emerald-400 text-slate-950 font-bold shadow-md shadow-emerald-500/20"
-              : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+              ? "bg-[#00df82] text-slate-950 font-bold shadow-md shadow-emerald-500/20"
+              : "bg-white text-slate-600 hover:text-slate-900 border border-stone-200 shadow-xs"
           }`}
         >
           All Topics
@@ -49,8 +49,8 @@ export default function BlogSearchFilter({
             onClick={() => onCategorySelect(c.slug)}
             className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${
               selectedCategory === c.slug
-                ? "bg-emerald-400 text-slate-950 font-bold shadow-md shadow-emerald-500/20"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "bg-[#00df82] text-slate-950 font-bold shadow-md shadow-emerald-500/20"
+                : "bg-white text-slate-600 hover:text-slate-900 border border-stone-200 shadow-xs"
             }`}
           >
             {c.name}

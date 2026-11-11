@@ -51,7 +51,7 @@ export default function EditorFormInputs({
       {/* Title & Slug */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="md:col-span-2">
-          <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             Article Title *
           </label>
           <input
@@ -60,17 +60,17 @@ export default function EditorFormInputs({
             placeholder="e.g. 10 Lessons from Launching on Product Hunt"
             value={title}
             onChange={(e) => onTitleChange(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-base font-semibold focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 text-base font-semibold focus:outline-none focus:border-[#059669] shadow-xs"
           />
         </div>
 
         <div>
-          <label className="flex items-center justify-between text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+          <label className="flex items-center justify-between text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             <span>URL Slug</span>
             <button
               type="button"
               onClick={onAutoSlugToggle}
-              className="text-[10px] text-emerald-400 lowercase"
+              className="text-[10px] text-[#059669] lowercase font-bold"
             >
               {autoSlug ? "(auto)" : "(custom)"}
             </button>
@@ -80,14 +80,14 @@ export default function EditorFormInputs({
             placeholder="url-slug"
             value={slug}
             onChange={(e) => onSlugChange(slugify(e.target.value))}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-emerald-300 text-sm font-mono focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-300 text-[#059669] text-sm font-mono focus:outline-none focus:border-[#059669] shadow-xs"
           />
         </div>
       </div>
 
       {/* Excerpt */}
       <div>
-        <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
           Summary / Excerpt * (1–2 sentences)
         </label>
         <textarea
@@ -96,20 +96,20 @@ export default function EditorFormInputs({
           placeholder="Key takeaways and summary displayed on article cards and search..."
           value={excerpt}
           onChange={(e) => onExcerptChange(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 resize-none"
+          className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] resize-none shadow-xs"
         />
       </div>
 
       {/* Category, Tags, Cover Image */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             Category
           </label>
           <select
             value={categoryName}
             onChange={(e) => onCategoryChange(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-slate-900 text-sm focus:outline-none focus:border-[#059669] shadow-xs"
           >
             <option value="Startup Strategy">Startup Strategy</option>
             <option value="Team & Culture">Team & Culture</option>
@@ -121,7 +121,7 @@ export default function EditorFormInputs({
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             Tags (comma separated)
           </label>
           <input
@@ -129,12 +129,12 @@ export default function EditorFormInputs({
             placeholder="No-Code, AI, Pitch Deck"
             value={tags}
             onChange={(e) => onTagsChange(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] shadow-xs"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             Cover Image URL
           </label>
           <input
@@ -142,29 +142,29 @@ export default function EditorFormInputs({
             placeholder="https://images.unsplash.com/..."
             value={coverImage}
             onChange={(e) => onCoverImageChange(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500"
+            className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] shadow-xs"
           />
         </div>
       </div>
 
       {/* Status Toggles */}
-      <div className="flex flex-wrap items-center gap-6 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-        <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-200">
+      <div className="flex flex-wrap items-center gap-6 p-4 rounded-xl bg-white border border-stone-200 shadow-xs">
+        <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-800">
           <input
             type="checkbox"
             checked={published}
             onChange={(e) => onPublishedChange(e.target.checked)}
-            className="w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 focus:ring-0"
+            className="w-4 h-4 rounded text-[#059669] border-stone-300 focus:ring-0"
           />
           <span>Published (visible to public)</span>
         </label>
 
-        <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-200">
+        <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-800">
           <input
             type="checkbox"
             checked={featured}
             onChange={(e) => onFeaturedChange(e.target.checked)}
-            className="w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 focus:ring-0"
+            className="w-4 h-4 rounded text-[#059669] border-stone-300 focus:ring-0"
           />
           <span>Feature as Top Masterclass Banner</span>
         </label>
@@ -172,7 +172,7 @@ export default function EditorFormInputs({
 
       {/* Content Markdown Area */}
       <div>
-        <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
           Content (Markdown Supported) *
         </label>
         <textarea
@@ -181,7 +181,7 @@ export default function EditorFormInputs({
           placeholder="Write in standard Markdown format (## Headings, > Quotes, - Lists, **bold**, etc.)..."
           value={content}
           onChange={(e) => onContentChange(e.target.value)}
-          className="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-800 text-slate-100 placeholder-slate-500 font-mono text-sm focus:outline-none focus:border-emerald-500 leading-relaxed"
+          className="w-full px-4 py-3 rounded-2xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 font-mono text-sm focus:outline-none focus:border-[#059669] leading-relaxed shadow-xs"
         />
       </div>
     </>

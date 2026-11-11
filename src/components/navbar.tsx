@@ -43,18 +43,18 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 py-3 shadow-xl shadow-black/40"
-          : "bg-slate-950/40 backdrop-blur-md py-4 border-b border-slate-900/60"
+          ? "bg-[#FDFCF7]/90 backdrop-blur-xl border-b border-stone-200/90 py-3 shadow-sm"
+          : "bg-[#FDFCF7]/75 backdrop-blur-md py-4 border-b border-stone-200/60"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo - As in Tactyqal.com */}
+        {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-slate-900 border border-emerald-500/40 text-emerald-400 shadow-md shadow-emerald-500/10 group-hover:scale-105 transition duration-200">
+          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-white border border-emerald-500/30 text-[#059669] shadow-sm group-hover:scale-105 transition duration-200">
             <Rocket className="w-5 h-5" />
           </div>
-          <span className="text-xl sm:text-2xl font-black tracking-tight text-white">
-            Tactyqal <span className="text-[#00df82]">Labs</span>
+          <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900">
+            Tactyqal <span className="text-[#059669]">Labs</span>
           </span>
         </Link>
 
@@ -67,10 +67,10 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
                   isActive
-                    ? "text-[#00df82] font-bold"
-                    : "text-slate-300 hover:text-white hover:bg-slate-900/60"
+                    ? "text-[#059669] font-bold bg-emerald-50"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-stone-100/80"
                 }`}
               >
                 {link.label}
@@ -84,22 +84,22 @@ export default function Navbar() {
           {/* Admin CMS Shortcut */}
           <Link
             href="/admin/blog"
-            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-300 bg-slate-900 border border-slate-800 hover:text-[#00df82] hover:border-slate-700 transition"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-700 bg-white border border-stone-200 hover:text-[#059669] hover:border-emerald-300 transition shadow-xs"
           >
-            <LayoutDashboard className="w-3.5 h-3.5 text-[#00df82]" />
+            <LayoutDashboard className="w-3.5 h-3.5 text-[#059669]" />
             <span>Admin CMS</span>
           </Link>
 
           {/* Phone Link */}
           <a
             href="tel:+919804772106"
-            className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-[#00df82] transition px-2 py-1"
+            className="flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#059669] transition px-2 py-1"
           >
-            <Phone className="w-3.5 h-3.5 text-[#00df82]" />
-            <span className="font-medium">+91-98047-72106</span>
+            <Phone className="w-3.5 h-3.5 text-[#059669]" />
+            <span className="font-semibold">+91-98047-72106</span>
           </a>
 
-          {/* Contact Pill - Exact Mint Green as in tactyqal.com screenshot */}
+          {/* Contact Pill */}
           <button
             onClick={() => dispatch(openConsultationModal("Navbar Contact"))}
             className="px-5 py-2 rounded-full text-xs font-bold text-slate-950 bg-[#00df82] hover:bg-[#00c975] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-emerald-500/20"
@@ -118,7 +118,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
+            className="p-2 rounded-xl bg-white border border-stone-200 text-slate-700 hover:text-slate-900"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -127,30 +127,30 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-800 bg-slate-950/98 backdrop-blur-2xl px-6 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
+        <div className="md:hidden border-b border-stone-200 bg-[#FDFCF7]/98 backdrop-blur-2xl px-6 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-xl">
           <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-900 transition"
+                className="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-stone-100 transition"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          <div className="pt-4 border-t border-slate-800 space-y-3">
+          <div className="pt-4 border-t border-stone-200 space-y-3">
             <Link
               href="/admin/blog"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-200"
+              className="flex items-center justify-between p-3 rounded-xl bg-white border border-stone-200 text-xs font-semibold text-slate-800"
             >
               <span className="flex items-center gap-2">
-                <LayoutDashboard className="w-4 h-4 text-emerald-400" /> Blog Admin CMS
+                <LayoutDashboard className="w-4 h-4 text-[#059669]" /> Blog Admin CMS
               </span>
-              <ArrowRight className="w-4 h-4 text-slate-500" />
+              <ArrowRight className="w-4 h-4 text-slate-400" />
             </Link>
 
             <button

@@ -20,7 +20,7 @@ export default function FundabilityQuizView() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
           1. Do you have a clickable prototype or functioning app?
         </label>
         <div className="grid grid-cols-2 gap-3">
@@ -29,8 +29,8 @@ export default function FundabilityQuizView() {
             onClick={() => setHasWorkingPrototype("yes")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               hasWorkingPrototype === "yes"
-                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
-                : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
+                ? "bg-emerald-50 border-[#059669] text-[#059669] font-bold shadow-xs"
+                : "bg-stone-50 border-stone-200 text-slate-600 hover:text-slate-900 hover:bg-stone-100"
             }`}
           >
             Yes (Functional / Clickable)
@@ -40,8 +40,8 @@ export default function FundabilityQuizView() {
             onClick={() => setHasWorkingPrototype("no")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               hasWorkingPrototype === "no"
-                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
-                : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
+                ? "bg-emerald-50 border-[#059669] text-[#059669] font-bold shadow-xs"
+                : "bg-stone-50 border-stone-200 text-slate-600 hover:text-slate-900 hover:bg-stone-100"
             }`}
           >
             No (Idea Stage Only)
@@ -50,7 +50,7 @@ export default function FundabilityQuizView() {
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
           2. How many prospective users have you interviewed?
         </label>
         <div className="grid grid-cols-3 gap-3">
@@ -61,8 +61,8 @@ export default function FundabilityQuizView() {
               onClick={() => setCustomerInterviews(tier)}
               className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
                 customerInterviews === tier
-                  ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
-                  : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
+                  ? "bg-emerald-50 border-[#059669] text-[#059669] font-bold shadow-xs"
+                  : "bg-stone-50 border-stone-200 text-slate-600 hover:text-slate-900 hover:bg-stone-100"
               }`}
             >
               {tier} interviews
@@ -72,7 +72,7 @@ export default function FundabilityQuizView() {
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
           3. Can this startup charge users or sponsors immediately?
         </label>
         <div className="grid grid-cols-2 gap-3">
@@ -81,8 +81,8 @@ export default function FundabilityQuizView() {
             onClick={() => setMonetizationReady("yes")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               monetizationReady === "yes"
-                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
-                : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
+                ? "bg-emerald-50 border-[#059669] text-[#059669] font-bold shadow-xs"
+                : "bg-stone-50 border-stone-200 text-slate-600 hover:text-slate-900 hover:bg-stone-100"
             }`}
           >
             Yes (Clear Revenue Model)
@@ -92,8 +92,8 @@ export default function FundabilityQuizView() {
             onClick={() => setMonetizationReady("no")}
             className={`py-2 px-4 rounded-xl border text-sm font-medium transition ${
               monetizationReady === "no"
-                ? "bg-emerald-500/20 border-[#00df82] text-white font-bold"
-                : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
+                ? "bg-emerald-50 border-[#059669] text-[#059669] font-bold shadow-xs"
+                : "bg-stone-50 border-stone-200 text-slate-600 hover:text-slate-900 hover:bg-stone-100"
             }`}
           >
             Not Yet (Free / Ads)
@@ -103,18 +103,18 @@ export default function FundabilityQuizView() {
 
       <button
         onClick={calculateFundability}
-        className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-sm shadow-md transition"
+        className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-md transition"
       >
         <BarChart3 className="w-4 h-4" /> Calculate Fundability & Grant Readiness
       </button>
 
       {quizScore !== null && (
-        <div className="p-5 rounded-2xl bg-slate-800/90 border border-slate-700 text-center">
-          <div className="text-4xl font-extrabold text-emerald-400">{quizScore} / 100</div>
-          <div className="text-sm font-semibold text-white mt-1">
+        <div className="p-5 rounded-2xl bg-[#FAF8F5] border border-stone-200 text-center shadow-xs">
+          <div className="text-4xl font-extrabold text-[#059669]">{quizScore} / 100</div>
+          <div className="text-sm font-semibold text-slate-900 mt-1">
             {quizScore >= 80 ? "High Fundability & Grant Potential" : "Needs Rapid Prototype & Validation"}
           </div>
-          <p className="text-xs text-slate-400 mt-2 max-w-md mx-auto">
+          <p className="text-xs text-slate-600 mt-2 max-w-md mx-auto">
             Our 8-week 1:1 mentorship program equips teens to build functional apps, launch on Product Hunt, and qualify for young founder grants.
           </p>
         </div>

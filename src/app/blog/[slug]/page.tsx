@@ -43,8 +43,8 @@ export default function BlogPostReaderPage() {
 
   if (loading) {
     return (
-      <div className="pt-40 pb-32 min-h-screen bg-slate-950 text-center text-slate-400">
-        <div className="w-6 h-6 border-2 border-[#00df82] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+      <div className="pt-40 pb-32 min-h-screen bg-[#FDFCF7] text-center text-slate-500">
+        <div className="w-6 h-6 border-2 border-[#059669] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
         <p className="text-sm">Loading article...</p>
       </div>
     );
@@ -52,12 +52,12 @@ export default function BlogPostReaderPage() {
 
   if (!post) {
     return (
-      <div className="pt-40 pb-32 min-h-screen bg-slate-950 text-center text-slate-100">
+      <div className="pt-40 pb-32 min-h-screen bg-[#FDFCF7] text-center text-slate-900">
         <h2 className="text-2xl font-bold">Article not found</h2>
-        <p className="text-sm text-slate-400 mt-2">The article you requested could not be located.</p>
+        <p className="text-sm text-slate-600 mt-2">The article you requested could not be located.</p>
         <Link
           href="/blog"
-          className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00df82] text-slate-950 text-xs font-bold"
+          className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00df82] text-slate-950 text-xs font-bold shadow-md shadow-emerald-500/20"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Knowledge Hub
         </Link>
@@ -66,19 +66,19 @@ export default function BlogPostReaderPage() {
   }
 
   return (
-    <article className="pt-32 pb-24 min-h-screen bg-slate-950 text-slate-100">
+    <article className="pt-32 pb-24 min-h-screen bg-[#FDFCF7] text-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-slate-400 mb-8">
-          <Link href="/" className="hover:text-white transition">
+        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-8">
+          <Link href="/" className="hover:text-[#059669] transition">
             Home
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          <Link href="/blog" className="hover:text-white transition">
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+          <Link href="/blog" className="hover:text-[#059669] transition">
             Blog
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          <span className="text-slate-300 truncate max-w-xs">{post.title}</span>
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+          <span className="text-slate-800 font-medium truncate max-w-xs">{post.title}</span>
         </nav>
 
         {/* Header with Title, Author, Meta */}
@@ -86,7 +86,7 @@ export default function BlogPostReaderPage() {
 
         {/* Featured Cover Image */}
         {post.coverImage && (
-          <div className="relative aspect-[16/9] rounded-3xl overflow-hidden mb-12 bg-slate-900 border border-slate-800">
+          <div className="relative aspect-[16/9] rounded-3xl overflow-hidden mb-12 bg-stone-100 border border-stone-200/90 shadow-sm">
             <img
               src={post.coverImage}
               alt={post.title}
@@ -100,12 +100,12 @@ export default function BlogPostReaderPage() {
 
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
-          <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-2">
-            <span className="text-xs uppercase font-bold text-slate-500 mr-2">Tags:</span>
+          <div className="mt-12 pt-6 border-t border-stone-200 flex flex-wrap items-center gap-2">
+            <span className="text-xs uppercase font-bold text-slate-400 mr-2">Tags:</span>
             {post.tags.map((t) => (
               <span
                 key={t}
-                className="px-3 py-1 rounded-lg text-xs bg-slate-900 border border-slate-800 text-slate-300"
+                className="px-3 py-1 rounded-lg text-xs bg-white border border-stone-200 text-slate-700 shadow-xs"
               >
                 #{t}
               </span>
@@ -114,21 +114,21 @@ export default function BlogPostReaderPage() {
         )}
 
         {/* Bottom Mentorship Callout */}
-        <div className="mt-16 p-8 rounded-3xl bg-slate-900 border border-slate-800 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-8 rounded-3xl bg-white border border-stone-200 shadow-lg text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00df82] uppercase tracking-wider mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#059669] uppercase tracking-wider mb-1">
               8-Week 1:1 Incubator
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white">
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900">
               Want to build and launch your own app?
             </h3>
-            <p className="text-sm text-slate-300 mt-1 max-w-md">
+            <p className="text-sm text-slate-600 mt-1 max-w-md">
               Apply to join Tactyqal Labs and get paired with an expert founder to build your full-stack app.
             </p>
           </div>
           <button
             onClick={() => dispatch(openConsultationModal(`Interested after reading: ${post.title}`))}
-            className="shrink-0 px-7 py-3 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/20 transition hover:scale-105"
+            className="shrink-0 px-7 py-3 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-md shadow-emerald-500/20 transition hover:scale-105"
           >
             Book Free Consultation
           </button>
@@ -138,7 +138,7 @@ export default function BlogPostReaderPage() {
         <div className="mt-12 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white transition"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#059669] transition"
           >
             <ArrowLeft className="w-4 h-4" /> Back to all articles
           </Link>

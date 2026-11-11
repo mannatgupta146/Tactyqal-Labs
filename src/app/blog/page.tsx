@@ -61,27 +61,27 @@ export default function BlogCatalogPage() {
   );
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-slate-950 text-slate-100">
+    <div className="pt-32 pb-24 min-h-screen bg-[#FDFCF7] text-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-slate-900">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-stone-200">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00df82] text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-3">
               <Sparkles className="w-3.5 h-3.5" /> Tactyqal Insights
             </div>
-            <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
               Founder & Builder Knowledge Hub
             </h1>
-            <p className="mt-3 text-base sm:text-lg text-slate-400 max-w-2xl">
+            <p className="mt-3 text-base sm:text-lg text-slate-600 max-w-2xl">
               Curated masterclasses, elevator pitch teardowns, and validation frameworks from the mentors at Tactyqal Labs.
             </p>
           </div>
 
           <Link
             href="/admin/blog"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 text-emerald-300 hover:text-white border border-slate-800 hover:border-slate-700 text-xs font-bold transition shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-stone-50 text-slate-700 hover:text-[#059669] border border-stone-200 text-xs font-bold transition shadow-xs"
           >
-            <LayoutDashboard className="w-4 h-4 text-[#00df82]" />
+            <LayoutDashboard className="w-4 h-4 text-[#059669]" />
             <span>Manage Content (Admin CMS)</span>
           </Link>
         </div>
@@ -97,8 +97,8 @@ export default function BlogCatalogPage() {
 
         {/* Loading Spinner */}
         {loading && (
-          <div className="py-20 text-center text-slate-400 text-sm flex items-center justify-center gap-2">
-            <div className="w-5 h-5 border-2 border-[#00df82] border-t-transparent rounded-full animate-spin" />
+          <div className="py-20 text-center text-slate-500 text-sm flex items-center justify-center gap-2">
+            <div className="w-5 h-5 border-2 border-[#059669] border-t-transparent rounded-full animate-spin" />
             <span>Loading articles from API...</span>
           </div>
         )}
@@ -120,8 +120,8 @@ export default function BlogCatalogPage() {
         {/* Empty State */}
         {!loading && posts.length === 0 && (
           <div className="py-24 text-center">
-            <h3 className="text-xl font-bold text-white">No articles found</h3>
-            <p className="text-sm text-slate-400 mt-2">
+            <h3 className="text-xl font-bold text-slate-900">No articles found</h3>
+            <p className="text-sm text-slate-600 mt-2">
               Try adjusting your search keyword or clearing the selected category filter.
             </p>
             <button
@@ -129,7 +129,7 @@ export default function BlogCatalogPage() {
                 dispatch(setSearchQuery(""));
                 dispatch(setSelectedCategory("all"));
               }}
-              className="mt-4 px-5 py-2 rounded-xl bg-[#00df82] text-slate-950 font-bold text-xs"
+              className="mt-4 px-5 py-2 rounded-xl bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-xs shadow-md shadow-emerald-500/20"
             >
               Reset Filters
             </button>

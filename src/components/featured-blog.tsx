@@ -26,25 +26,25 @@ export default function FeaturedBlog() {
   }, []);
 
   return (
-    <section id="blog" className="py-24 bg-slate-900/40 relative border-t border-slate-800">
+    <section id="blog" className="py-24 bg-[#FDFCF7] relative border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-3">
               Founder Knowledge Base
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Learn from Industry Experts
             </h2>
-            <p className="mt-2 text-base text-slate-300 max-w-xl">
+            <p className="mt-2 text-base text-slate-600 max-w-xl">
               Practical guides on validation, elevator pitches, team-building, and no-code architecture.
             </p>
           </div>
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 hover:text-emerald-300 transition"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#059669] hover:text-[#047857] transition"
           >
             <span>Read All Articles</span>
             <ArrowRight className="w-4 h-4" />
@@ -57,47 +57,47 @@ export default function FeaturedBlog() {
             <Link
               key={post._id || post.slug}
               href={`/blog/${post.slug}`}
-              className="group rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
+              className="group rounded-3xl bg-white border border-stone-200/90 overflow-hidden hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col justify-between"
             >
               <div>
                 {/* Cover Image */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-slate-800">
+                <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
                   <img
                     src={post.coverImage || "https://images.unsplash.com/photo-1551836022-d5d88e9218df"}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-slate-950/80 backdrop-blur-md text-emerald-400 border border-white/10">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur-md text-[#059669] border border-stone-200 shadow-xs">
                     {post.category?.name || "Startup Guide"}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs text-slate-400 mb-2">
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-emerald-400" /> {post.readTimeMin} min read
+                  <div className="flex items-center gap-3 text-xs text-slate-500 mb-2">
+                    <span className="flex items-center gap-1 font-medium">
+                      <Clock className="w-3.5 h-3.5 text-[#059669]" /> {post.readTimeMin} min read
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-slate-500" /> {formatDate(post.publishedAt)}
+                      <Calendar className="w-3.5 h-3.5 text-slate-400" /> {formatDate(post.publishedAt)}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors line-clamp-2 leading-snug">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#059669] transition-colors line-clamp-2 leading-snug">
                     {post.title}
                   </h3>
 
-                  <p className="mt-2 text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
               {/* Bottom Card Footer */}
-              <div className="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center justify-between text-xs font-semibold text-emerald-400">
-                <span className="text-slate-400">By {post.author?.name || "Tactyqal Team"}</span>
-                <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <div className="px-6 pb-6 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-[#059669]">
+                <span className="text-slate-500 font-normal">By {post.author?.name || "Tactyqal Team"}</span>
+                <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform font-bold">
                   Read More →
                 </span>
               </div>

@@ -22,25 +22,25 @@ export default function AdminStatsBar({
       label: "Total Articles",
       value: stats?.totalPosts || totalFallback,
       icon: FileText,
-      iconColor: "text-[#00df82]",
+      iconColor: "text-[#059669]",
     },
     {
       label: "Published",
       value: stats?.publishedPosts || publishedFallback,
       icon: CheckCircle2,
-      iconColor: "text-emerald-400",
+      iconColor: "text-emerald-600",
     },
     {
       label: "Drafts",
       value: stats?.draftPosts || draftsFallback,
       icon: Clock,
-      iconColor: "text-amber-400",
+      iconColor: "text-amber-600",
     },
     {
       label: "Total Views",
       value: stats?.totalViews || viewsFallback,
       icon: Eye,
-      iconColor: "text-cyan-400",
+      iconColor: "text-teal-600",
     },
   ];
 
@@ -49,12 +49,12 @@ export default function AdminStatsBar({
       {statCards.map((card) => {
         const Icon = card.icon;
         return (
-          <div key={card.label} className="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-            <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
+          <div key={card.label} className="p-5 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="flex items-center justify-between text-slate-500 text-xs font-medium">
               <span>{card.label}</span>
               <Icon className={`w-4 h-4 ${card.iconColor}`} />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-white mt-2">{card.value}</div>
+            <div className="text-2xl sm:text-3xl font-black text-slate-900 mt-2">{card.value}</div>
           </div>
         );
       })}

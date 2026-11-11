@@ -6,21 +6,21 @@ interface BlogContentRendererProps {
 
 export default function BlogContentRenderer({ content }: BlogContentRendererProps) {
   return (
-    <div className="prose prose-invert prose-emerald max-w-none text-slate-200 leading-relaxed font-normal space-y-5 text-base sm:text-lg">
+    <div className="prose prose-emerald max-w-none text-slate-700 leading-relaxed font-normal space-y-5 text-base sm:text-lg">
       {content.split("\n\n").map((block, idx) => {
         if (block.startsWith("# ")) {
           return null; // Skip redundant H1
         }
         if (block.startsWith("## ")) {
           return (
-            <h2 key={idx} className="text-2xl sm:text-3xl font-extrabold text-white mt-10 mb-4 tracking-tight">
+            <h2 key={idx} className="text-2xl sm:text-3xl font-black text-slate-900 mt-10 mb-4 tracking-tight">
               {block.replace("## ", "")}
             </h2>
           );
         }
         if (block.startsWith("### ")) {
           return (
-            <h3 key={idx} className="text-xl sm:text-2xl font-bold text-[#00df82] mt-6 mb-2">
+            <h3 key={idx} className="text-xl sm:text-2xl font-bold text-[#059669] mt-6 mb-2">
               {block.replace("### ", "")}
             </h3>
           );
@@ -29,7 +29,7 @@ export default function BlogContentRenderer({ content }: BlogContentRendererProp
           return (
             <blockquote
               key={idx}
-              className="p-4 sm:p-5 rounded-2xl bg-emerald-950/20 border-l-4 border-[#00df82] text-slate-200 italic my-6 text-base"
+              className="p-4 sm:p-5 rounded-2xl bg-emerald-50/80 border-l-4 border-[#059669] text-slate-800 italic my-6 text-base"
             >
               {block.replace("> ", "")}
             </blockquote>
@@ -38,7 +38,7 @@ export default function BlogContentRenderer({ content }: BlogContentRendererProp
         if (block.startsWith("- ") || block.startsWith("* ")) {
           const items = block.split("\n");
           return (
-            <ul key={idx} className="space-y-2 my-4 pl-4 list-disc marker:text-[#00df82]">
+            <ul key={idx} className="space-y-2 my-4 pl-4 list-disc marker:text-[#059669]">
               {items.map((it, i) => (
                 <li key={i}>{it.replace(/^[-*]\s*/, "")}</li>
               ))}
@@ -48,7 +48,7 @@ export default function BlogContentRenderer({ content }: BlogContentRendererProp
         if (/^\d+\.\s/.test(block)) {
           const items = block.split("\n");
           return (
-            <ol key={idx} className="space-y-2 my-4 pl-4 list-decimal marker:text-[#00df82]">
+            <ol key={idx} className="space-y-2 my-4 pl-4 list-decimal marker:text-[#059669]">
               {items.map((it, i) => (
                 <li key={i}>{it.replace(/^\d+\.\s*/, "")}</li>
               ))}

@@ -15,24 +15,24 @@ export default function AssessmentToolModal() {
   if (!selectedTool) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-slate-900 border border-slate-700/80 shadow-2xl p-6 sm:p-8 text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-stone-200 shadow-2xl p-6 sm:p-8 text-slate-900">
         <button
           onClick={() => dispatch(closeAssessmentTool())}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-900 hover:bg-stone-100 transition"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00df82] text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#059669] text-xs font-semibold uppercase tracking-wider mb-2">
             <Sparkles className="w-3.5 h-3.5" /> Interactive Founder Diagnostic
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             {selectedTool}
           </h2>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="text-slate-600 text-sm mt-1">
             Free diagnostic tool used by 1,000+ teen founders and mentors at Tactyqal Labs.
           </p>
         </div>
@@ -47,8 +47,8 @@ export default function AssessmentToolModal() {
         )}
 
         {/* Modal Footer CTA */}
-        <div className="mt-6 pt-5 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-xs text-slate-400">
+        <div className="mt-6 pt-5 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="text-xs text-slate-500">
             Want us to analyze your idea in depth?
           </span>
           <button

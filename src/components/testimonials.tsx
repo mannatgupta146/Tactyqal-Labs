@@ -6,17 +6,17 @@ import { Sparkles, Star, Quote, CheckCircle2 } from "lucide-react";
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-slate-950 relative border-t border-slate-900">
+    <section className="py-24 bg-white relative border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> Alumni Reviews
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Alumni Reviews
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             What Our Students Say
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
             Hear directly from young founders who moved from an abstract idea to a functional application and college admissions edge.
           </p>
         </div>
@@ -26,35 +26,35 @@ export default function Testimonials() {
           {testimonialsList.map((r) => (
             <div
               key={r.name}
-              className="rounded-3xl bg-slate-900/60 border border-slate-800/80 p-6 sm:p-7 flex flex-col justify-between hover:border-amber-500/30 hover:bg-slate-900 transition-all duration-300"
+              className="rounded-3xl bg-[#FAF8F5] border border-stone-200/90 p-6 sm:p-7 flex flex-col justify-between hover:border-amber-400 hover:bg-white hover:shadow-xl transition-all duration-300 shadow-xs"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1 text-amber-400">
+                  <div className="flex items-center gap-1 text-amber-500">
                     {[...Array(r.rating)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
-                  <Quote className="w-6 h-6 text-slate-700" />
+                  <Quote className="w-6 h-6 text-stone-300" />
                 </div>
 
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
                   &ldquo;{r.quote}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center gap-3">
+              <div className="mt-6 pt-4 border-t border-stone-100 flex items-center gap-3">
                 <img
                   src={r.avatar}
                   alt={r.name}
-                  className="w-11 h-11 rounded-full object-cover border border-slate-700"
+                  className="w-11 h-11 rounded-full object-cover border border-stone-200"
                 />
                 <div>
-                  <div className="text-sm font-bold text-white flex items-center gap-1.5">
+                  <div className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                     {r.name}
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#059669]" />
                   </div>
-                  <div className="text-xs text-slate-400">
+                  <div className="text-xs text-slate-500">
                     {r.role} • {r.age}
                   </div>
                 </div>
