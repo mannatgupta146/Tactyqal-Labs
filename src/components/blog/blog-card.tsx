@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { BlogPost } from "../../lib/types";
-import { formatDate } from "../../lib/utils";
+import { formatDate, getBlogCoverImage } from "../../lib/utils";
 import { Clock, Eye } from "lucide-react";
 
 interface BlogCardProps {
@@ -17,7 +17,7 @@ export default function BlogCard({ post }: BlogCardProps) {
       <div>
         <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
           <img
-            src={post.coverImage || "https://images.unsplash.com/photo-1551836022-d5d88e9218df"}
+            src={getBlogCoverImage(post.coverImage, post.slug, post.title)}
             alt={post.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />

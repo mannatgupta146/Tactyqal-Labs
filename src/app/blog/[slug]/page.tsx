@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { api } from "../../../lib/api";
 import { BlogPost } from "../../../lib/types";
+import { initialPosts } from "../../../../backend/seeds/seedData";
 import { useAppDispatch } from "../../../store/hooks";
 import { openConsultationModal, showToast } from "../../../store/uiSlice";
+import { getBlogCoverImage } from "../../../lib/utils";
 import BlogPostHeader from "../../../components/blog/blog-post-header";
 import BlogContentRenderer from "../../../components/blog/blog-content-renderer";
 import { ArrowLeft, ChevronRight } from "lucide-react";
@@ -24,9 +26,16 @@ export default function BlogPostReaderPage() {
     const fetchPost = async () => {
       try {
         const data = await api.getPostBySlug(slug);
-        setPost(data);
+        if (data) {
+          setPost(data);
+        } else {
+          const fallback = initialPosts.find((p) => p.slug === slug);
+          if (fallback) setPost(fallback as unknown as BlogPost);
+        }
       } catch (err) {
         console.error("Failed to load post:", err);
+        const fallback = initialPosts.find((p) => p.slug === slug);
+        if (fallback) setPost(fallback as unknown as BlogPost);
       } finally {
         setLoading(false);
       }
@@ -88,7 +97,7 @@ export default function BlogPostReaderPage() {
         {post.coverImage && (
           <div className="relative aspect-[16/9] rounded-3xl overflow-hidden mb-12 bg-stone-100 border border-stone-200/90 shadow-sm">
             <img
-              src={post.coverImage}
+              src={getBlogCoverImage(post.coverImage, post.slug, post.title)}
               alt={post.title}
               className="w-full h-full object-cover"
             />

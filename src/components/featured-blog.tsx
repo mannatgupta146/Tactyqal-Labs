@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { api } from "../lib/api";
 import { BlogPost } from "../lib/types";
+import { getBlogCoverImage } from "../lib/utils";
 import { initialPosts } from "../../backend/seeds/seedData";
 
 export default function FeaturedBlog() {
@@ -60,7 +61,7 @@ export default function FeaturedBlog() {
                 {/* Cover Image inside card padding */}
                 <div className="rounded-xl overflow-hidden aspect-[16/10] bg-stone-100 mb-4 shadow-2xs">
                   <img
-                    src={post.coverImage || "/images/blog-articles/elevator-pitch-for-entrepreneurs.png"}
+                    src={getBlogCoverImage(post.coverImage, post.slug, post.title)}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"

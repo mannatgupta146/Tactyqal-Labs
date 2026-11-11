@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setSearchQuery, setSelectedCategory } from "../../store/blogSlice";
 import { api } from "../../lib/api";
 import { BlogPost, BlogCategory } from "../../lib/types";
+import { initialPosts } from "../../../backend/seeds/seedData";
 import BlogSearchFilter from "../../components/blog/blog-search-filter";
 import BlogCard from "../../components/blog/blog-card";
 import FeaturedBlogCard from "../../components/blog/featured-blog-card";
@@ -43,9 +44,18 @@ export default function BlogCatalogPage() {
           category: selectedCategory === "all" ? undefined : selectedCategory,
           status: "published",
         });
-        setPosts(res.posts);
+        if (res.posts && res.posts.length > 0) {
+          setPosts(res.posts);
+        } else if (!searchQuery && (!selectedCategory || selectedCategory === "all")) {
+          setPosts(initialPosts as unknown as BlogPost[]);
+        } else {
+          setPosts([]);
+        }
       } catch (err) {
         console.error("Error fetching posts:", err);
+        if (!searchQuery && (!selectedCategory || selectedCategory === "all")) {
+          setPosts(initialPosts as unknown as BlogPost[]);
+        }
       } finally {
         setLoading(false);
       }
