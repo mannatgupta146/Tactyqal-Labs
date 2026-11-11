@@ -77,7 +77,7 @@ An elevator pitch is the fastest way to describe what your startup does, who it 
 - **Jargon Overload:** Avoid buzzwords that obscure what your product actually does.
 - **Forgetting the Hook:** Start with an intriguing statistic or question that demands attention.
 - **No Clear Call to Action:** Always close with an invitation for a coffee, a product demo, or a follow-up conversation.`,
-    coverImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/blog-articles/elevator-pitch-for-entrepreneurs.png",
     category: {
       name: "Startup Strategy",
       slug: "startup-strategy",
@@ -113,7 +113,7 @@ Every successful early-stage product startup requires three core archetypes:
 
 ## Why No-Code & AI Agents Change the Equation
 Modern tools allow a single 15-year-old student to perform the work that previously required a 5-person engineering department. By combining modern front-end frameworks with AI backend logic and automated workflows, young entrepreneurs can build functional MVPs in just weeks without waiting months to find a technical co-founder.`,
-    coverImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/blog-articles/how-to-build-tech-startup-team.png",
     category: {
       name: "Team & Culture",
       slug: "team-and-culture",
@@ -149,7 +149,7 @@ The default state of a startup is failure. According to industry data, over 90% 
 
 ## How We Validate Ideas at Tactyqal Labs
 In Week 1-2 of our mentorship program, we run every student's concept through our proprietary **Problem-Solution Fit Matrix**. Students interview at least 15 real potential users before touching Figma or code.`,
-    coverImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/blog-articles/startups-fail-at-idea-stage.png",
     category: {
       name: "Startup Validation",
       slug: "startup-validation",
@@ -189,7 +189,7 @@ You no longer need a 4-year computer science degree to build software that impac
 
 ### 4. Eco & Sustainability Tools
 - **Food Surplus Redistribution Hub:** Connecting local restaurants with discounted end-of-day sales.`,
-    coverImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/blog-articles/no-code-startup-ideas.webp",
     category: {
       name: "No-Code & Tech",
       slug: "no-code-and-tech",
@@ -224,7 +224,7 @@ Supermarkets frequently discount perishable goods on their final shelf-life days
 
 ### 3. College Campus Food Rescue Network
 Universities throw away hundreds of kilograms of prepared catering food after conferences and events. An on-demand notification system can alert hungry students within a 5-minute walking radius whenever compliant leftover food is ready for pickup.`,
-    coverImage: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/blog-articles/food-waste-startup-ideas.jpg",
     category: {
       name: "Social Impact",
       slug: "social-impact",
@@ -263,7 +263,7 @@ Like our student project **AudioNova**, which produces high-velocity AI audio tr
 
 ### 3. Micro-Communities & Virtual Pet Adoption
 Platforms like **Paws of Promise**, bridging the gap between local animal shelters and young animal advocates through gamified virtual pet sponsorship.`,
-    coverImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/blog-articles/generation-z-startup-ideas.jpg",
     category: {
       name: "Startup Ideas",
       slug: "startup-ideas",

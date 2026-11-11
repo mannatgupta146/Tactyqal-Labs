@@ -28,7 +28,7 @@ export default function SuccessStories() {
             <div
               key={story.id}
               onClick={() => setActiveStoryModal(story)}
-              className="group cursor-pointer rounded-2xl bg-[#FAF8F5] border border-stone-200/90 p-4 sm:p-5 shadow-xs hover:border-[#00df82] hover:bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col"
+              className="group cursor-pointer rounded-2xl bg-[#FAF8F5] border border-stone-200/90 p-4 sm:p-5 shadow-xs hover:border-stone-300 hover:bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10 flex flex-col"
             >
               {/* Natural, Compact Header - Tight Spacing with Zero Empty Gap Below */}
               <div className="text-center min-h-[58px] sm:min-h-[64px] flex flex-col justify-start">

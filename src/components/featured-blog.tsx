@@ -50,13 +50,17 @@ export default function FeaturedBlog() {
           {posts.map((post) => (
             <div
               key={post._id || post.slug}
-              className="group rounded-2xl bg-white border border-stone-200/90 p-5 shadow-xs hover:border-[#00df82] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="group relative rounded-2xl bg-white border border-stone-200/90 p-5 shadow-xs hover:border-stone-300 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden"
             >
-              <div>
+              {/* Top Luminous Light Sheen */}
+              <div className="absolute top-0 inset-x-6 h-[2px] bg-gradient-to-r from-transparent via-[#00df82] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-400/15 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              <div className="relative z-10">
                 {/* Cover Image inside card padding */}
-                <div className="rounded-xl overflow-hidden aspect-[16/10] bg-stone-100 mb-4">
+                <div className="rounded-xl overflow-hidden aspect-[16/10] bg-stone-100 mb-4 shadow-2xs">
                   <img
-                    src={post.coverImage || "https://images.unsplash.com/photo-1551836022-d5d88e9218df"}
+                    src={post.coverImage || "/images/blog-articles/elevator-pitch-for-entrepreneurs.png"}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
