@@ -1,10 +1,11 @@
 # Project Setup & Execution Guide
-## Tactyqal Labs Modern Web Platform
+## Tactyqal Labs Modern Web Platform & Blog Architecture
 
 ### Prerequisites
 - Node.js 18.17.0+ or Node.js 20+
-- npm or pnpm or yarn
+- npm, pnpm, or yarn
 - Git
+- *(Optional)* Local MongoDB daemon or MongoDB Atlas URI (a zero-configuration in-memory fallback activates automatically if MongoDB is not running locally).
 
 ---
 
@@ -22,25 +23,39 @@
    ```
 
 3. **Configure Environment Variables:**
-   A `.env` file will be provided with defaults:
+   A `.env` file is provided with sensible development defaults:
    ```env
-   DATABASE_URL="mongodb://localhost:27017/tactyqal"
    PORT=5000
-   NEXT_PUBLIC_API_URL="http://localhost:5000/api"
+   MONGODB_URI=mongodb://localhost:27017/tactyqal
+   NEXT_PUBLIC_API_URL=http://localhost:5000/api
+   NODE_ENV=development
    ```
 
-4. **Initialize Database & Seed Data:**
-   Run Prisma migrations and populate the database with the original Tactyqal blog posts:
+4. **Initialize Database & Seed Real Tactyqal Data:**
+   Populate the database with all 6 original Tactyqal blog posts, categories, tags, and local cover image mappings:
    ```bash
-   npx prisma migrate dev --name init
-   npx prisma db seed
+   npm run seed
    ```
 
-5. **Start Development Server:**
+5. **Start Frontend & Backend Development Servers:**
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+   - **Frontend Platform:** [http://localhost:3000](http://localhost:3000)
+   - **Backend REST API:** [http://localhost:5000/api](http://localhost:5000/api)
+   - **Public Blog Feed:** [http://localhost:3000/blog](http://localhost:3000/blog)
+   - **Admin CMS Dashboard:** [http://localhost:3000/admin/blog](http://localhost:3000/admin/blog)
+
+6. **Run Automated End-to-End API Test Suite:**
+   ```bash
+   npm run test:api
+   ```
+   Executes automated tests validating all 8 REST endpoints (health, CRUD operations, analytics stats, lead capture).
+
+7. **Production Build Verification:**
+   ```bash
+   npm run client:build
+   ```
 
 ---
 
@@ -48,29 +63,17 @@
 
 - **`http://localhost:3000/`**: Modern Homepage Redesign (Task 1) featuring all 12 sections:
   - Hero with offer badge, metrics, and dual CTAs
-  - Real Students & Apps Gallery (KrishiDrishti, Elenor, One Last Chapter, etc.)
+  - Real Students & Apps Gallery (KrishiDrishti, Elenor, One Last Chapter, etc.) with screenshots in `/images/student-apps/`
   - 8-Week Curriculum Interactive Roadmap & Naval Ravikant quote
-  - Why Parents Choose Tactyqal Labs
-  - Interactive Startup Assessment Tools
-  - Testimonial Carousel & Review Cards
-  - Featured Blog Posts Grid (live from DB)
+  - Why Parents Choose Tactyqal Labs (8 feature cards)
+  - Interactive Startup Assessment Tools (Idea Generator & Fundability Quiz)
+  - Student & Parent Testimonials (100% authentic quotes & photos in `/images/student-reviews/`)
+  - Featured Blog Posts Grid (live dynamic feed from backend)
   - Limited Time Pricing Section (₹16,000 offer with money-back guarantee)
   - Interactive FAQ Accordion
-  - Contact Section & Consultation Booking Form
+  - Contact Section (Symmetric cards, WhatsApp action button, and consultation form)
 - **`http://localhost:3000/blog`**: Public Blog Platform (Task 2) with instant search, category filtering, reading time estimates.
-- **`http://localhost:3000/blog/[slug]`**: High-typography Blog Article Reader with related posts.
-- **`http://localhost:3000/admin/blog`**: Blog CMS Management Dashboard for creating, editing, publishing, and deleting posts.
-- **`http://localhost:3000/admin/blog/new`**: Create Post interface with live preview.
+- **`http://localhost:3000/blog/[slug]`**: High-typography Blog Article Reader with related posts and share triggers.
+- **`http://localhost:3000/admin/blog`**: Blog CMS Management Dashboard for monitoring, editing, publishing, and deleting posts.
+- **`http://localhost:3000/admin/blog/editor`**: Create/Edit Post interface with live Markdown preview and auto-slug generator.
 - **`http://localhost:5000/api/blog/posts`**: RESTful API endpoints for blog management.
-
----
-
-### Switching to PostgreSQL / Supabase for Production
-Simply update `prisma/schema.prisma` datasource provider:
-```prisma
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-```
-And set `DATABASE_URL="postgresql://user:password@host:5432/dbname?sslmode=require"` in your `.env`.

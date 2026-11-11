@@ -62,13 +62,14 @@ export default function ContactBookingForm() {
   };
 
   return (
-    <div className="rounded-3xl bg-white border border-stone-200 p-8 sm:p-10 shadow-lg">
-      <h3 className="text-2xl font-bold text-[#059669] mb-2">Book a Free Appointment</h3>
-      <p className="text-sm text-slate-600 mb-6">
-        Fill in your details below and we will confirm a convenient call time with our founder.
-      </p>
+    <div className="rounded-3xl bg-white border border-stone-200 p-8 sm:p-10 shadow-lg flex flex-col justify-between h-full">
+      <div>
+        <h3 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Book a Free Appointment</h3>
+        <p className="mt-2 text-sm text-slate-600 mb-6 leading-relaxed">
+          Fill in your details below and we will confirm a convenient call time with our founder.
+        </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
             Parent&apos;s Full Name *
@@ -160,6 +161,7 @@ export default function ContactBookingForm() {
           )}
         </button>
       </form>
+      </div>
     </div>
   );
 }

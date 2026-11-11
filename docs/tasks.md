@@ -18,7 +18,7 @@
 ### Phase 1: Planning, Documentation & Specifications
 - [x] Create Product Requirements Document (`docs/prd.md`) covering problem statement, personas, and 12 sections.
 - [x] Create Technical Requirements Document (`docs/trd.md`) detailing architecture, Mongoose schemas, and endpoints.
-- [x] Create Design System Guidelines (`docs/design.md`) detailing colors, tokens, typography, and GSAP animations.
+- [x] Create Design System Guidelines (`docs/design.md`) detailing colors, tokens, typography, asset structure, and GSAP animations.
 - [x] Create Master Task List (`docs/tasks.md`) with comprehensive phased checklist.
 - [x] Create REST API Specification (`docs/api-spec.md`) documenting request/response payloads.
 - [x] Create Ongoing Status Tracker (`docs/ongoing.md`).
@@ -33,9 +33,9 @@
 - [x] Configure npm scripts (`dev`, `client:dev`, `client:build`, `server:dev`, `server:start`, `seed`, `test:api`).
 - [x] Install dependencies with `npm install` (zero conflicting peer dependencies).
 - [x] Configure `tsconfig.json` with strict type checking and `@/*` path aliases.
-- [x] Configure `tailwind.config.ts` with custom brand colors (`tactyqal` indigo, violet, cyan, emerald, amber).
+- [x] Configure `tailwind.config.ts` with custom brand colors (Tactyqal mint `#00df82`, emerald `#059669`, warm cream `#FDFCF7`).
 - [x] Configure `postcss.config.js` with Tailwind and Autoprefixer.
-- [x] Configure `next.config.js` with remote image domains for Unsplash and Tactyqal.
+- [x] Configure `next.config.js` with URL rewrites for `/learn`, `/blog-articles`, `/apps`, and `/student-apps` mapping to `/images/...`.
 - [x] Create `.env` and `.env.example` with `PORT=5000`, `MONGODB_URI`, `NEXT_PUBLIC_API_URL`.
 - [x] Create `.gitignore` ignoring `node_modules`, `.next`, `build`, and logs.
 
@@ -58,7 +58,7 @@
   - [x] `createLead` & `getLeads` (`backend/controllers/leadController.ts`).
 - [x] Build Express Routes (`backend/routes/blogRoutes.ts`, `backend/routes/leadRoutes.ts`).
 - [x] Build Express Server Entrypoint (`backend/server.ts`): CORS, JSON parser, health check endpoint.
-- [x] Build Database Seeder (`backend/seeds/seedData.ts` & `backend/seeds/runSeed.ts`) with all 6 original Tactyqal blog posts:
+- [x] Build Database Seeder (`backend/seeds/seedData.ts` & `backend/seeds/runSeed.ts`) with all 6 original Tactyqal blog posts and verified local image covers:
   - [x] "The elevator pitch for business entrepreneurs"
   - [x] "How to build a tech startup team?"
   - [x] "11 reasons why startups fail at the idea stage"
@@ -106,7 +106,7 @@
   - [x] GSAP staggered entrance animation with `power3.out` easing.
 - [x] **Section 3 — Real Students & Apps Gallery (`src/components/success-stories.tsx`):**
   - [x] Category filter tabs (All, AI & ML, E-Commerce, Social Impact, EdTech).
-  - [x] 6 Real Student App cards with 3D hover effects, age badges, and highlight metrics:
+  - [x] 6 Real Student App cards with real app screenshots from `/images/student-apps/`:
     - [x] KrishiDrishti (AI soil analysis, 500+ farmers).
     - [x] Elenor Vegan Handbags (16yo, INR 9,000 week 1).
     - [x] One Last Chapter (13yo, INR 100,000/mo MRR).
@@ -127,11 +127,13 @@
     - [x] Startup Idea Generator (domain + audience picker -> generates 3 custom concepts).
     - [x] Fundability Assessment Quiz (diagnostic questions -> live 0–100% score calculation).
 - [x] **Section 7 — Student & Parent Testimonials (`src/components/testimonials.tsx`):**
-  - [x] Verified quote cards from Aarav Sharma, Isha Patel, Rohan Verma, Simran Kaur, Devansh Mehta, Priya Nair.
-  - [x] 5-star ratings, student avatars, verified badges, and roles.
+  - [x] 100% authentic quotes from `tactyqal.com` (Aarav, Isha, Rohan, Simran, Devansh, Priya).
+  - [x] Real alumni avatars stored locally in `/images/student-reviews/`.
+  - [x] 5-star ratings, comma icon, bottom avatar row with verified checkmark, and golden glow hover border.
 - [x] **Section 8 — Featured Blog Knowledge Base (`src/components/featured-blog.tsx`):**
   - [x] Dynamic API fetch pulling the latest 3 articles from `/api/blog/posts`.
-  - [x] Cover images, reading time, publish dates, and category pills.
+  - [x] Real local cover images resolved through `getBlogCoverImage()`.
+  - [x] Reading time, publish dates, and category pills.
   - [x] "Read All Articles" link to `/blog`.
 - [x] **Section 9 — Transparent Pricing Section (`src/components/pricing.tsx`):**
   - [x] Price anchor: ₹16,000 (strikethrough ₹25,000, 36% discount).
@@ -141,8 +143,10 @@
   - [x] "Enroll Now / Schedule Consultation" CTA button.
 - [x] **Section 10 — Frequently Asked Questions (`src/components/faq.tsx`):**
   - [x] Interactive accordion with 8 comprehensive answers addressing parents' top questions (no coding, admissions guarantee, app types, time commitment, revenue, alumni universities, ongoing support).
-- [x] **Section 11 — Contact & Appointment Booking (`src/components/contact-section.tsx`):**
-  - [x] Direct contact cards (tactyqal.labs@gmail.com, +91-98047-72106, Mon-Sat 9am-7pm).
+- [x] **Section 11 — Contact & Appointment Booking (`src/components/contact/`):**
+  - [x] Symmetrical 2-card layout with matching heights (`h-full flex flex-col justify-between`).
+  - [x] 4 clean contact rows (Email, Phone, Operating Hours, Response Time) with circular icon badges.
+  - [x] "Chat on WhatsApp" action button with official WhatsApp icon (`#25D366`) and explicit `#047857` styling.
   - [x] Embedded Consultation Booking Form with instant API submission and toast feedback.
 - [x] **Section 12 — Footer (`src/components/footer.tsx`):**
   - [x] Brand description, directory navigation links, legal, Devuty hire-a-thon badge.
@@ -194,10 +198,11 @@
 ---
 
 ### Phase 8: Quality Assurance, Verification & Submission
+- [x] Consolidated asset directory: All images organized under `public/images/` (`blog-articles`, `student-apps`, `student-reviews`).
 - [x] Next.js Client Production Build (`npm run client:build`): 7/7 routes compiled with zero errors.
 - [x] Automated End-to-End API Test Suite (`npm run test:api`): All 8 CRUD, stats, and lead endpoints verified 100%.
 - [x] Database seeding verified with clean reset script (`npm run seed`).
 - [x] Concurrently dev runner tested (`npm run dev`).
-- [x] Comprehensive documentation created: `prd.md`, `trd.md`, `design.md`, `tasks.md`, `ongoing.md`, `memory.md`, `api-spec.md`, `setup-guide.md`, `walkthrough-script.md`.
+- [x] Comprehensive documentation updated: `prd.md`, `trd.md`, `design.md`, `tasks.md`, `ongoing.md`, `memory.md`, `api-spec.md`, `setup-guide.md`, `walkthrough-script.md`.
 - [x] Comprehensive `README.md` written with architecture diagram, feature summary, and setup guide.
-- [x] Initialized Git repository, verified clean working tree, and committed all code.
+- [x] User-managed Git policy respected (no automated commits or pushes).

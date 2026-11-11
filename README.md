@@ -23,7 +23,7 @@
 
 ### The Solution
 This repository delivers a unified, high-performance TypeScript fullstack architecture that addresses both tasks in the hire-a-thon brief:
-1. **Task 1 — Homepage Redesign:** Complete modern redesign using **Next.js 14 App Router**, **Tailwind CSS**, and **GSAP** animations. Preserves 100% of original content, metrics, student case studies, and conversion hooks while delivering a world-class EdTech/SaaS aesthetic.
+1. **Task 1 — Homepage Redesign:** Complete modern redesign using **Next.js 14 App Router**, **Tailwind CSS**, and **GSAP** animations. Preserves 100% of original content, metrics, authentic student case studies, and conversion hooks while delivering a world-class EdTech/SaaS aesthetic.
 2. **Task 2 — Blog Backend & Management System:** Replaces WordPress with a scalable **Node.js + Express.js REST API**, **MongoDB with Mongoose**, **Redux Toolkit** client state, and a full-featured **Admin CMS Dashboard** supporting live markdown editing, slug auto-generation, reading time estimation, and category/tag management.
 
 ---
@@ -53,7 +53,7 @@ This repository delivers a unified, high-performance TypeScript fullstack archit
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                          MongoDB Database Cluster                           │
 │  - Collections: posts, categories, tags, consultationLeads, analytics       │
-│  - Seeded with original 6+ Tactyqal Labs articles & case studies            │
+│  - Seeded with original 6+ Tactyqal Labs articles & local image covers      │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -64,15 +64,15 @@ This repository delivers a unified, high-performance TypeScript fullstack archit
 ### 1. Task 1: Homepage Redesign (12 Sections)
 - **Glassmorphic Navigation:** Sticky header with logo mark, smooth scroll links, phone link, Admin CMS pill, and "Book Free Call" trigger.
 - **Hero Section (GSAP Staggered Entrance):** Ambient radial glows, limited-time offer pill, high-converting headline, dual CTAs, and animated social proof counter strip (`100+ Students Mentored`, `Top Tier Admits`, `₹ Millions Impact`, `1:1 Dedicated`).
-- **Student Success Stories Gallery:** Interactive category filter tabs (AI, E-Commerce, Social Impact, EdTech) with 3D cards for **KrishiDrishti**, **Elenor Vegan Handbags**, **One Last Chapter** (₹100k/mo MRR), **Paws of Promise**, **AudioNova**, and **Converza**. Includes modal deep-dives.
+- **Student Success Stories Gallery:** Interactive category filter tabs (AI, E-Commerce, Social Impact, EdTech) with real screenshot assets from `/images/student-apps/` for **KrishiDrishti**, **Elenor Vegan Handbags**, **One Last Chapter** (₹100k/mo MRR), **Paws of Promise**, **AudioNova**, and **Converza**. Includes modal deep-dives.
 - **8-Week Curriculum Roadmap:** Step-by-step sprint breakdown with deliverables checklist and iconic Naval Ravikant quote card.
 - **Why Parents Choose Us:** 8-card value grid highlighting 1:1 format, no-code/AI mastery, college admissions edge, and money-back guarantee.
 - **Free Interactive Diagnostic Tools:** 8 assessment tool cards with an in-browser live quiz simulator for the **Startup Idea Generator** and **Fundability Assessment**.
-- **Alumni Reviews Carousel:** Verified student and parent testimonials with avatars, ratings, and outcomes.
-- **Featured Knowledge Hub:** Live dynamic feed pulling the latest articles directly from the Express/MongoDB backend.
+- **Student & Parent Testimonials:** 100% authentic quotes from `tactyqal.com` (Aarav, Isha, Rohan, Simran, Devansh, Priya) with authentic portraits in `/images/student-reviews/`, 5 amber stars, quotation mark, verified alumni checkmark, and golden hover accent.
+- **Featured Knowledge Hub:** Live dynamic feed pulling the latest articles directly from the Express/MongoDB backend, with real cover images from `/images/blog-articles/`.
 - **Transparent Pricing:** High-impact card featuring the ₹16,000 limited cohort rate (36% OFF ₹25,000), 8 deliverables, and money-back guarantee.
 - **Expandable FAQ Accordion:** 8 comprehensive answers addressing parents' top questions (no coding experience, admissions, refund policy).
-- **Contact & Appointment Form:** Embedded consultation lead capture connected directly to the database.
+- **Contact & WhatsApp Section:** Symmetrical two-card layout with 4 clean contact rows (Email, Phone, Operating Hours, Response Time), high-contrast "Chat on WhatsApp" action button with the official vector WhatsApp icon, and embedded consultation lead capture.
 
 ### 2. Task 2: Blog Backend & Admin CMS
 - **RESTful API Engine:** Modular controllers for Posts, Categories, Tags, Leads, and Analytics.
@@ -83,13 +83,25 @@ This repository delivers a unified, high-performance TypeScript fullstack archit
 
 ---
 
+## 📁 Standardized Asset Hierarchy (`public/images/`)
+
+All media assets are consolidated strictly under `public/images/` (no duplicate loose folders):
+```
+public/images/
+├── blog-articles/         # 6 authentic original blog cover images
+├── student-apps/          # 6 real student app screenshots
+└── student-reviews/       # 6 authentic student avatar portraits
+```
+
+---
+
 ## 🛠️ Technology Stack Breakdown
 
 | Layer | Technologies | Purpose |
 |---|---|---|
 | **Frontend Framework** | **Next.js 14+** (App Router, RSC) | Server-side rendering, sub-second load times, SEO optimization |
 | **Language** | **TypeScript 5.6** | End-to-end type safety across client and server contracts |
-| **Styling** | **Tailwind CSS 3.4** | Custom design system tokens, responsive utilities, dark theme |
+| **Styling** | **Tailwind CSS 3.4** | Custom design system tokens, responsive utilities, warm cream canvas |
 | **Animations** | **GSAP 3.12** (`@gsap/react`) | Staggered reveals, floating ambient auras, 3D card tilt effects |
 | **Global State** | **Redux Toolkit 2.3** (`react-redux`) | Reactive state for blog filters, consultation modal, and toast alerts |
 | **Backend Framework** | **Node.js + Express.js 4.21** | High-performance modular REST API endpoints |
@@ -127,7 +139,7 @@ NODE_ENV=development
 ```
 
 ### 3. Seed Database
-Populate the database with the original 6+ Tactyqal Labs articles, categories, and tags:
+Populate the database with all 6 original Tactyqal Labs articles, categories, tags, and local cover image mappings:
 ```bash
 npm run seed
 ```
@@ -179,23 +191,7 @@ Explore the comprehensive project documentation in the [`/docs`](./docs) folder:
 - **[`docs/memory.md`](./docs/memory.md):** Project Memory & Original Content Reference Archive.
 - **[`docs/api-spec.md`](./docs/api-spec.md):** REST API Payloads & Contracts.
 - **[`docs/setup-guide.md`](./docs/setup-guide.md):** Setup & Execution Guide.
-
----
-
-## 👨‍💻 Project Evaluation & Walkthrough Guide
-
-1. **Homepage Experience:**
-   - Notice the GSAP staggered reveal on page load.
-   - Click **"Success Stories"** filter pills to see category sorting.
-   - Click **"Read Story"** on *KrishiDrishti* or *One Last Chapter* to see the case study modal.
-   - Click **"Startup Idea Generator"** in the Free Tools section to test the live in-browser idea generator.
-   - Click **"Book Free Consultation"** on any CTA to open the Redux-powered booking modal.
-2. **Blog & CMS Experience:**
-   - Navigate to `/blog` and search for "elevator pitch" to see instant filtering.
-   - Open any article to view estimated reading times, author cards, and related posts.
-   - Visit `/admin/blog` to review live analytics (posts, views, drafts).
-   - Click **"Create New Post"**, draft an article, preview it in Markdown, and publish it.
-   - Verify the new post instantly appears on the public `/blog` feed.
+- **[`docs/walkthrough-script.md`](./docs/walkthrough-script.md):** 1–2 Minute Video Recording Script.
 
 ---
 

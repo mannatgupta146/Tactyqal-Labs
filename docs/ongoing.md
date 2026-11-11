@@ -5,35 +5,55 @@
 - **Active State:** Complete, Verified & Production Ready
 - **Implementation Progress:** 100% of Task 1 (Homepage Redesign) & Task 2 (Blog Backend & Admin CMS) completed, tested, and adhering to strict modularity rules (`rule.md`).
 - **Verification Score:**
-  - ✅ Dev Server Running: `http://localhost:3000` (Frontend) & `http://localhost:5000` (Backend API).
-  - ✅ Static & Dev Chunks: Returns `HTTP 200 OK` on all CSS, JS, and font assets (zero 404s).
-  - ✅ Modularity: All components extracted under 150 lines per `rule.md` (no monolithic bloated files).
+  - ✅ Production Build: `npx next build` compiles with 0 errors across all 7 routes.
+  - ✅ Image Assets: Clean single source of truth at `public/images/` (`blog-articles/`, `student-apps/`, `student-reviews/`). All duplicate loose folders removed.
+  - ✅ Authentic Testimonials: 100% real quotes & original avatar photos from `tactyqal.com` (zero fake roles/ages).
+  - ✅ Blog System: Seeded with real blog article covers via `getBlogCoverImage()` resolver.
+  - ✅ Contact Section: Symmetric dual-card layout with 4 clean contact rows and high-contrast official WhatsApp CTA pill.
+  - ✅ Modularity: All components under 150 lines per `rule.md` (no monolithic files).
   - ✅ Express REST API: `8/8 endpoints passing in automated test suite`.
-  - ✅ MongoDB / Mongoose: Seeded and verified with 6 original Tactyqal blog articles.
-  - ✅ Brand Alignment: Authentic Tactyqal mint-green tokens (`#00df82`, `#10b981`, `#070a11`), pill buttons, zero generic AI purple.
+  - ✅ Brand Alignment: Authentic Tactyqal mint-green tokens (`#00df82`, `#10b981`, `#059669`), warm cream / clean white canvas, pill buttons, zero generic AI purple.
 - **Hackathon Closes:** November 20th, 2026
 
 ---
 
 ### Recent Fixes & Enhancements
-1. **Resolved Dev Server 404 Static Chunk Issue:**
-   - *Cause:* Running `next build` while `next dev` was active caused in-memory dev manifests to mismatch overwritten production hashes.
-   - *Fix:* Cleared `.next` directory cache, released occupied ports, and restarted `npm run dev`. Verified `HTTP 200 OK` for `/`, `/_next/static/css/app/layout.css`, `/blog`, and dynamic slug routes.
-2. **Authentic Tactyqal Color & Layout Tuning (100% Zero-Purple Guarantee):**
-   - Performed an exhaustive codebase audit across all frontend components and datasets.
-   - Replaced all legacy `indigo`, `violet`, `purple`, `pink`, and `rose` utility classes across `success-stories.tsx`, `why-us.tsx`, `curriculum.tsx`, `faq.tsx`, `footer.tsx`, `pricing.tsx`, `assessment-tools.tsx`, `assessment-tool-modal.tsx`, `case-study-modal.tsx`, `diagnostic-checklist-view.tsx`, `idea-generator-view.tsx`, `fundability-quiz-view.tsx`, `admin-stats-bar.tsx`, `admin-posts-table.tsx`, and `toast.tsx`.
-   - Injected global browser link reset in `src/app/globals.css` (`a, a:visited { color: inherit; text-decoration: none; }`) so default browser purple visited link styling never appears.
-   - All interactive badges, active filter tabs, action buttons, icons, and borders now use authentic **Tactyqal mint-green (`#00df82`)** and emerald tones matching `tactyqal.com`.
-   - Verified with strict regex search: 0 occurrences of purple, violet, indigo, fuchsia, or pink remaining in `src/`.
-3. **Modularity Refactoring per `rule.md`:**
-   - Extracted `src/components/blog/blog-card.tsx` (64 lines).
-   - Extracted `src/components/blog/featured-blog-card.tsx` (71 lines).
-   - Extracted `src/components/blog/blog-post-header.tsx` (66 lines).
-   - Extracted `src/components/blog/blog-content-renderer.tsx` (66 lines).
-   - Reduced `src/app/blog/page.tsx` from 285 lines to 141 lines.
-   - Reduced `src/app/blog/[slug]/page.tsx` from 265 lines to 149 lines.
-4. **Git Policy:**
-   - Adhering strictly to user rule: No automated `git add` or `git commit`. Staging and committing are left for the user's manual action.
+1. **Asset Directory Reorganization & Deduplication (`public/images/`):**
+   - Consolidated all image assets strictly under `public/images/`:
+     - `public/images/blog-articles/` (6 authentic blog cover images)
+     - `public/images/student-apps/` (6 real student app screenshots)
+     - `public/images/student-reviews/` (6 authentic alumni avatar photos)
+   - Removed all redundant loose folders (`public/apps`, `public/blog-articles`, `public/learn`, `public/student-apps`).
+   - Configured Next.js rewrites in `next.config.js` (`/learn/:path*`, `/blog-articles/:path*`, `/apps/:path*`, `/student-apps/:path*` mapping to `/images/...`) for backward compatibility.
+2. **Authentic Testimonials & Alumni Verification:**
+   - Eliminated fabricated paragraph texts, fake founder titles (e.g. "Founder, KrishiDrishti"), and fake ages.
+   - Restored authentic quotes from `tactyqal.com`:
+     - **Aarav Sharma:** *"I had to struggle to find a tech cofounder"*
+     - **Isha Patel:** *"Now I feel independent and can build anything I want"*
+     - **Rohan Verma:** *"It's the future"*
+     - **Simran Kaur:** *"I can focus on the creative side and don't have to worry about whether it can be built"*
+     - **Devansh Mehta:** *"I went on from having no idea to launching my app"*
+     - **Priya Nair:** *"My impact app was only in my head till I built it"*
+   - Downloaded and mapped the exact avatar portraits matching the original site (`men/65.jpg`, `women/68.jpg`, `men/66.jpg`, `women/69.jpg`, `men/67.jpg`, `women/70.jpg`).
+   - Preserved card layout: 5 amber star ratings, comma/quote icon (`Quote`), bottom avatar row with verified green checkmarks, and golden glow border on hover (`hover:border-amber-400`).
+3. **Blog Cover Image Resolution:**
+   - Built resilient helper `getBlogCoverImage(coverImage, slug, title)` in `src/lib/utils.ts` mapping database posts to local `/images/blog-articles/` assets.
+   - Connected `featured-blog.tsx`, `blog-card.tsx`, `featured-blog-card.tsx`, and `blog/[slug]/page.tsx`.
+   - Re-seeded MongoDB with `npm run seed` (`backend/seeds/runSeed.ts`).
+4. **Contact Us Section Overhaul & WhatsApp Action Pill:**
+   - Synchronized card geometry between `ContactInfoCards` and `ContactBookingForm` using `h-full flex flex-col justify-between p-8 sm:p-10 rounded-3xl`.
+   - Replaced cluttered nested callout box with a clean 4-row layout matching the design reference:
+     - Email (`tactyqal.labs@gmail.com`) + Mail icon
+     - Phone (`+91-98047-72106`) + Phone icon
+     - Operating Hours (`Mon-Sat, 9am-7pm`) + Clock icon
+     - Response Time (`Response Time: Within 24 hours`) + Zap icon
+   - Fixed CSS cascade collision (`a { color: inherit; }` in `globals.css`) by applying explicit inline style `style={{ color: "#047857" }}`.
+   - Integrated official vector WhatsApp icon (`#25D366`) with "Chat on WhatsApp" action button.
+5. **Modularity Refactoring per `rule.md`:**
+   - All components kept strictly under 150 lines.
+   - Clean separation of concerns between presentation cards, forms, and store hooks.
+6. **Git Policy:**
+   - Adhering strictly to user rule: Never execute `git add`, `git commit`, or `git push`. Staging and committing are reserved for manual user action.
 
 ---
 
@@ -46,7 +66,8 @@
 | **Task 2: Admin CMS Dashboard** | ✅ Complete | React, Redux, Lucide | Live analytics cards, post management table, quick actions, draft/published toggle |
 | **Task 2: Admin Post Editor** | ✅ Complete | React, Markdown | Suspense-wrapped editor, live side-by-side Markdown preview, category/tag assign |
 | **Interactive Startup Diagnostic Tools** | ✅ Complete | React, Redux | In-browser Idea Generator and Fundability Quiz with instant live score calculation |
-| **Consultation Lead Capture** | ✅ Complete | Express, Mongoose, Redux | Modal and embedded contact form submitting to `/api/consultation` with toast feedback |
+| **Consultation Lead Capture & Contact** | ✅ Complete | Express, Mongoose, Redux | Symmetric cards, 4 contact channels, WhatsApp CTA, and embedded consultation booking form |
+| **Asset Directory Standardization** | ✅ Complete | Next.js, File Tree | Single source of truth at `public/images/` with real student apps, blog covers, and alumni reviews |
 | **Comprehensive Documentation** | ✅ Complete | Markdown | 10 docs in `/docs` covering PRD, TRD, Design, Tasks, Ongoing, Memory, API Spec, Setup, Video Script, Rule |
 | **Requirement 1: Video Walkthrough Script**| ✅ Complete | Markdown | 1–2 minute recording script with timed voiceover and screen actions (`docs/walkthrough-script.md`) |
 | **Requirement 2: Git Repository** | ✅ Complete | Git | Clean git structure ready for manual staging and remote push |
@@ -61,7 +82,7 @@ npm run dev
 # 2. Run automated End-to-End API test suite:
 npm run test:api
 
-# 3. Re-seed database with clean Tactyqal articles:
+# 3. Re-seed database with clean Tactyqal articles & real image covers:
 npm run seed
 
 # 4. Production build test:

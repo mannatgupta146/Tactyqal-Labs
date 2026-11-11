@@ -45,6 +45,11 @@ box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
 background-color: #FFFFFF;
 border: 2px solid #D6D3D1;
 color: #1E293B;
+
+/* WhatsApp CTA Button */
+background-color: #FFFFFF;
+color: #047857;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 ```
 
 ---
@@ -83,12 +88,58 @@ color: #1E293B;
 
 #### 4.3 Student Success Stories & Cards
 - **Card Surface:** Crisp white (`#FFFFFF`) with warm stone borders (`border-stone-200`).
+- **Real App Images:** Loaded directly from `/images/student-apps/`.
 - **Accent Details:** Mint founder age badges, emerald revenue stats (`INR 100,000/mo Recurring Revenue`, `INR 9,000 in Week 1`).
 - **Category Filter Tabs:** Active tab highlighted with solid mint green (`bg-[#00df82] text-slate-950 font-bold`).
 
-#### 4.4 Diagnostic Tools, Pricing, Blog & Contact
-- **Diagnostic Tools:** White cards on `#FAF8F5` surface with interactive modal views.
-- **Pricing Card:** Crisp white card with emerald accent border, clear feature list, and money-back guarantee badge.
-- **Featured Blog & Catalog:** White cards with high-res cover images, crisp typography, and stone border styling.
-- **Contact Form:** Warm sand `#FAF8F5` section with white card booking form and direct email/phone cards.
-- **Footer:** Warm cream `#FDFCF7` border-t `#E7E5E4` with clean navigation links and Devuty Hire-a-thon badge.
+#### 4.4 Student & Parent Testimonials
+- **Grid Layout:** 3 columns on desktop, 2 on tablet, 1 on mobile (`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8`).
+- **Card Structure:**
+  - Top header row: 5 amber rating stars (`fill-amber-400 text-amber-400`) + quotation icon (`Quote`).
+  - Body: Authentic student quote in high-contrast charcoal text.
+  - Bottom row: High-res student avatar circle (52×52px) loaded from `/images/student-reviews/`, student name in bold slate, and verified green checkmark badge (`CheckCircle2`).
+- **Hover Micro-Interaction:** Subtle lift (`hover:-translate-y-1.5`) with golden amber border glow (`hover:border-amber-400`).
+
+#### 4.5 Contact Us Section & WhatsApp CTA
+- **Layout:** Symmetrical two-column grid (`grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch`).
+- **Both Cards Geometry:** Balanced with `h-full flex flex-col justify-between p-8 sm:p-10 rounded-3xl` ensuring identical height.
+- **Left Contact Info Card:**
+  - Gradient surface: `bg-gradient-to-br from-[#00df82] to-[#059669] text-white shadow-xl`.
+  - 4 Contact Rows:
+    1. Email: `tactyqal.labs@gmail.com` with circular icon button.
+    2. Phone: `+91-98047-72106` with circular icon button.
+    3. Operating Hours: `Mon-Sat, 9am-7pm` with circular clock button.
+    4. Response Time: `Response Time: Within 24 hours` with circular lightning badge.
+  - Bottom Action Pill: White pill button with official WhatsApp SVG icon (`#25D366`), "Chat on WhatsApp" text in `#047857`, and forward arrow icon.
+- **Right Booking Form Card:** Crisp white surface (`bg-white rounded-3xl p-8 sm:p-10 border border-stone-200/90 shadow-xl`), form fields, and submit CTA button.
+
+---
+
+### 5. Standardized Asset Directory Structure
+
+All media assets are consolidated strictly under `public/images/`:
+```
+public/images/
+├── blog-articles/
+│   ├── the-elevator-pitch-for-business-entrepreneurs.png
+│   ├── how-to-build-a-tech-startup-team.png
+│   ├── 11-reasons-why-startups-fail-at-the-idea-stage.png
+│   ├── 50-no-code-startup-app-ideas.png
+│   ├── 30-startup-ideas-to-solve-food-waste-problems.png
+│   └── 50-startup-ideas-for-gen-z-entrepreneurs.png
+├── student-apps/
+│   ├── krishidrishti.png
+│   ├── elenor.png
+│   ├── one-last-chapter.png
+│   ├── paws-of-promise.png
+│   ├── audionova.png
+│   └── converza.png
+└── student-reviews/
+    ├── aarav-sharma.jpg
+    ├── isha-patel.jpg
+    ├── rohan-verma.jpg
+    ├── simran-kaur.jpg
+    ├── devansh-mehta.jpg
+    └── priya-nair.jpg
+```
+No loose duplicate folders (`public/apps`, `public/blog-articles`, `public/learn`, `public/student-apps`) exist.
