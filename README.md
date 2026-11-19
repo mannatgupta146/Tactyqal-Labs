@@ -13,6 +13,20 @@
 
 ---
 
+## 🌐 Live Production Deployments
+
+| Component | Platform | Live URL | Status |
+|---|---|---|---|
+| **Frontend Homepage** | Vercel | [https://tactyqal-labs-kappa.vercel.app](https://tactyqal-labs-kappa.vercel.app) | 🟢 Live |
+| **Blog Catalog** | Vercel | [https://tactyqal-labs-kappa.vercel.app/blog](https://tactyqal-labs-kappa.vercel.app/blog) | 🟢 Live |
+| **Admin CMS Dashboard** | Vercel | [https://tactyqal-labs-kappa.vercel.app/admin/blog](https://tactyqal-labs-kappa.vercel.app/admin/blog) | 🟢 Live |
+| **Admin Post Editor** | Vercel | [https://tactyqal-labs-kappa.vercel.app/admin/blog/editor](https://tactyqal-labs-kappa.vercel.app/admin/blog/editor) | 🟢 Live |
+| **Backend REST API** | Render | [https://tactyqal-labs.onrender.com](https://tactyqal-labs.onrender.com) | 🟢 Live |
+| **API Health Check** | Render | [https://tactyqal-labs.onrender.com/api/health](https://tactyqal-labs.onrender.com/api/health) | 🟢 Live (HTTP 200) |
+| **API Blog Posts Feed** | Render | [https://tactyqal-labs.onrender.com/api/blog/posts](https://tactyqal-labs.onrender.com/api/blog/posts) | 🟢 Live (HTTP 200) |
+
+---
+
 ## 📌 Executive Summary
 
 [Tactyqal Labs](https://tactyqal.com/) mentors aspiring entrepreneurs, teenagers, and young builders (ages 12–18+) to transform raw ideas into functional, revenue-generating, real-world applications in 8 weeks.

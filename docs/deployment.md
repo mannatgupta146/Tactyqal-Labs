@@ -49,10 +49,11 @@ This guide provides the **simplest, zero-headache, 100% free** deployment method
    - **Start Command:** `npm run server:start`
 5. Under **Environment Variables**, add:
    - `NODE_ENV` = `production`
+   - `FRONTEND_URL` = `https://tactyqal-labs-kappa.vercel.app`
    - `MONGODB_URI` = *(your MongoDB Atlas URI from Step 1, or leave blank for auto in-memory fallback)*
 6. Click **Create Web Service**.
-7. Once deployed, copy your live backend URL (e.g. `https://tactyqal-backend.onrender.com`).
-   - You can test it by opening `https://tactyqal-backend.onrender.com/api/health` in your browser.
+7. Once deployed, copy your live backend URL: `https://tactyqal-labs.onrender.com`.
+   - You can test it by opening `https://tactyqal-labs.onrender.com/api/health` in your browser.
 
 ---
 
@@ -65,14 +66,20 @@ This guide provides the **simplest, zero-headache, 100% free** deployment method
 4. Vercel automatically detects **Next.js**. Leave all build settings at default (`next build`).
 5. Under **Environment Variables**, add:
    - **Name:** `NEXT_PUBLIC_API_URL`
-   - **Value:** `https://tactyqal-backend.onrender.com/api` *(your Render backend URL + `/api`)*
+   - **Type:** `Config` (public, not secret)
+   - **Value:** `https://tactyqal-labs.onrender.com/api`
 6. Click **Deploy**.
 
 ---
 
-### Done!
-Your site is live with:
-- **Live Next.js Platform:** `https://tactyqal-labs.vercel.app`
-- **Live Blog Platform:** `https://tactyqal-labs.vercel.app/blog`
-- **Live Admin CMS:** `https://tactyqal-labs.vercel.app/admin/blog`
-- **Live Express REST API:** `https://tactyqal-backend.onrender.com/api/health`
+### 🌐 Live Production Deployments
+
+| Component | Platform | Live Production URL | Status |
+|---|---|---|---|
+| **Frontend Platform** | Vercel | [https://tactyqal-labs-kappa.vercel.app](https://tactyqal-labs-kappa.vercel.app) | 🟢 Live |
+| **Blog Platform** | Vercel | [https://tactyqal-labs-kappa.vercel.app/blog](https://tactyqal-labs-kappa.vercel.app/blog) | 🟢 Live |
+| **Admin CMS Dashboard** | Vercel | [https://tactyqal-labs-kappa.vercel.app/admin/blog](https://tactyqal-labs-kappa.vercel.app/admin/blog) | 🟢 Live |
+| **Backend REST API** | Render | [https://tactyqal-labs.onrender.com](https://tactyqal-labs.onrender.com) | 🟢 Live |
+| **API Health Endpoint** | Render | [https://tactyqal-labs.onrender.com/api/health](https://tactyqal-labs.onrender.com/api/health) | 🟢 Live (HTTP 200) |
+| **API Blog Posts Feed** | Render | [https://tactyqal-labs.onrender.com/api/blog/posts](https://tactyqal-labs.onrender.com/api/blog/posts) | 🟢 Live (HTTP 200) |
+| **API Categories Feed** | Render | [https://tactyqal-labs.onrender.com/api/blog/categories](https://tactyqal-labs.onrender.com/api/blog/categories) | 🟢 Live (HTTP 200) |

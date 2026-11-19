@@ -10,5 +10,7 @@ services:
         value: production
       - key: PORT
         value: 10000
+      - key: FRONTEND_URL
+        value: https://tactyqal-labs-kappa.vercel.app
       - key: MONGODB_URI
         sync: false

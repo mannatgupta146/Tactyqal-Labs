@@ -193,8 +193,16 @@ export function renderMarkdown(content: string, skipH1: boolean = false): React.
         inlineQuote = parts.slice(1).join(" > ");
       }
 
+      const isGreenAccentHeading =
+        /^example:/i.test(text.trim()) || /student spotlight/i.test(text.trim());
+
       elements.push(
-        <h3 key={keyIdx++} className="text-xl sm:text-2xl font-bold text-slate-900 mt-10 sm:mt-12 mb-4 leading-snug tracking-tight">
+        <h3
+          key={keyIdx++}
+          className={`text-xl sm:text-2xl font-bold mt-10 sm:mt-12 mb-4 leading-snug tracking-tight ${
+            isGreenAccentHeading ? "text-[#059669]" : "text-slate-900"
+          }`}
+        >
           {parseInlineMarkdown(text)}
         </h3>
       );

@@ -61,6 +61,14 @@
 
 ### Available Routes & Features
 
+#### 🌐 Live Cloud Production URLs
+- **Live Frontend (Vercel):** [https://tactyqal-labs-kappa.vercel.app](https://tactyqal-labs-kappa.vercel.app)
+- **Live Blog Platform:** [https://tactyqal-labs-kappa.vercel.app/blog](https://tactyqal-labs-kappa.vercel.app/blog)
+- **Live Admin CMS:** [https://tactyqal-labs-kappa.vercel.app/admin/blog](https://tactyqal-labs-kappa.vercel.app/admin/blog)
+- **Live Backend REST API (Render):** [https://tactyqal-labs.onrender.com](https://tactyqal-labs.onrender.com)
+- **Live API Health Check:** [https://tactyqal-labs.onrender.com/api/health](https://tactyqal-labs.onrender.com/api/health)
+
+#### Local Development Routes
 - **`http://localhost:3000/`**: Modern Homepage Redesign (Task 1) featuring all 12 sections:
   - Hero with offer badge, metrics, and dual CTAs
   - Real Students & Apps Gallery (KrishiDrishti, Elenor, One Last Chapter, etc.) with screenshots in `/images/student-apps/`

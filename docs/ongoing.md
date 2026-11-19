@@ -3,6 +3,8 @@
 
 ### Current Status
 - **Active State:** Complete, Verified & Production Ready
+- **Live Frontend (Vercel):** [https://tactyqal-labs-kappa.vercel.app](https://tactyqal-labs-kappa.vercel.app)
+- **Live Backend API (Render):** [https://tactyqal-labs.onrender.com](https://tactyqal-labs.onrender.com) (Health: `/api/health`, Posts: `/api/blog/posts`)
 - **Implementation Progress:** 100% of Task 1 (Homepage Redesign) & Task 2 (Blog Backend & Admin CMS) completed, tested, and adhering to strict modularity rules (`rule.md`).
 - **Verification Score:**
   - ✅ Production Build: `npx next build` compiles with 0 errors across all 7 routes.
