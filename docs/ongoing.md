@@ -96,7 +96,16 @@
    - Kept list numbers (`text-slate-700 font-semibold font-mono`) and bullet point dots (`text-slate-400 font-black`) clean and neutral.
    - Enhanced blockquote & student spotlight cards with an elegant mint green vertical accent bar (`bg-gradient-to-b from-[#00df82] to-[#059669]`), a subtle mint-gradient card tint (`from-emerald-50/50 via-[#FAFDF9] to-[#FAF8F5]`), and an emerald border (`border-emerald-200/70`).
    - Removed conflicting Tailwind `prose` container from `blog-content-renderer.tsx` to eliminate styling collisions.
-13. **Git Policy:**
+13. **Streamlined Zero-Complexity Deployment Architecture:**
+   - Verified production build: `next build` compiles with 0 errors across all 7 routes (`/`, `/blog`, `/blog/[slug]`, `/admin/blog`, `/admin/blog/editor`, `/_not-found`).
+   - Implemented automatic zero-config database self-seeding on empty MongoDB cluster initialization (`backend/config/db.ts`), requiring zero manual seed commands in cloud environments.
+   - Created `render.yaml` blueprint for 1-click backend infrastructure deployment on Render.com free tier.
+   - Authored concise, non-complex 3-step deployment handbook in `docs/deployment.md` for Vercel (Frontend) + Render (Backend) + MongoDB Atlas (Database).
+14. **Mobile Responsiveness & Modal Scrollbar Polish:**
+   - **Case Study Modal (`case-study-modal.tsx`)**: Removed the ugly grey vertical scrollbar track by applying `no-scrollbar` and `scrollbarWidth: none`. Constrained screenshot height to `max-h-[46vh] sm:max-h-[50vh]` so the entire modal fits cleanly in viewport on desktop and laptop displays without needing to scroll. Added background body scroll locking when open.
+   - **Pricing Card Mobile Layout (`pricing.tsx`)**: Fixed mobile horizontal overflow where `₹25,000` and `Save 36%` collided with card borders and triggered an ugly scrollbar. Reduced card padding to `p-5 sm:p-10` on mobile, added `flex-wrap` and responsive sizing (`text-4xl sm:text-6xl` for price, `text-lg sm:text-2xl` for crossed price), and capped top scarcity badge with `max-w-[92%] truncate`.
+   - **Policy Modal (`policy-modal.tsx`)**: Added `no-scrollbar` utility to scrollable policy body.
+15. **Git Policy:**
    - Adhering strictly to user rule: Never execute `git add`, `git commit`, or `git push`. Staging and committing are reserved for manual user action.
 
 ---

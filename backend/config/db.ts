@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import { initialCategories, initialPosts, SeedPost } from "../seeds/seedData";
+import { Post } from "../models/Post";
+import { Category } from "../models/Category";
 
 // Resilient in-memory fallback store in case local MongoDB is not running
 export class MemoryStore {
@@ -41,6 +43,29 @@ export const connectDB = async (): Promise<boolean> => {
     });
     isMongoConnected = true;
     console.log("✅ [MongoDB] Connected successfully to MongoDB");
+
+    // Auto-seed if newly created database has 0 posts
+    try {
+      const count = await Post.countDocuments();
+      if (count === 0) {
+        console.log("🌱 [MongoDB] Empty database detected. Auto-seeding initial posts & categories...");
+        await Category.insertMany(initialCategories);
+        await Post.insertMany(
+          initialPosts.map((p) => ({
+            ...p,
+            publishedAt: new Date(p.publishedAt),
+          }))
+        );
+        for (const cat of initialCategories) {
+          const cCount = await Post.countDocuments({ "category.slug": cat.slug });
+          await Category.updateOne({ slug: cat.slug }, { postCount: cCount });
+        }
+        console.log("✅ [MongoDB] Auto-seeding completed.");
+      }
+    } catch (seedErr) {
+      console.warn("Auto-seed check notice:", seedErr);
+    }
+
     return true;
   } catch (err: any) {
     console.warn("⚠️ [MongoDB] Local MongoDB daemon not reachable. Activating Resilient In-Memory Fallback Store.");

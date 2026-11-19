@@ -75,7 +75,10 @@ export default function PolicyModal({
         </div>
 
         {/* Content Body */}
-        <div className="p-6 overflow-y-auto text-xs sm:text-sm text-slate-600 space-y-4 leading-relaxed">
+        <div
+          className="p-6 overflow-y-auto no-scrollbar text-xs sm:text-sm text-slate-600 space-y-4 leading-relaxed"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {activeTab === "privacy" ? (
             <>
               <h3 className="text-base sm:text-lg font-bold text-slate-900">

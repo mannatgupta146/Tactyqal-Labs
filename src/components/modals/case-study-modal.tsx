@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { AppStory } from "../sections/success-stories";
 import { useAppDispatch } from "../../store/hooks";
 import { openConsultationModal } from "../../store/uiSlice";
-import { X, ExternalLink } from "lucide-react";
+import { X } from "lucide-react";
 
 interface CaseStudyModalProps {
   story: AppStory | null;
@@ -14,24 +14,53 @@ interface CaseStudyModalProps {
 export default function CaseStudyModal({ story, onClose }: CaseStudyModalProps) {
   const dispatch = useAppDispatch();
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (story) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [story]);
+
   if (!story) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-white border border-stone-200 p-6 sm:p-8 text-slate-900 shadow-2xl">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/70 backdrop-blur-md overflow-hidden animate-in fade-in duration-200"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-3xl max-h-[92vh] overflow-x-hidden overflow-y-auto no-scrollbar rounded-3xl bg-white border border-stone-200 p-5 sm:p-8 text-slate-900 shadow-2xl flex flex-col justify-between"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {/* Top Radiant Accent Line */}
+        <div className="absolute top-0 inset-x-8 h-[2px] bg-gradient-to-r from-transparent via-[#00df82] to-transparent" />
+
+        {/* Circular Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-900 hover:bg-stone-100 transition"
+          aria-label="Close modal"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all active:scale-95 z-20"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
-        <h3 className="text-2xl sm:text-3xl font-black text-[#059669]">{story.name}</h3>
-        <p className="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">{story.description}</p>
+        {/* Content Header */}
+        <div className="pr-8">
+          <h3 className="text-xl sm:text-3xl font-black text-[#059669]">{story.name}</h3>
+          <p className="mt-1.5 text-xs sm:text-base text-slate-600 leading-relaxed">
+            {story.description}
+          </p>
+        </div>
 
-        {/* Real App Screenshot in Modal */}
+        {/* Real App Screenshot in Modal - Constrained height so it fits viewport */}
         {story.image && (
-          <div className="mt-6 rounded-2xl overflow-hidden border border-stone-200 bg-stone-100 shadow-sm">
+          <div className="mt-4 sm:mt-6 rounded-2xl overflow-hidden border border-stone-200 bg-stone-100 shadow-xs">
             <div className="bg-stone-100 border-b border-stone-200/80 px-3 py-1.5 flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full bg-rose-400/80" />
               <div className="w-2 h-2 rounded-full bg-amber-400/80" />
@@ -40,25 +69,25 @@ export default function CaseStudyModal({ story, onClose }: CaseStudyModalProps) 
                 {story.name.toLowerCase().replace(/[^a-z0-9]/g, "")}.tactyqal.app
               </span>
             </div>
-            <div className="relative w-full overflow-hidden bg-stone-50 flex items-center justify-center">
+            <div className="relative w-full max-h-[46vh] sm:max-h-[50vh] overflow-hidden bg-stone-50 flex items-center justify-center">
               <img
                 src={story.image}
                 alt={story.name}
-                className="w-full h-auto object-contain block"
+                className="w-full max-h-[46vh] sm:max-h-[50vh] object-contain block"
               />
             </div>
           </div>
         )}
 
         {/* Modal Actions */}
-        <div className="mt-8 pt-5 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-xs text-slate-500">
+        <div className="mt-5 sm:mt-6 pt-4 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span className="text-[11px] sm:text-xs text-slate-500 text-center sm:text-left">
             Built by a real student in Tactyqal Labs 8-Week 1:1 Incubator
           </span>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900"
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900"
             >
               Close
             </button>
@@ -68,7 +97,7 @@ export default function CaseStudyModal({ story, onClose }: CaseStudyModalProps) 
                 onClose();
                 dispatch(openConsultationModal(`Interested in building an app like ${name}`));
               }}
-              className="px-6 py-2.5 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-sm shadow-md shadow-emerald-500/20"
+              className="flex-1 sm:flex-none px-5 py-2.5 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-xs sm:text-sm shadow-md shadow-emerald-500/20 transition-all active:scale-98 text-center"
             >
               Build An App Like This
             </button>
