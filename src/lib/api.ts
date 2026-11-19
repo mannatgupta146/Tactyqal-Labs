@@ -3,14 +3,7 @@ import { BlogPost, BlogCategory, BlogStats, ConsultationLeadPayload } from "./ty
 import { initialPosts, initialCategories } from "../../backend/seeds/seedData";
 
 const resolveApiUrl = (): string => {
-  const url = process.env.NEXT_PUBLIC_API_URL;
-  if (!url) {
-    // If in production browser and env var was omitted, automatically target live Render backend
-    if (typeof window !== "undefined" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-      return "https://tactyqal-labs.onrender.com/api";
-    }
-    return "http://localhost:5000/api";
-  }
+  const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
   const clean = url.trim().replace(/\/+$/, "");
   return clean.endsWith("/api") ? clean : `${clean}/api`;
 };

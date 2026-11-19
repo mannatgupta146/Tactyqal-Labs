@@ -9,14 +9,13 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://tactyqal-labs-kappa.vercel.app";
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
-// Allowed origins from environment variable, local dev, and Vercel domains
+// Allowed origins configured via environment variable and local dev
 const allowedOrigins = [
   FRONTEND_URL,
   "http://localhost:3000",
-  "https://tactyqal-labs-kappa.vercel.app",
-].filter(Boolean);
+].filter(Boolean) as string[];
 
 app.use(
   cors({
@@ -24,6 +23,7 @@ app.use(
       // Allow requests with no origin (curl, Postman, health monitors)
       if (!origin) return callback(null, true);
       if (
+        !FRONTEND_URL ||
         allowedOrigins.includes(origin) ||
         origin.endsWith(".vercel.app") ||
         process.env.NODE_ENV !== "production"
@@ -39,6 +39,30 @@ app.use(
 );
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
+
+// Root & API Welcome Route
+const getApiOverview = () => ({
+  success: true,
+  message: "🚀 Tactyqal Labs Backend API Engine is Live and Operational",
+  status: "healthy",
+  frontend: process.env.FRONTEND_URL || "configured via FRONTEND_URL",
+  endpoints: {
+    health: "/api/health",
+    blogPosts: "/api/blog/posts",
+    categories: "/api/blog/categories",
+    tags: "/api/blog/tags",
+    stats: "/api/blog/stats",
+    consultation: "/api/consultation",
+  },
+});
+
+app.get("/", (_req, res) => {
+  res.json({ ...getApiOverview(), timestamp: new Date().toISOString() });
+});
+
+app.get("/api", (_req, res) => {
+  res.json({ ...getApiOverview(), timestamp: new Date().toISOString() });
+});
 
 // Health Check
 app.get("/api/health", (_req, res) => {
