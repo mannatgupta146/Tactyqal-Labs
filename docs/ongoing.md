@@ -49,10 +49,16 @@
      - Response Time (`Response Time: Within 24 hours`) + Zap icon
    - Fixed CSS cascade collision (`a { color: inherit; }` in `globals.css`) by applying explicit inline style `style={{ color: "#047857" }}`.
    - Integrated official vector WhatsApp icon (`#25D366`) with "Chat on WhatsApp" action button.
-5. **Modularity Refactoring per `rule.md`:**
+5. **Footer Deduplication & Relevant Link Alignment:**
+   - Eliminated redundant contact details (email and phone rows) that duplicated the adjacent Contact Us card.
+   - Fixed resource links: directed "Founder Knowledge Hub" to `/blog` and consolidated duplicate anchor references.
+   - Replaced bloated "Hire-a-thon" column with an authentic "Trust & Policies" column (100% Results Guarantee, University Admissions Edge, Privacy Policy, Terms & Conditions, Direct WhatsApp Support).
+   - Built modular `src/components/modals/policy-modal.tsx` supporting tabbed views for Privacy Policy and Terms of Service.
+   - Streamlined bottom bar with authentic copyright year (`© 2020 – 2026 Tactyqal Labs`) and a clean submission attribution tag.
+6. **Modularity Refactoring per `rule.md`:**
    - All components kept strictly under 150 lines.
    - Clean separation of concerns between presentation cards, forms, and store hooks.
-6. **Git Policy:**
+7. **Git Policy:**
    - Adhering strictly to user rule: Never execute `git add`, `git commit`, or `git push`. Staging and committing are reserved for manual user action.
 
 ---
