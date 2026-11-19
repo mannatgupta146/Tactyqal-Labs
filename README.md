@@ -196,16 +196,12 @@ npm run test:api
 
 ## 📂 Documentation Suite
 
-Explore the comprehensive project documentation in the [`/docs`](./docs) folder:
-- **[`docs/prd.md`](./docs/prd.md):** Product Requirements Document (vision, personas, 12 homepage sections, CMS specs).
-- **[`docs/trd.md`](./docs/trd.md):** Technical Requirements Document (architecture, schemas, API route design).
-- **[`docs/design.md`](./docs/design.md):** Design System Guidelines (tokens, typography, GSAP animations, responsive rules).
-- **[`docs/tasks.md`](./docs/tasks.md):** Granular Implementation Roadmap & Checklist.
-- **[`docs/ongoing.md`](./docs/ongoing.md):** Ongoing Status & Milestone Progress.
-- **[`docs/memory.md`](./docs/memory.md):** Project Memory & Original Content Reference Archive.
-- **[`docs/api-spec.md`](./docs/api-spec.md):** REST API Payloads & Contracts.
-- **[`docs/setup-guide.md`](./docs/setup-guide.md):** Setup & Execution Guide.
-- **[`docs/walkthrough-script.md`](./docs/walkthrough-script.md):** 1–2 Minute Video Recording Script.
+Explore the focused project documentation in the [`/docs`](./docs) folder:
+- **[`docs/deployment.md`](./docs/deployment.md):** Cloud Deployment Guide (Vercel Frontend + Render Backend + Live URLs).
+- **[`docs/setup-guide.md`](./docs/setup-guide.md):** Local Development Setup & Execution Guide.
+- **[`docs/api-spec.md`](./docs/api-spec.md):** Complete REST API Payloads & Endpoint Contracts.
+- **[`docs/prd.md`](./docs/prd.md):** Product Requirements Document (12 sections, features, and CMS specs).
+- **[`docs/walkthrough-script.md`](./docs/walkthrough-script.md):** 1–2 Minute Video Recording Script for Submission.
 
 ---
 
