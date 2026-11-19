@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useAppDispatch } from "../store/hooks";
-import { openConsultationModal } from "../store/uiSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { openConsultationModal } from "../../store/uiSlice";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {

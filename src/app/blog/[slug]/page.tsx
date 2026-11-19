@@ -9,8 +9,7 @@ import { initialPosts } from "../../../../backend/seeds/seedData";
 import { useAppDispatch } from "../../../store/hooks";
 import { openConsultationModal, showToast } from "../../../store/uiSlice";
 import { getBlogCoverImage } from "../../../lib/utils";
-import BlogPostHeader from "../../../components/blog/blog-post-header";
-import BlogContentRenderer from "../../../components/blog/blog-content-renderer";
+import { BlogPostHeader, BlogContentRenderer } from "@/components/blog";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 
 export default function BlogPostReaderPage() {

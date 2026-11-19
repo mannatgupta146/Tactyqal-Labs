@@ -7,9 +7,7 @@ import { api } from "../../../../lib/api";
 import { slugify } from "../../../../lib/utils";
 import { useAppDispatch } from "../../../../store/hooks";
 import { showToast } from "../../../../store/uiSlice";
-import EditorFormInputs from "../../../../components/admin/editor-form-inputs";
-import EditorPreviewTab from "../../../../components/admin/editor-preview-tab";
-import EditorTopBar from "../../../../components/admin/editor-top-bar";
+import { EditorFormInputs, EditorPreviewTab, EditorTopBar } from "@/components/admin";
 
 function EditorContent() {
   const router = useRouter();

@@ -256,7 +256,7 @@ export const updatePost = async (req: Request, res: Response) => {
   try {
     const rawId = req.params.id;
     const id = Array.isArray(rawId) ? rawId[0] : rawId;
-    const { title, excerpt, content, coverImage, categoryName, tags, published } = req.body;
+    const { title, excerpt, content, coverImage, categoryName, tags, published, featured } = req.body;
 
     const updateFields: any = { updatedAt: new Date() };
     if (title) updateFields.title = title;
@@ -268,6 +268,7 @@ export const updatePost = async (req: Request, res: Response) => {
     }
     if (coverImage !== undefined) updateFields.coverImage = coverImage;
     if (published !== undefined) updateFields.published = published;
+    if (featured !== undefined) updateFields.featured = Boolean(featured);
     if (categoryName) {
       updateFields.category = {
         name: categoryName,

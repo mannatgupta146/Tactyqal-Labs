@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AssessmentToolItem } from "../../data/assessment-tools-data";
+import { AssessmentToolItem } from "./types";
 import { ArrowRight, CheckCircle2, Play, Sparkles } from "lucide-react";
 
 interface ExpandingToolCardProps {

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { faqList } from "../data/faq-data";
+import faqList from "../../data/faq-data.json";
 import { ChevronDown } from "lucide-react";
 
 export default function FAQ() {

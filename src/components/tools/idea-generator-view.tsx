@@ -2,34 +2,9 @@
 
 import React, { useState } from "react";
 import { Lightbulb, Sparkles, CheckCircle2, Copy, Check } from "lucide-react";
+import ideaDatabaseRaw from "../../data/idea-database.json";
 
-const IDEA_DATABASE: Record<string, string[]> = {
-  "AI & Automation": [
-    "StudySync AI: Real-time collaborative note-taking copilot that converts lecture recordings into spaced-repetition flashcards with peer leaderboards.",
-    "SkillForge: Micro-internship bounty marketplace connecting high school developers with pre-seed startups for paid weekend sprint tickets.",
-    "PromptCraft Hub: Interactive prompt engineering sandbox where students build, test, and share specialized AI agent micro-tools.",
-  ],
-  "EdTech & Learning": [
-    "PeerPrep: Gamified peer-to-peer AP and SAT mock exam battlegrounds with instant step-by-step AI error breakdown.",
-    "CurioLabs: Browser-based interactive physics & chemistry experiment simulator for high schools requiring zero expensive lab hardware.",
-    "TeenTutor Network: Verified peer tutoring platform with automated escrow payouts and university admission verified hours.",
-  ],
-  "Climate & Food Waste": [
-    "BiteBack: Hyper-local surplus food distribution network connecting neighborhood bakeries with youth community volunteers.",
-    "EcoTransit: Micro-incentive transit app that rewards students with local cafe vouchers for biking and carpooling.",
-    "UpCycle Hub: Zero-waste creative marketplace where teenagers sell upcycled apparel and recycled plastic accessories.",
-  ],
-  "Sustainable E-Commerce": [
-    "ThriftLoop: AI-assisted vintage fashion reselling assistant with automated studio background removal and dynamic pricing.",
-    "CampusSwap: Secure, verified student-to-student marketplace for textbooks, dorm essentials, and electronics.",
-    "ArtisanYouth: Curated direct-to-consumer storefront platform for teen creators and handcrafted lifestyle goods.",
-  ],
-  "Creator Economy": [
-    "PodCut AI: Autonomous video clip repackager that turns long-form student podcasts into high-engagement vertical reels.",
-    "SponsorKit: Automated media kit builder and brand collaboration manager built specifically for teen content creators.",
-    "CollabHouse Digital: Decentralized creator collaboration network matching teen designers, animators, and music producers.",
-  ],
-};
+const IDEA_DATABASE: Record<string, string[]> = ideaDatabaseRaw;
 
 export default function IdeaGeneratorView() {
   const [selectedIndustry, setSelectedIndustry] = useState("AI & Automation");

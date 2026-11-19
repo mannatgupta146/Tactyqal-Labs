@@ -1,11 +1,43 @@
 "use client";
 
 import React from "react";
-import { useAppDispatch } from "../store/hooks";
-import { openConsultationModal } from "../store/uiSlice";
-import { whyUsReasons } from "../data/why-us-data";
-import { ShieldCheck, ArrowRight } from "lucide-react";
-import { WhyUsCard } from "./why-us-card";
+import { useAppDispatch } from "../../store/hooks";
+import { openConsultationModal } from "../../store/uiSlice";
+import {
+  ShieldCheck,
+  ArrowRight,
+  UserCheck,
+  Layers,
+  Award,
+  GraduationCap,
+  TrendingUp,
+  HeartHandshake,
+  Mic,
+  Lightbulb,
+  type LucideIcon,
+} from "lucide-react";
+import rawWhyUs from "../../data/why-us-data.json";
+import { WhyUsCard, type WhyUsReason } from "./why-us-card";
+
+const whyUsIconMap: Record<string, LucideIcon> = {
+  UserCheck,
+  Layers,
+  Award,
+  GraduationCap,
+  TrendingUp,
+  HeartHandshake,
+  Mic,
+  Lightbulb,
+};
+
+const whyUsReasons: WhyUsReason[] = rawWhyUs.map((item) => ({
+  id: item.id,
+  tag: item.tag,
+  title: item.title,
+  description: item.description,
+  badge: item.badge,
+  icon: whyUsIconMap[item.iconName] || Lightbulb,
+}));
 
 export default function WhyUs() {
   const dispatch = useAppDispatch();

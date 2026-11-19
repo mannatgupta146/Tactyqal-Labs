@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { BlogPost } from "../../lib/types";
-import { formatDate } from "../../lib/utils";
-import { CheckCircle2, Clock, ExternalLink, Edit, Trash2 } from "lucide-react";
+import { BlogPost } from "../../../lib/types";
+import { formatDate } from "../../../lib/utils";
+import { CheckCircle2, Clock, ExternalLink, Edit, Trash2, Star } from "lucide-react";
 
 interface AdminPostsTableProps {
   posts: BlogPost[];
@@ -31,7 +31,15 @@ export default function AdminPostsTable({ posts, deletingId, onDelete }: AdminPo
               return (
                 <tr key={id} className="hover:bg-stone-50/70 transition">
                   <td className="px-6 py-4 max-w-md">
-                    <div className="font-bold text-slate-900 text-sm line-clamp-1">{post.title}</div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-slate-900 text-sm line-clamp-1">{post.title}</span>
+                      {post.featured && (
+                        <span className="shrink-0 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200/90 shadow-2xs">
+                          <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-500" />
+                          <span>Featured</span>
+                        </span>
+                      )}
+                    </div>
                     <div className="text-slate-500 text-xs line-clamp-1 mt-0.5">{post.excerpt}</div>
                   </td>
 
@@ -42,15 +50,17 @@ export default function AdminPostsTable({ posts, deletingId, onDelete }: AdminPo
                   </td>
 
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {post.published ? (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-[#059669] border border-emerald-200">
-                        <CheckCircle2 className="w-3 h-3" /> Published
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">
-                        <Clock className="w-3 h-3" /> Draft
-                      </span>
-                    )}
+                    <div className="flex flex-col gap-1 items-start">
+                      {post.published ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-[#059669] border border-emerald-200">
+                          <CheckCircle2 className="w-3 h-3" /> Published
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+                          <Clock className="w-3 h-3" /> Draft
+                        </span>
+                      )}
+                    </div>
                   </td>
 
                   <td className="px-6 py-4 whitespace-nowrap text-slate-700 font-mono text-xs">

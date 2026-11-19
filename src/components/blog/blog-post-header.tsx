@@ -1,7 +1,7 @@
 import React from "react";
 import { BlogPost } from "../../lib/types";
 import { formatDate } from "../../lib/utils";
-import { Calendar, Clock, Eye, Share2 } from "lucide-react";
+import { Calendar, Clock, Eye, Share2, Star } from "lucide-react";
 
 interface BlogPostHeaderProps {
   post: BlogPost;
@@ -11,8 +11,16 @@ interface BlogPostHeaderProps {
 export default function BlogPostHeader({ post, onCopyLink }: BlogPostHeaderProps) {
   return (
     <header className="mb-10">
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 border border-emerald-200/80 text-[#059669] mb-4">
-        {post.category?.name || "Startup Guide"}
+      <div className="flex flex-wrap items-center gap-2 mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 border border-emerald-200/80 text-[#059669]">
+          {post.category?.name || "Startup Guide"}
+        </div>
+        {post.featured && (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200/90 shadow-2xs">
+            <Star className="w-3 h-3 fill-amber-400 text-amber-500" />
+            <span>Featured Masterclass</span>
+          </div>
+        )}
       </div>
 
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

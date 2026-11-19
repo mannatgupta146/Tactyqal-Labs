@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { useAppDispatch } from "../store/hooks";
-import { openConsultationModal } from "../store/uiSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { openConsultationModal } from "../../store/uiSlice";
 import {
   CheckCircle2,
   ShieldCheck,

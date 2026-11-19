@@ -21,8 +21,9 @@ export default function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
             alt={post.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-[#00df82] text-slate-950 shadow-md">
-            Featured Masterclass
+          <div className="absolute top-4 left-4 z-10 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/95 backdrop-blur-md text-[#047857] shadow-sm border border-emerald-200/80 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#00df82] animate-pulse" />
+            <span>Featured Masterclass</span>
           </div>
         </div>
 

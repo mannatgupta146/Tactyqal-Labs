@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { api } from "../lib/api";
-import { BlogPost } from "../lib/types";
-import { getBlogCoverImage } from "../lib/utils";
-import { initialPosts } from "../../backend/seeds/seedData";
+import { ArrowRight, Star } from "lucide-react";
+import { api } from "../../lib/api";
+import { BlogPost } from "../../lib/types";
+import { getBlogCoverImage } from "../../lib/utils";
+import { initialPosts } from "../../../backend/seeds/seedData";
 
 export default function FeaturedBlog() {
   const [posts, setPosts] = useState<BlogPost[]>(
@@ -59,13 +59,19 @@ export default function FeaturedBlog() {
 
               <div className="relative z-10">
                 {/* Cover Image inside card padding */}
-                <div className="rounded-xl overflow-hidden aspect-[16/10] bg-stone-100 mb-4 shadow-2xs">
+                <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-stone-100 mb-4 shadow-2xs">
                   <img
                     src={getBlogCoverImage(post.coverImage, post.slug, post.title)}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
+                  {post.featured && (
+                    <div className="absolute top-2.5 right-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/95 backdrop-blur-md text-amber-800 border border-amber-200/90 shadow-2xs">
+                      <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-500" />
+                      <span>Featured</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Article Title */}

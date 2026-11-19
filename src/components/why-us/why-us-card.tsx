@@ -1,7 +1,16 @@
 "use client";
 
 import React from "react";
-import { WhyUsReason } from "../data/why-us-data";
+import type { LucideIcon } from "lucide-react";
+
+export interface WhyUsReason {
+  id: string;
+  tag: string;
+  title: string;
+  description: string;
+  badge: string;
+  icon: LucideIcon;
+}
 
 export function WhyUsCard({ reason, index }: { reason: WhyUsReason; index: number }) {
   const Icon = reason.icon;

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { testimonialsList } from "../data/testimonials-data";
+import testimonialsList from "../../data/testimonials-data.json";
 import { Star, Quote, CheckCircle2 } from "lucide-react";
 
 export default function Testimonials() {

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { closeConsultationModal } from "../store/uiSlice";
-import ConsultationModalForm from "./modals/consultation-modal-form";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { closeConsultationModal } from "../../store/uiSlice";
+import ConsultationModalForm from "./consultation-modal-form";
 import { X } from "lucide-react";
 
 export default function ConsultationModal() {

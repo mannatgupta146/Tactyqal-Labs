@@ -1,10 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import { useAppDispatch } from "../store/hooks";
-import { openConsultationModal } from "../store/uiSlice";
-import { successStories, AppStory } from "../data/success-stories";
-import CaseStudyModal from "./modals/case-study-modal";
+import { useAppDispatch } from "../../store/hooks";
+import { openConsultationModal } from "../../store/uiSlice";
+import successStoriesRaw from "../../data/success-stories.json";
+import CaseStudyModal from "../modals/case-study-modal";
+
+export interface AppStory {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+}
+
+const successStories: AppStory[] = successStoriesRaw;
+
 export default function SuccessStories() {
   const dispatch = useAppDispatch();
   const [activeStoryModal, setActiveStoryModal] = useState<AppStory | null>(null);

@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { useAppDispatch } from "../store/hooks";
-import { openConsultationModal } from "../store/uiSlice";
-import { curriculumSprints, CurriculumSprint } from "../data/curriculum-data";
+import { useAppDispatch } from "../../store/hooks";
+import { openConsultationModal } from "../../store/uiSlice";
+import rawSprints from "../../data/curriculum-data.json";
 import {
   CheckCircle2,
   Quote,
@@ -11,7 +11,39 @@ import {
   UserCheck,
   Award,
   ArrowRight,
+  Search,
+  Palette,
+  Code2,
+  Rocket,
+  type LucideIcon,
 } from "lucide-react";
+
+export interface CurriculumSprint {
+  weeks: string;
+  title: string;
+  icon: LucideIcon;
+  iconColor: string;
+  accentBg: string;
+  description: string;
+  milestones: string[];
+}
+
+const sprintIconMap: Record<string, LucideIcon> = {
+  Search,
+  Palette,
+  Code2,
+  Rocket,
+};
+
+const curriculumSprints: CurriculumSprint[] = rawSprints.map((s) => ({
+  weeks: s.weeks,
+  title: s.title,
+  icon: sprintIconMap[s.iconName] || Rocket,
+  iconColor: s.iconColor,
+  accentBg: s.accentBg,
+  description: s.description,
+  milestones: s.milestones,
+}));
 
 function SprintCard({ sprint }: { sprint: CurriculumSprint }) {
   const Icon = sprint.icon;

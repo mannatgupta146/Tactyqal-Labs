@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { useAppDispatch } from "../store/hooks";
-import { openAssessmentTool } from "../store/uiSlice";
-import { assessmentToolsList } from "../data/assessment-tools-data";
+import { useAppDispatch } from "../../store/hooks";
+import { openAssessmentTool } from "../../store/uiSlice";
+import { assessmentToolsList } from "./types";
 import { Wrench, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 
 export default function AssessmentTools() {

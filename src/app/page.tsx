@@ -1,14 +1,16 @@
 import React from "react";
-import Hero from "../components/hero";
-import SuccessStories from "../components/success-stories";
-import Curriculum from "../components/curriculum";
-import WhyUs from "../components/why-us";
-import AssessmentTools from "../components/assessment-tools";
-import Testimonials from "../components/testimonials";
-import FeaturedBlog from "../components/featured-blog";
-import Pricing from "../components/pricing";
-import FAQ from "../components/faq";
-import ContactSection from "../components/contact-section";
+import {
+  Hero,
+  SuccessStories,
+  Curriculum,
+  Testimonials,
+  Pricing,
+  FAQ,
+} from "@/components/sections";
+import { WhyUs } from "@/components/why-us";
+import { AssessmentTools } from "@/components/tools";
+import { FeaturedBlog } from "@/components/blog";
+import { ContactSection } from "@/components/contact";
 
 export default function HomePage() {
   return (

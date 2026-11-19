@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import ContactInfoCards from "./contact/contact-info-cards";
-import ContactBookingForm from "./contact/contact-booking-form";
+import ContactInfoCards from "./contact-info-cards";
+import ContactBookingForm from "./contact-booking-form";
 
 export default function ContactSection() {
   return (

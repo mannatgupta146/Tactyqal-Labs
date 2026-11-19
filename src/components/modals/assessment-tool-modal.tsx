@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { closeAssessmentTool, openConsultationModal } from "../store/uiSlice";
-import IdeaGeneratorView from "./tools/idea-generator-view";
-import FundabilityQuizView from "./tools/fundability-quiz-view";
-import DiagnosticChecklistView from "./tools/diagnostic-checklist-view";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { closeAssessmentTool, openConsultationModal } from "../../store/uiSlice";
+import IdeaGeneratorView from "../tools/idea-generator-view";
+import FundabilityQuizView from "../tools/fundability-quiz-view";
+import DiagnosticChecklistView from "../tools/diagnostic-checklist-view";
 import { X, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function AssessmentToolModal() {

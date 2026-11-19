@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AppStory } from "../../data/success-stories";
+import { AppStory } from "../sections/success-stories";
 import { useAppDispatch } from "../../store/hooks";
 import { openConsultationModal } from "../../store/uiSlice";
 import { X, ExternalLink } from "lucide-react";

@@ -61,11 +61,11 @@ export default function EditorMetaInputs({
 
         <div>
           <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-            Cover Image URL
+            Cover Image URL / Path
           </label>
           <input
-            type="url"
-            placeholder="https://images.unsplash.com/..."
+            type="text"
+            placeholder="/images/blog-articles/... or https://..."
             value={coverImage}
             onChange={(e) => onCoverImageChange(e.target.value)}
             className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#059669] shadow-xs"

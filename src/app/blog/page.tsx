@@ -7,9 +7,7 @@ import { setSearchQuery, setSelectedCategory } from "../../store/blogSlice";
 import { api } from "../../lib/api";
 import { BlogPost, BlogCategory } from "../../lib/types";
 import { initialPosts } from "../../../backend/seeds/seedData";
-import BlogSearchFilter from "../../components/blog/blog-search-filter";
-import BlogCard from "../../components/blog/blog-card";
-import FeaturedBlogCard from "../../components/blog/featured-blog-card";
+import { BlogSearchFilter, BlogCard, FeaturedBlogCard } from "@/components/blog";
 import { LayoutDashboard } from "lucide-react";
 
 export default function BlogCatalogPage() {

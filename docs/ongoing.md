@@ -55,10 +55,34 @@
    - Replaced bloated "Hire-a-thon" column with an authentic "Trust & Policies" column (100% Results Guarantee, University Admissions Edge, Privacy Policy, Terms & Conditions, Direct WhatsApp Support).
    - Built modular `src/components/modals/policy-modal.tsx` supporting tabbed views for Privacy Policy and Terms of Service.
    - Streamlined bottom bar with authentic copyright year (`© 2020 – 2026 Tactyqal Labs`) and a clean submission attribution tag.
-6. **Modularity Refactoring per `rule.md`:**
+6. **Component Directory Hierarchy & Domain Segregation:**
+   - Cleared loose files from `src/components/`, leaving strictly the 3 global primitives (`navbar.tsx`, `footer.tsx`, `toast.tsx`).
+   - Grouped domain components cleanly into dedicated subfolders:
+     - `src/components/sections/` (`hero.tsx`, `curriculum.tsx`, `success-stories.tsx`, `testimonials.tsx`, `pricing.tsx`, `faq.tsx`).
+     - `src/components/modals/` (`consultation-modal.tsx`, `assessment-tool-modal.tsx`, `case-study-modal.tsx`, `policy-modal.tsx`, `consultation-modal-form.tsx`).
+     - `src/components/why-us/` (`why-us.tsx`, `why-us-card.tsx`, and bento components).
+     - `src/components/contact/` (`contact-section.tsx`, `contact-info-cards.tsx`, `contact-booking-form.tsx`).
+     - `src/components/tools/` (`assessment-tools.tsx` and interactive diagnostic views).
+     - `src/components/blog/` (`featured-blog.tsx`, blog cards, search filter, and readers).
+   - Updated all import references in `src/app/page.tsx`, `src/app/providers.tsx`, and across all components with 0 TypeScript errors.
+7. **Modularity Refactoring per `rule.md`:**
    - All components kept strictly under 150 lines.
    - Clean separation of concerns between presentation cards, forms, and store hooks.
-7. **Git Policy:**
+9. **Component Directory Reorganization:**
+   - Cleared loose files from root `src/components/`, retaining strictly the 3 global primitives: `navbar.tsx`, `footer.tsx`, and `toast.tsx`.
+   - Feature components consolidated into dedicated subdirectories with barrel exports: `admin/` (with `dashboard/` and `editor/`), `blog/`, `contact/`, `modals/`, `sections/`, `tools/`, and `why-us/`.
+10. **Data Layer Decoupling & Pure JSON Migration:**
+   - Converted all static data files in `src/data/` into pure `.json` data files:
+     - `assessment-tools-data.json`
+     - `curriculum-data.json`
+     - `faq-data.json`
+     - `idea-database.json`
+     - `success-stories.json`
+     - `testimonials-data.json`
+     - `why-us-data.json`
+   - Removed all `.ts` files from `src/data/` so `src/data/` contains **strictly `.json` data files**.
+   - Icon component mapping and typed interfaces relocated into respective domain component folders (`src/components/tools/types.ts`, `why-us/`, `sections/curriculum.tsx`), maintaining 100% type safety (`npx tsc --noEmit` passing with 0 errors).
+11. **Git Policy:**
    - Adhering strictly to user rule: Never execute `git add`, `git commit`, or `git push`. Staging and committing are reserved for manual user action.
 
 ---

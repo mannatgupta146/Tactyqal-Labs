@@ -6,8 +6,7 @@ import { api } from "../../../lib/api";
 import { BlogPost, BlogStats } from "../../../lib/types";
 import { useAppDispatch } from "../../../store/hooks";
 import { showToast } from "../../../store/uiSlice";
-import AdminStatsBar from "../../../components/admin/admin-stats-bar";
-import AdminPostsTable from "../../../components/admin/admin-posts-table";
+import { AdminStatsBar, AdminPostsTable } from "@/components/admin";
 import { Plus, Search, ExternalLink, RefreshCw } from "lucide-react";
 
 export default function AdminBlogPage() {

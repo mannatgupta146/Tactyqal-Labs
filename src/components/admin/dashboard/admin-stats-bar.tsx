@@ -1,5 +1,5 @@
 import React from "react";
-import { BlogStats } from "../../lib/types";
+import { BlogStats } from "../../../lib/types";
 import { FileText, CheckCircle2, Clock, Eye } from "lucide-react";
 
 interface AdminStatsBarProps {

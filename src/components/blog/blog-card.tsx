@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { BlogPost } from "../../lib/types";
 import { formatDate, getBlogCoverImage } from "../../lib/utils";
-import { Clock, Eye } from "lucide-react";
+import { Clock, Eye, Star } from "lucide-react";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -21,9 +21,15 @@ export default function BlogCard({ post }: BlogCardProps) {
             alt={post.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur-md text-[#059669] border border-stone-200 shadow-xs">
+          <div className="absolute top-3 left-3 z-10 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur-md text-[#059669] border border-stone-200 shadow-xs">
             {post.category?.name}
           </div>
+          {post.featured && (
+            <div className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/95 backdrop-blur-md text-amber-800 border border-amber-200/90 shadow-xs">
+              <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-500" />
+              <span>Featured</span>
+            </div>
+          )}
         </div>
 
         <div className="p-6">

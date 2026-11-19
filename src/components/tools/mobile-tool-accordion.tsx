@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AssessmentToolItem } from "../../data/assessment-tools-data";
+import { AssessmentToolItem } from "./types";
 import { ChevronDown, ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface MobileToolAccordionProps {

@@ -1,5 +1,5 @@
 import React from "react";
-import { slugify } from "../../lib/utils";
+import { slugify } from "../../../lib/utils";
 import EditorMetaInputs from "./editor-meta-inputs";
 
 interface EditorFormInputsProps {
