@@ -1,6 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { slugify } from "../../../lib/utils";
 import EditorMetaInputs from "./editor-meta-inputs";
+import EditorMarkdownToolbar from "./editor-markdown-toolbar";
 
 interface EditorFormInputsProps {
   title: string;
@@ -47,6 +50,39 @@ export default function EditorFormInputs({
   onPublishedChange,
   onFeaturedChange,
 }: EditorFormInputsProps) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "b") {
+      e.preventDefault();
+      applyWrap("**", "**", "bold text");
+    } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "i") {
+      e.preventDefault();
+      applyWrap("*", "*", "italic text");
+    }
+  };
+
+  const applyWrap = (prefix: string, suffix: string, defaultText: string) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selected = content.substring(start, end);
+    const textToInsert = selected || defaultText;
+
+    const nextContent =
+      content.substring(0, start) + prefix + textToInsert + suffix + content.substring(end);
+    onContentChange(nextContent);
+
+    setTimeout(() => {
+      textarea.focus();
+      const cursorStart = start + prefix.length;
+      const cursorEnd = cursorStart + textToInsert.length;
+      textarea.setSelectionRange(cursorStart, cursorEnd);
+    }, 0);
+  };
+
   return (
     <>
       {/* Title & Slug */}
@@ -115,19 +151,34 @@ export default function EditorFormInputs({
         onFeaturedChange={onFeaturedChange}
       />
 
-      {/* Content Markdown Area */}
+      {/* Content Markdown Area with Rich Toolbar */}
       <div>
-        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-          Content (Markdown Supported) *
-        </label>
-        <textarea
-          rows={14}
-          required
-          placeholder="Write in standard Markdown format (## Headings, > Quotes, - Lists, **bold**, etc.)..."
-          value={content}
-          onChange={(e) => onContentChange(e.target.value)}
-          className="w-full px-4 py-3 rounded-2xl bg-white border border-stone-300 text-slate-900 placeholder-slate-400 font-mono text-sm focus:outline-none focus:border-[#059669] leading-relaxed shadow-xs"
-        />
+        <div className="flex items-center justify-between mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
+            Content (Markdown Supported) *
+          </label>
+          <span className="text-[11px] text-slate-500 font-medium">
+            Use the toolbar below for Bold, Headings, Lists, Quotes & Links
+          </span>
+        </div>
+
+        <div className="rounded-2xl border border-stone-300 bg-white overflow-hidden shadow-xs focus-within:border-[#059669] focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all">
+          <EditorMarkdownToolbar
+            textareaRef={textareaRef}
+            content={content}
+            onContentChange={onContentChange}
+          />
+          <textarea
+            ref={textareaRef}
+            rows={15}
+            required
+            placeholder="Write in standard Markdown format (use the toolbar buttons above for quick formatting)..."
+            value={content}
+            onChange={(e) => onContentChange(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="w-full px-4 py-3 bg-white text-slate-900 placeholder-slate-400 font-mono text-sm focus:outline-none leading-relaxed resize-y min-h-[380px]"
+          />
+        </div>
       </div>
     </>
   );

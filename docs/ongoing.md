@@ -82,7 +82,21 @@
      - `why-us-data.json`
    - Removed all `.ts` files from `src/data/` so `src/data/` contains **strictly `.json` data files**.
    - Icon component mapping and typed interfaces relocated into respective domain component folders (`src/components/tools/types.ts`, `why-us/`, `sections/curriculum.tsx`), maintaining 100% type safety (`npx tsc --noEmit` passing with 0 errors).
-11. **Git Policy:**
+11. **Admin Editor Formatting Toolbar & Rich Live Preview:**
+   - Built interactive markdown toolbar (`editor-markdown-toolbar.tsx`) with 12 formatting actions: Bold (`**`), Italic (`*`), Strikethrough (`~~`), H2, H3, Blockquote (`>`), Bullet List (`-`), Numbered List (`1.`), Inline Code (`` ` ``), Code Block (```` ``` ````), Link, Image, and Horizontal Rule (`---`).
+   - Integrated keyboard shortcuts (`Cmd+B` / `Ctrl+B` for Bold, `Cmd+I` / `Ctrl+I` for Italic).
+   - Added live word count and reading time telemetry directly in the editor toolbar.
+   - Built robust markdown-to-react parser (`src/lib/markdown-renderer.tsx`) that renders headings, bold tags, formatted numbered/bullet lists, code blocks, blockquotes, and inline links natively.
+   - Upgraded `editor-preview-tab.tsx` into a publication-grade live preview displaying category badge, read time pill, featured star badge, cover image thumbnail, and fully rendered markdown typography.
+12. **Editorial Typography Alignment & Generous Section Spacing:**
+   - Expanded vertical spacing around major headings: H2 now features generous breathing room (`mt-14 sm:mt-16 mb-5 sm:mb-6`), separating it cleanly from preceding lists and paragraphs.
+   - Expanded H3 subheadings (`mt-10 sm:mt-12 mb-4`) and paragraph margins (`mb-6 leading-relaxed sm:leading-loose`) to eliminate congested typography.
+   - Expanded list container margins (`my-6 sm:my-8 space-y-4`) to ensure lists never crowd adjacent headings.
+   - Kept H1, H2, and H3 headings in classic high-contrast dark slate (`text-slate-900`) for clean, natural readability.
+   - Kept list numbers (`text-slate-700 font-semibold font-mono`) and bullet point dots (`text-slate-400 font-black`) clean and neutral.
+   - Enhanced blockquote & student spotlight cards with an elegant mint green vertical accent bar (`bg-gradient-to-b from-[#00df82] to-[#059669]`), a subtle mint-gradient card tint (`from-emerald-50/50 via-[#FAFDF9] to-[#FAF8F5]`), and an emerald border (`border-emerald-200/70`).
+   - Removed conflicting Tailwind `prose` container from `blog-content-renderer.tsx` to eliminate styling collisions.
+13. **Git Policy:**
    - Adhering strictly to user rule: Never execute `git add`, `git commit`, or `git push`. Staging and committing are reserved for manual user action.
 
 ---

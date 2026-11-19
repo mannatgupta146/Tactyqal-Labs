@@ -151,7 +151,15 @@ function EditorContent() {
               onFeaturedChange={setFeatured}
             />
           ) : (
-            <EditorPreviewTab title={title} excerpt={excerpt} content={content} />
+            <EditorPreviewTab
+              title={title}
+              excerpt={excerpt}
+              content={content}
+              coverImage={coverImage}
+              categoryName={categoryName}
+              tags={tags}
+              featured={featured}
+            />
           )}
 
           <div className="pt-4 flex items-center justify-end gap-3">

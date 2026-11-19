@@ -7,3 +7,4 @@ export { default as EditorFormInputs } from "./editor/editor-form-inputs";
 export { default as EditorMetaInputs } from "./editor/editor-meta-inputs";
 export { default as EditorPreviewTab } from "./editor/editor-preview-tab";
 export { default as EditorTopBar } from "./editor/editor-top-bar";
+export { default as EditorMarkdownToolbar } from "./editor/editor-markdown-toolbar";
