@@ -1,21 +1,99 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import testimonialsList from "../../data/testimonials-data.json";
-import { Star, Quote, CheckCircle2 } from "lucide-react";
+import TestimonialCard, { TestimonialItem } from "./testimonial-card";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { Star } from "lucide-react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const testimonials: TestimonialItem[] = testimonialsList;
 
 export default function Testimonials() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  useGSAP(
+    () => {
+      // Unique Elastic Card Deal & Star Sparkle Cascade Timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".testimonials-grid",
+          start: "top 80%", // Fires strictly when reviews enter user's viewport
+          once: true,
+        },
+        onComplete: () => {
+          // Clear props so CSS hover & spotlight focus function with zero friction
+          gsap.set(".testimonial-card, .star-icon", {
+            clearProps: "transform,opacity",
+          });
+        },
+      });
+
+      // 1. Header entrance
+      tl.from(".testimonials-header", {
+        opacity: 0,
+        y: 20,
+        duration: 0.65,
+        ease: "power2.out",
+      });
+
+      // 2. Playful Elastic "Card Deal": Alternating angles snap into crisp alignment
+      testimonials.forEach((_, idx) => {
+        const tiltAngle = idx % 2 === 0 ? -3.5 : 3.5;
+        tl.fromTo(
+          `.testimonial-card-${idx}`,
+          {
+            opacity: 0,
+            y: 50,
+            rotate: tiltAngle,
+            scale: 0.9,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            rotate: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          idx === 0 ? "-=0.2" : "-=0.6"
+        );
+      });
+
+      // 3. Golden Star Wave: 5 stars sparkle sequentially across all cards
+      tl.fromTo(
+        ".star-icon",
+        { scale: 0.2, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          stagger: 0.025,
+          duration: 0.35,
+          ease: "back.out(2.2)",
+        },
+        "-=0.7"
+      );
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section id="reviews" className="py-24 bg-white relative border-t border-stone-200 overflow-hidden">
-      {/* Subtle ambient lighting */}
+    <section ref={sectionRef} id="reviews" className="py-24 bg-white relative border-t border-stone-200 overflow-hidden">
+      {/* Ambient background glows */}
       <div className="absolute top-1/4 -left-32 w-80 h-80 bg-amber-100/30 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-emerald-100/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="testimonials-header text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-bold tracking-wide uppercase mb-3 shadow-2xs">
-            <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+            <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500 animate-pulse" />
             <span>Student Reviews</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
@@ -26,48 +104,18 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonials 3x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {testimonialsList.map((r) => (
-            <div
+        {/* Testimonials Grid with Spotlight Focus Dimming */}
+        <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {testimonials.map((r, idx) => (
+            <TestimonialCard
               key={r.name}
-              className="group rounded-3xl bg-[#FAF8F5] border border-stone-200/90 p-6 sm:p-7 flex flex-col justify-between hover:border-amber-400 hover:bg-white hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 shadow-xs"
-            >
-              <div>
-                {/* Top Row: 5 Star Ratings on Left & Comma Quote Icon on Right */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1 text-amber-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                  <Quote className="w-6 h-6 text-stone-300 group-hover:text-amber-400 transition-colors duration-200" />
-                </div>
-
-                {/* Real Student Quote */}
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium min-h-[52px]">
-                  &ldquo;{r.quote}&rdquo;
-                </p>
-              </div>
-
-              {/* Bottom Row: Real Student Avatar + Verified Name */}
-              <div className="mt-6 pt-4 border-t border-stone-200/70 flex items-center gap-3.5">
-                <img
-                  src={r.avatar}
-                  alt={r.name}
-                  className="w-11 h-11 rounded-full object-cover border-2 border-stone-200 group-hover:border-amber-400 transition-colors duration-200 shadow-2xs"
-                />
-                <div>
-                  <div className="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-1.5">
-                    {r.name}
-                    <CheckCircle2 className="w-4 h-4 text-[#059669]" />
-                  </div>
-                  <div className="text-xs text-slate-500 font-medium">
-                    Student Founder • Verified
-                  </div>
-                </div>
-              </div>
-            </div>
+              testimonial={r}
+              cardIndex={idx}
+              isHovered={hoveredIdx === idx}
+              isAnyHovered={hoveredIdx !== null}
+              onHover={() => setHoveredIdx(idx)}
+              onLeave={() => setHoveredIdx(null)}
+            />
           ))}
         </div>
       </div>

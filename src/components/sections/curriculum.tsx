@@ -1,178 +1,168 @@
 "use client";
 
-import React from "react";
-import { useAppDispatch } from "../../store/hooks";
-import { openConsultationModal } from "../../store/uiSlice";
+import React, { useRef } from "react";
 import rawSprints from "../../data/curriculum-data.json";
-import {
-  CheckCircle2,
-  Quote,
-  Clock,
-  UserCheck,
-  Award,
-  ArrowRight,
-  Search,
-  Palette,
-  Code2,
-  Rocket,
-  type LucideIcon,
-} from "lucide-react";
+import SprintCard, { CurriculumSprint } from "./sprint-card";
+import CurriculumHeader from "./curriculum-header";
+import CurriculumQuoteCard from "./curriculum-quote-card";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { Search, Palette, Code2, Rocket, type LucideIcon } from "lucide-react";
 
-export interface CurriculumSprint {
-  weeks: string;
-  title: string;
-  icon: LucideIcon;
-  iconColor: string;
-  accentBg: string;
-  description: string;
-  milestones: string[];
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
 }
 
-const sprintIconMap: Record<string, LucideIcon> = {
-  Search,
-  Palette,
-  Code2,
-  Rocket,
-};
+const sprintIcons: Record<string, LucideIcon> = { Search, Palette, Code2, Rocket };
 
 const curriculumSprints: CurriculumSprint[] = rawSprints.map((s) => ({
-  weeks: s.weeks,
-  title: s.title,
-  icon: sprintIconMap[s.iconName] || Rocket,
-  iconColor: s.iconColor,
-  accentBg: s.accentBg,
-  description: s.description,
-  milestones: s.milestones,
+  ...s,
+  icon: sprintIcons[s.iconName] || Rocket,
 }));
 
-function SprintCard({ sprint }: { sprint: CurriculumSprint }) {
-  const Icon = sprint.icon;
-  return (
-    <div className="relative w-full rounded-2xl bg-white border border-stone-200/90 p-4 sm:p-5 shadow-xs group-hover:border-emerald-300/80 group-hover:bg-gradient-to-b group-hover:from-white group-hover:to-emerald-50/50 group-hover:shadow-xl group-hover:shadow-emerald-500/15 group-hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
-      {/* Top Luminous Accent Sheen */}
-      <div className="absolute top-0 left-4 right-4 h-0.5 bg-gradient-to-r from-transparent via-[#00df82] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-      {/* Header: Week Pill & Milestone Icon */}
-      <div className="flex items-center justify-between mb-2.5">
-        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-[#059669] border border-emerald-200/80 group-hover:bg-[#00df82] group-hover:text-slate-950 group-hover:border-[#00df82] transition-colors duration-300">
-          {sprint.weeks}
-        </span>
-        <div className="w-7 h-7 rounded-lg bg-[#FAF8F5] border border-stone-200 flex items-center justify-center text-[#059669] group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white group-hover:shadow-xs transition-all duration-300">
-          <Icon className="w-3.5 h-3.5" />
-        </div>
-      </div>
-
-      {/* Title */}
-      <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug group-hover:text-[#059669] transition-colors mb-1.5">
-        {sprint.title}
-      </h3>
-
-      {/* Crisp Description */}
-      <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
-        {sprint.description}
-      </p>
-
-      {/* Deliverables: Animated micro-slide on hover */}
-      <div className="pt-2.5 border-t border-stone-100 space-y-1">
-        {sprint.milestones.slice(0, 3).map((m) => (
-          <div
-            key={m}
-            className="flex items-center gap-1.5 text-[11px] text-slate-600 group-hover:text-slate-900 group-hover:translate-x-1 transition-all duration-300"
-          >
-            <CheckCircle2 className="w-3 h-3 text-[#059669] group-hover:text-[#00df82] group-hover:scale-110 transition-transform shrink-0" />
-            <span className="truncate">{m}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Curriculum() {
-  const dispatch = useAppDispatch();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // 1. Header entrance when header scrolls into view
+      gsap.from(".curriculum-header", {
+        scrollTrigger: {
+          trigger: ".curriculum-header",
+          start: "top 85%",
+          once: true,
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+
+      // 2. Desktop Cards: Triggers strictly when the CARDS reach the viewport!
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".curriculum-cards-container",
+          start: "top 75%", // Only fires when user reaches the cards
+          once: true,
+        },
+        onComplete: () => {
+          gsap.set(".sprint-col", { clearProps: "x,y,scale,opacity" });
+        },
+      });
+
+      // Lead-in line segment
+      tl.fromTo(
+        ".curriculum-line-0",
+        { strokeDashoffset: 150, opacity: 0 },
+        { strokeDashoffset: 0, opacity: 1, duration: 0.3, ease: "power1.inOut" }
+      );
+
+      // Balanced, natural Left-to-Right flow (~2s total)
+      [0, 1, 2, 3].forEach((idx) => {
+        tl.fromTo(
+          `.sprint-col-${idx}`,
+          { x: -32, y: 12, scale: 0.96, opacity: 0 },
+          { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" },
+          idx === 0 ? "-=0.1" : "-=0.22"
+        );
+
+        if (idx < 3) {
+          tl.fromTo(
+            `.curriculum-line-${idx + 1}`,
+            { strokeDashoffset: 350, opacity: 0 },
+            { strokeDashoffset: 0, opacity: 1, duration: 0.4, ease: "power1.inOut" },
+            "-=0.2"
+          );
+        }
+      });
+
+      // 3. Mobile timeline triggers when mobile list enters viewport
+      gsap.fromTo(
+        ".sprint-mobile-item",
+        { x: -35, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: ".curriculum-cards-mobile",
+            start: "top 80%",
+            once: true,
+          },
+          x: 0,
+          opacity: 1,
+          stagger: 0.14,
+          duration: 0.55,
+          ease: "power2.out",
+          onComplete: () => {
+            gsap.set(".sprint-mobile-item", { clearProps: "x,opacity" });
+          },
+        }
+      );
+
+      // 4. Quote Card entrance
+      gsap.from(".curriculum-quote", {
+        scrollTrigger: {
+          trigger: ".curriculum-quote",
+          start: "top 85%",
+          once: true,
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+
+      // Continuous subtle ambient flow through the line
+      gsap.to(".curriculum-line-0, .curriculum-line-1, .curriculum-line-2, .curriculum-line-3", {
+        strokeDashoffset: "-=30",
+        duration: 2.5,
+        repeat: -1,
+        ease: "none",
+      });
+    },
+    { scope: sectionRef }
+  );
 
   return (
-    <section id="program" className="py-20 bg-[#FAF8F5] relative border-t border-stone-200 overflow-hidden">
+    <section ref={sectionRef} id="program" className="py-20 bg-[#FAF8F5] relative border-t border-stone-200 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            From Idea to Full App in 8 Weeks
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
-            A battle-tested milestone system designed specifically for students. Every student is paired 1:1 with an expert founder-mentor.
-          </p>
+        <CurriculumHeader />
 
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-5 text-xs text-slate-700">
-            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-2xs font-medium">
-              <Clock className="w-3.5 h-3.5 text-[#059669]" /> Personal 1:1 Live Sessions
-            </span>
-            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-2xs font-medium">
-              <UserCheck className="w-3.5 h-3.5 text-[#059669]" /> Dedicated Founder Guidance
-            </span>
-            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-2xs font-medium">
-              <Award className="w-3.5 h-3.5 text-[#059669]" /> College Admissions &amp; Grants Edge
-            </span>
-          </div>
-        </div>
-
-        {/* Desktop Alternating -|_|-|_ Stepped Timeline (Compact & Short) */}
-        <div className="hidden lg:block relative max-w-6xl mx-auto my-8">
-          {/* Continuous -|_|-|_ Stepped Connecting Line passing through nodes */}
+        {/* Desktop Stepped Timeline: Left-to-Right Animated Path */}
+        <div className="curriculum-cards-container hidden lg:block relative max-w-6xl mx-auto my-8">
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none z-0"
             viewBox="0 0 1000 340"
             preserveAspectRatio="none"
           >
-            <path
-              d="M 60 16 H 250 V 64 H 500 V 16 H 750 V 64 H 940"
-              fill="none"
-              stroke="#00df82"
-              strokeWidth="2.5"
-              strokeDasharray="6 4"
-            />
+            <path className="curriculum-line-0" d="M 40 16 H 125" fill="none" stroke="#00df82" strokeWidth="2.5" strokeDasharray="6 4" />
+            <path className="curriculum-line-1" d="M 125 16 H 250 V 64 H 375" fill="none" stroke="#00df82" strokeWidth="2.5" strokeDasharray="6 4" />
+            <path className="curriculum-line-2" d="M 375 64 H 500 V 16 H 625" fill="none" stroke="#00df82" strokeWidth="2.5" strokeDasharray="6 4" />
+            <path className="curriculum-line-3" d="M 625 16 H 750 V 64 H 960" fill="none" stroke="#00df82" strokeWidth="2.5" strokeDasharray="6 4" />
           </svg>
 
           {/* 4 Cards in 4 columns: One UP (pt-0), One DOWN (pt-12) */}
           <div className="grid grid-cols-4 gap-6 items-start relative z-10">
-            {/* Col 1: Phase 01 (UP) */}
-            <div className="group pt-0 cursor-pointer">
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-stone-300 text-slate-800 font-extrabold text-xs flex items-center justify-center shadow-xs mx-auto mb-3 group-hover:border-[#00df82] group-hover:bg-[#00df82] group-hover:text-slate-950 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-emerald-500/20 transition-all duration-300">
-                01
-              </div>
-              <SprintCard sprint={curriculumSprints[0]} />
-            </div>
-
-            {/* Col 2: Phase 02 (DOWN) */}
-            <div className="group pt-12 cursor-pointer">
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-stone-300 text-slate-800 font-extrabold text-xs flex items-center justify-center shadow-xs mx-auto mb-3 group-hover:border-[#00df82] group-hover:bg-[#00df82] group-hover:text-slate-950 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-emerald-500/20 transition-all duration-300">
-                02
-              </div>
-              <SprintCard sprint={curriculumSprints[1]} />
-            </div>
-
-            {/* Col 3: Phase 03 (UP) */}
-            <div className="group pt-0 cursor-pointer">
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-stone-300 text-slate-800 font-extrabold text-xs flex items-center justify-center shadow-xs mx-auto mb-3 group-hover:border-[#00df82] group-hover:bg-[#00df82] group-hover:text-slate-950 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-emerald-500/20 transition-all duration-300">
-                03
-              </div>
-              <SprintCard sprint={curriculumSprints[2]} />
-            </div>
-
-            {/* Col 4: Phase 04 (DOWN) */}
-            <div className="group pt-12 cursor-pointer">
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-stone-300 text-slate-800 font-extrabold text-xs flex items-center justify-center shadow-xs mx-auto mb-3 group-hover:border-[#00df82] group-hover:bg-[#00df82] group-hover:text-slate-950 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-emerald-500/20 transition-all duration-300">
-                04
-              </div>
-              <SprintCard sprint={curriculumSprints[3]} />
-            </div>
+            {curriculumSprints.map((sprint, idx) => {
+              const isDown = idx % 2 === 1;
+              return (
+                <div
+                  key={sprint.weeks}
+                  className={`sprint-col sprint-col-${idx} group cursor-pointer ${isDown ? "pt-12" : "pt-0"}`}
+                >
+                  <div className="step-badge w-8 h-8 rounded-full bg-white border-2 border-stone-300 text-slate-800 font-extrabold text-xs flex items-center justify-center shadow-xs mx-auto mb-3 group-hover:border-[#00df82] group-hover:bg-[#00df82] group-hover:text-slate-950 group-hover:scale-110 group-hover:shadow-md group-hover:shadow-emerald-500/20 transition-all duration-300">
+                    {`0${idx + 1}`}
+                  </div>
+                  <SprintCard sprint={sprint} />
+                </div>
+              );
+            })}
           </div>
         </div>
 
         {/* Mobile & Tablet Vertical Timeline (< lg) */}
-        <div className="lg:hidden relative pl-6 space-y-5 my-8 border-l-2 border-emerald-300 ml-3">
+        <div className="curriculum-cards-mobile lg:hidden relative pl-6 space-y-5 my-8 border-l-2 border-emerald-300 ml-3">
           {curriculumSprints.map((sprint, idx) => (
-            <div key={sprint.weeks} className="group relative">
+            <div key={sprint.weeks} className="sprint-mobile-item group relative">
               <div className="absolute -left-[35px] top-4 w-7 h-7 rounded-full bg-white border-2 border-stone-300 text-slate-800 font-extrabold text-[11px] flex items-center justify-center shadow-xs group-hover:border-[#00df82] group-hover:bg-[#00df82] group-hover:text-slate-950 transition-all">
                 0{idx + 1}
               </div>
@@ -181,26 +171,7 @@ export default function Curriculum() {
           ))}
         </div>
 
-        {/* Naval Ravikant Quote Card */}
-        <div className="mt-12 relative rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-10 text-center max-w-3xl mx-auto shadow-md">
-          <Quote className="w-8 h-8 text-[#059669]/30 mx-auto mb-3" />
-          <blockquote className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 leading-snug tracking-tight">
-            &ldquo;Learn to sell. Learn to build. If you can do both, you will be unstoppable.&rdquo;
-          </blockquote>
-          <div className="mt-3 text-xs sm:text-sm font-bold text-[#059669]">
-            — Naval Ravikant, Entrepreneur &amp; Investor
-          </div>
-
-          <div className="mt-6 flex items-center justify-center">
-            <button
-              onClick={() => dispatch(openConsultationModal("Curriculum Quote CTA"))}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#00df82] hover:bg-[#00c975] text-slate-950 font-bold text-xs sm:text-sm shadow-md shadow-emerald-500/20 transition hover:scale-105 active:scale-95"
-            >
-              <span>Start Your Journey Today</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
+        <CurriculumQuoteCard />
       </div>
     </section>
   );
