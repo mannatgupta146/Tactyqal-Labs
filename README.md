@@ -201,7 +201,6 @@ Explore the focused project documentation in the [`/docs`](./docs) folder:
 - **[`docs/setup-guide.md`](./docs/setup-guide.md):** Local Development Setup & Execution Guide.
 - **[`docs/api-spec.md`](./docs/api-spec.md):** Complete REST API Payloads & Endpoint Contracts.
 - **[`docs/prd.md`](./docs/prd.md):** Product Requirements Document (12 sections, features, and CMS specs).
-- **[`docs/walkthrough-script.md`](./docs/walkthrough-script.md):** 1–2 Minute Video Recording Script for Submission.
 
 ---
 
